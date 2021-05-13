@@ -1,0 +1,9 @@
+## Interface: 25100
+## Author: Schaka
+## Title: Party Ability Bars
+## SavedVariables: PABDB
+
+libs\LibStub\LibStub.lua
+libs\libs.xml
+
+PartyAbilityBars.lua
