@@ -6,7 +6,7 @@ local frame2=CreateFrame("Frame")
 frame2:RegisterEvent("ADDON_LOADED")
 frame2:SetScript("OnEvent", function(self, event, addon)
         if (addon == "Blizzard_TimeManager") then
-                for i, v in pairs({PlayerFrameTexture, TargetFrameTextureFrameTexture, FocusFrameTextureFrameTexture, PetFrameTexture, PartyMemberFrame1Texture, PartyMemberFrame2Texture, PartyMemberFrame3Texture, PartyMemberFrame4Texture, SlidingActionBarTexture0,
+                for i, v in pairs({PlayerFrameTexture, PetFrameTexture, PartyMemberFrame1Texture, PartyMemberFrame2Texture, PartyMemberFrame3Texture, PartyMemberFrame4Texture, SlidingActionBarTexture0,
         SlidingActionBarTexture1,
         MainMenuBarLeftEndCap,
         MainMenuBarRightEndCap,
@@ -40,7 +40,7 @@ SetCVar("ShowClassColorInNameplate", 1)
 
 
 
--- ToT texture closing the alpha gap (may need recheck when classportraits are implemented)
+-- ToT texture closing the alpha gap (previously handled by ClassPortraits itself)
 
 TargetFrameToTTextureFrameTexture:SetVertexColor(0,0,0)
 
@@ -51,14 +51,9 @@ MinimapCluster:ClearAllPoints();
 MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
 
 
---increasing player-debuff size
 
 
-
-
-
-
--- get the old style party frames back when in raid .oO(like srsly Lizzard, u arent even going to fucking give us an option to disable this modern abomination retail shait?)
+-- get the old style party frames back when in raid .oO(like srsly Lizzard, u arent even going to fucking give us an option to disable this modern abomination retail uglyass shait?)
 
 
 local frame = CreateFrame("FRAME", "PartyFrame")
@@ -86,14 +81,6 @@ local partyMemberFrameTextures = {
     end
 end
 frame:SetScript("OnUpdate", eventHandler)
-
-CompactRaidFrameManager:UnregisterAllEvents() CompactRaidFrameManager:Hide() CompactRaidFrameContainer:UnregisterAllEvents() CompactRaidFrameContainer:Hide()
-
-
-
-
-
-
 
 
 
@@ -271,16 +258,80 @@ PartyMemberFrame4ManaBar:SetPoint("TOPLEFT", 45, -32)
 
 --Player Frame, Focus Frame, Target Frame
 
+PlayerFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame")
+PlayerStatusTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-Player-Status")
+PlayerFrameHealthBar:SetPoint("TOPLEFT", 106, -22)
+PlayerFrameHealthBar:SetWidth(119)
+PlayerFrameHealthBar:SetHeight(29)
+PlayerName:SetPoint("CENTER", 50, 35)
+PlayerFrameHealthBarText:SetPoint("CENTER", 50, 12)
+PlayerFrameHealthBarText:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
+
+-- retarded classic client forces you to reapply this on every reload (god bless 2.4.3)
 
 
+hooksecurefunc("PlayerFrame_UpdateLevelTextAnchor", function(level)
+  if ( level >= 100 ) then
+    PlayerLevelText:Hide();
+    PlayerFrameHealthBar:SetPoint("TOPLEFT", 106, -22);
+  else
+    PlayerLevelText:Hide();
+    PlayerFrameHealthBar:SetPoint("TOPLEFT", 106, -22);
+  end
+end)
 
+
+hooksecurefunc("TargetFrame_CheckFaction", function(self)
+    self.nameBackground:SetVertexColor(0.0, 0.0, 0.0, 0.5);
+end)
+
+
+-- end of retardation
+
+
+TargetFrameHealthBar:SetWidth(119)
+TargetFrameHealthBar:SetHeight(29)
+TargetFrameHealthBar:SetPoint("TOPLEFT", 7, -22)TargetFrameHealthBar:SetPoint("CENTER", -50, 6)
+TargetFrameNameBackground:Hide()
+TargetFrameTextureFrameName:SetPoint("CENTER", -50, 35)
+TargetFrameHealthBar.TextString:SetPoint("CENTER", -50, 12)
+TargetFrameHealthBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
+
+
+FocusFrameHealthBar:SetWidth(119)
+FocusFrameHealthBar:SetHeight(29)
+FocusFrameHealthBar:SetPoint("TOPLEFT", 7, -22)FocusFrameHealthBar:SetPoint("CENTER", -50, 6)
+FocusFrameNameBackground:Hide()
+FocusFrameTextureFrameName:SetPoint("CENTER", -50, 35)
+FocusFrameHealthBar.TextString:SetPoint("CENTER", -50, 12)
+FocusFrameHealthBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
+
+-- aparently "FocusFrame_CheckClassification" doesnt exist anymore in this modern abomination of a client so docking it inside Target...
+
+hooksecurefunc("TargetFrame_CheckClassification", function()
+local classification = UnitClassification("target")
+if classification == "elite" or classification == "worldboss" then
+TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
+FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
+elseif classification == "rareelite" then
+TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
+FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
+elseif classification == "rare" then
+TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
+FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
+else
+TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame")
+FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\FocusFrame")
+end
+end)
 
 
 
 
 --Left and Right Dragons on action bar hidden
 
-MainMenuBarLeftEndCap:Hide();MainMenuBarRightEndCap:Hide()
+MainMenuBarLeftEndCap:Hide()
+MainMenuBarRightEndCap:Hide()
 
 
 
@@ -289,13 +340,17 @@ MainMenuBarLeftEndCap:Hide();MainMenuBarRightEndCap:Hide()
 --Hidden Player glow combat/rested flashes + Hidden Focus Flash on Focused Target + Trying to completely hide the red glowing status on target/focus frames when they have low HP(this is not completely fixed yet)
 
 
-
-
-
-
-
-
-
+hooksecurefunc("PlayerFrame_UpdateStatus", function()
+   if IsResting("player") then
+      PlayerStatusTexture:Hide()
+      PlayerRestGlow:Hide()
+      PlayerStatusGlow:Hide()
+      elseif PlayerFrame.inCombat then
+      PlayerStatusTexture:Hide()
+      PlayerAttackGlow:Hide()
+      PlayerStatusGlow:Hide()
+   end
+end)
 
 
 
@@ -352,7 +407,7 @@ ChatFrameMenuButton:Hide()
 ChatFrameChannelButton:Hide()
 
 
-
+--POSITION OF DEBUFFS ON PARTY MEMBER FRAMES 1-4
 
 PartyMemberFrame1Debuff1:ClearAllPoints();
 PartyMemberFrame1Debuff1:SetPoint("BOTTOMLEFT", 45.00000048894432, -9.374971298968035);
@@ -407,7 +462,6 @@ local barstosmooth = {
    TargetFrameManaBar = "target",
    FocusFrameHealthBar = "focus",
    FocusFrameManaBar = "focus",
-   MainMenuExpBar = "",
    ReputationWatchStatusBar = "",
    PartyMemberFrame1HealthBar = "party1",
    PartyMemberFrame1ManaBar = "party1",
@@ -521,10 +575,6 @@ _G[k]:SetScript("OnHide", function() this.lastGuid = nil; this.max_ = nil end)
 
 
 
---position of minimap(remove to reset minimap position)
-MinimapCluster:ClearAllPoints();
-MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
-
 --removing character "C" button image
 
 CharacterMicroButton:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
@@ -542,7 +592,6 @@ WorldMapMicroButton:SetPushedTexture("Interface/BUTTONS/WorldMapMicroButton");
 
 
 
---player health bar(status bar) colouring at certain % HP;class colours
 
 --player health bar(status bar) colouring at certain % HP;class colours
 
@@ -608,121 +657,8 @@ GameTooltip:SetScript("OnShow", function(self, ...)
     end
 end)
 
---XP bar + reputation bar visual rework
 
-
-local BACKDROP = {  bgFile = [[Interface\Tooltips\UI-Tooltip-Background]],
-                    insets = {left = -1, right = -1, top = -1, bottom = -1} }
-local _, class = UnitClass'Player'
-local colour = RAID_CLASS_COLORS[class]
-local orig = {}
-
-orig.ReputationWatchBar_Update = ReputationWatchBar_Update
-
-if BackdropTemplateMixin then
-    Mixin(MainMenuExpBar, BackdropTemplateMixin)
-end
-
-MainMenuExpBar:SetWidth(1021) MainMenuExpBar:SetHeight(5)
-MainMenuExpBar:ClearAllPoints() MainMenuExpBar:SetPoint('TOP', MainMenuBar, 0, -4)
-MainMenuExpBar:SetBackdrop(BACKDROP)
-MainMenuExpBar:SetBackdropColor(0, 0, 0, 1)
-
-MainMenuExpBar.spark = MainMenuExpBar:CreateTexture(nil, 'OVERLAY', nil, 7)
-MainMenuExpBar.spark:SetTexture[[Interface\CastingBar\UI-CastingBar-Spark]]
-MainMenuExpBar.spark:SetWidth(35) MainMenuExpBar.spark:SetHeight(35)
-MainMenuExpBar.spark:SetBlendMode'ADD'
-
-MainMenuExpBar.rep = MainMenuExpBar:CreateFontString(nil, 'OVERLAY')
-MainMenuExpBar.rep:SetFont(STANDARD_TEXT_FONT, 12, 'OUTLINE')
-MainMenuExpBar.rep:SetPoint('RIGHT', MainMenuBarExpText, 'LEFT')
-
-if BackdropTemplateMixin then
-    Mixin(ReputationWatchBar, BackdropTemplateMixin)
-end
-
-ReputationWatchBar:SetWidth(1021)
-ReputationWatchBar:SetBackdrop(BACKDROP)
-ReputationWatchBar:SetBackdropColor(0, 0, 0, 1)
-
-ReputationWatchBar.StatusBar.spark = ReputationWatchBar.StatusBar:CreateTexture(nil, 'OVERLAY', nil, 7)
-ReputationWatchBar.StatusBar.spark:SetTexture[[Interface\CastingBar\UI-CastingBar-Spark]]
-ReputationWatchBar.StatusBar.spark:SetWidth(35) ReputationWatchBar.StatusBar.spark:SetHeight(35)
-ReputationWatchBar.StatusBar.spark:SetBlendMode'ADD'
-ReputationWatchBar.StatusBar.spark:SetVertexColor(colour.r*1.3, colour.g*1.3, colour.b*1.3, .6)
-
-for i = 0, 3 do
-    _G['MainMenuXPBarTexture'..i]:SetTexture('')
-    _G['ReputationWatchBar']['StatusBar']['WatchBarTexture'..i]:SetTexture('')
-    _G['ReputationWatchBar']['StatusBar']['XPBarTexture'..i]:SetTexture('')
-end
-
-function MainMenuExpBar_Update()
-    local xp, next = UnitXP'player', UnitXPMax'player'
-    MainMenuExpBar:SetMinMaxValues(min(0, xp), next)
-    MainMenuExpBar:SetValue(math.floor(xp))
-end
-
-function ReputationWatchBar_Update(newLevel)
-    if not newLevel then newLevel = UnitLevel'player' end
-    orig.ReputationWatchBar_Update(newLevel)
-    local name, standing, min, max, v = GetWatchedFactionInfo()
-    local percent = math.floor((v - min)/(max - min)*100)
-    local x
-
-    local bar  = ReputationWatchBar
-    local sb   = ReputationWatchBar.StatusBar
-    local text = ReputationWatchBar.StatusBarText
-
-    if v > 0 then x = ((v - min)/(max - min))*bar:GetWidth() end
-
-    bar:SetFrameStrata'LOW'
-    bar:SetHeight(newLevel < MAX_PLAYER_LEVEL and 4 or 5)
-
-    if newLevel == MAX_PLAYER_LEVEL then
-        bar:ClearAllPoints()
-        bar:SetPoint('TOP', MainMenuBar, 0, -4)
-        text:SetPoint('CENTER', ReputationWatchBarOverlayFrame, 0, 3)
-        text:SetDrawLayer('OVERLAY', 7)
-        if name then
-            text:SetFont(STANDARD_TEXT_FONT, 12, 'OUTLINE')
-            if GetCVar'modValue' == '1' then
-                text:SetText(name..': '..true_format((v - min))..' / '..true_format((max - min)))
-            else
-                text:SetText(name..': '..percent..'% into '.._G['FACTION_STANDING_LABEL'..standing])
-            end
-        end
-        MainMenuExpBar.spark:Hide()
-    else
-        TextStatusBar_UpdateTextString(MainMenuExpBar)
-        text:SetText''
-        MainMenuExpBar.spark:Show()
-    end
-
-    sb:SetHeight(newLevel < MAX_PLAYER_LEVEL and 4 or 5)
-    sb:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
-    sb.spark:SetPoint('CENTER', sb, 'LEFT', x, -1)
-end
-
-local f = CreateFrame'Frame'
-f:RegisterEvent'CVAR_UPDATE'
-f:RegisterEvent'PLAYER_ENTERING_WORLD' f:RegisterEvent'PLAYER_XP_UPDATE'
-f:RegisterEvent'UPDATE_EXHAUSTION'     f:RegisterEvent'PLAYER_LEVEL_UP'
-f:SetScript('OnEvent', function()
-    local xp, max = UnitXP'player', UnitXPMax'player'
-    local x = (xp/max)*MainMenuExpBar:GetWidth()
-    MainMenuExpBar.spark:SetPoint('CENTER', MainMenuExpBar, 'LEFT', x, -1)
-    if event == 'PLAYER_ENTERING_WORLD' or event == 'UPDATE_EXHAUSTION' then
-        local rest = GetRestState()
-        if rest == 1 then
-            MainMenuExpBar.spark:SetVertexColor(0*1.5, .39*1.5, .88*1.5, 1)
-        elseif rest == 2 then
-            MainMenuExpBar.spark:SetVertexColor(.58*1.5, 0*1.5, .55*1.5, 1)
-        end
-    end
-end)
-
---increasing player-debuff size
+--increasing self(player)-debuff size
 
 hooksecurefunc("DebuffButton_UpdateAnchors", function(buttonName, index)
     _G[buttonName..index]:SetScale(1.23)
@@ -730,7 +666,341 @@ end)
 
 
 
+-- SpeedyActions level: Garage clicker
 
+MultiBarBottomLeftButton1:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton2:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton3:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton4:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton5:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton6:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton7:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton8:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton9:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton10:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton11:RegisterForClicks("AnyDown")
+MultiBarBottomLeftButton12:RegisterForClicks("AnyDown")
+
+MultiBarBottomRightButton1:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton2:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton3:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton4:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton5:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton6:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton7:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton8:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton9:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton10:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton11:RegisterForClicks("AnyDown")
+MultiBarBottomRightButton12:RegisterForClicks("AnyDown")
+
+ActionButton1:RegisterForClicks("Anydown")
+ActionButton2:RegisterForClicks("Anydown")
+ActionButton3:RegisterForClicks("Anydown")
+ActionButton4:RegisterForClicks("Anydown")
+ActionButton5:RegisterForClicks("Anydown")
+ActionButton6:RegisterForClicks("Anydown")
+ActionButton7:RegisterForClicks("Anydown")
+ActionButton8:RegisterForClicks("Anydown")
+ActionButton9:RegisterForClicks("Anydown")
+ActionButton10:RegisterForClicks("Anydown")
+ActionButton11:RegisterForClicks("Anydown")
+ActionButton12:RegisterForClicks("Anydown")
+
+MainMenuBarBackpackButton:RegisterForClicks("Anydown")
+CharacterBag1Slot:RegisterForClicks("Anydown")
+CharacterBag0Slot:RegisterForClicks("Anydown")
+CharacterBag2Slot:RegisterForClicks("Anydown")
+CharacterBag3Slot:RegisterForClicks("Anydown")
+
+MultiBarLeftButton1:RegisterForClicks("Anydown")
+MultiBarLeftButton2:RegisterForClicks("Anydown")
+MultiBarLeftButton3:RegisterForClicks("Anydown")
+MultiBarLeftButton4:RegisterForClicks("Anydown")
+MultiBarLeftButton5:RegisterForClicks("Anydown")
+MultiBarLeftButton6:RegisterForClicks("Anydown")
+MultiBarLeftButton7:RegisterForClicks("Anydown")
+MultiBarLeftButton8:RegisterForClicks("Anydown")
+MultiBarLeftButton9:RegisterForClicks("Anydown")
+MultiBarLeftButton10:RegisterForClicks("Anydown")
+MultiBarLeftButton11:RegisterForClicks("Anydown")
+MultiBarLeftButton12:RegisterForClicks("Anydown")
+
+MultiBarRightButton1:RegisterForClicks("Anydown")
+MultiBarRightButton2:RegisterForClicks("Anydown")
+MultiBarRightButton3:RegisterForClicks("Anydown")
+MultiBarRightButton4:RegisterForClicks("Anydown")
+MultiBarRightButton5:RegisterForClicks("Anydown")
+MultiBarRightButton6:RegisterForClicks("Anydown")
+MultiBarRightButton7:RegisterForClicks("Anydown")
+MultiBarRightButton8:RegisterForClicks("Anydown")
+MultiBarRightButton9:RegisterForClicks("Anydown")
+MultiBarRightButton10:RegisterForClicks("Anydown")
+MultiBarRightButton11:RegisterForClicks("Anydown")
+MultiBarRightButton12:RegisterForClicks("Anydown")
+
+
+-- move target of target to the right in order to allow clear vision of buffs/debuffs on a target, this will also be prolly mandatory when I try to resize the debuff scale to match 2.4.3
+
+local FRAMEZ = CreateFrame("FRAME")
+
+FRAMEZ:RegisterEvent("ADDON_LOADED")
+
+FRAMEZ:SetScript("OnUpdate", 
+
+	function()
+		TargetFrameToT:ClearAllPoints();
+		TargetFrameToT:SetPoint("RIGHT", "TargetFrame", "BOTTOMRIGHT", -20, 5);
+		FocusFrameToT:ClearAllPoints();
+		FocusFrameToT:SetPoint("RIGHT", "FocusFrame", "BOTTOMRIGHT", -20, 5);
+
+	end 
+	
+) 
+
+
+
+-- Hiding some of the new retail shait UI elements
+
+PlayerFrameGroupIndicator:Hide()
+
+
+--position of minimap(remove to reset minimap position)
+MinimapCluster:ClearAllPoints();
+MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
+
+
+
+-- Increaseed nameplate DISTANCE and SIZE
+
+local function OnEvent(self, event)
+	SetCVar("nameplateMaxDistance", "41")
+	SetCVar("nameplateGlobalScale", "1.2")
+end
+
+local f = CreateFrame("Frame")
+f:RegisterEvent("PLAYER_ENTERING_WORLD")
+f:SetScript("OnEvent", OnEvent)
+
+
+
+
+--position of buff frame (for some reason Classic TBC has it more to the left than 2.4.3)
+--positition of the 2 side action button bars, for some reason Classic TBC doesnt maximize the UI properly so its not possible to click on buttons by placing mouse to the border of the screen
+
+
+--^^ BOTH HANDLED IN ADDON MoveAnyThing FOR NOW
+
+
+--disable mouseover flashing on buttons
+
+texture = MultiBarBottomLeftButton1:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton2:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton3:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton4:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton5:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton6:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton7:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton8:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton9:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton10:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton11:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomLeftButton12:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = MultiBarBottomRightButton1:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton2:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton3:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton4:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton5:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton6:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton7:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton8:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton9:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton10:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton11:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarBottomRightButton12:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = MultiBarLeftButton1:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton2:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton3:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton4:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton5:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton6:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton7:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton8:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton9:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton10:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton11:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarLeftButton12:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = MultiBarRightButton1:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton2:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton3:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton4:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton5:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton6:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton7:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton8:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton9:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton10:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton11:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = MultiBarRightButton12:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = ActionButton1:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton2:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton3:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton4:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton5:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton6:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton7:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton8:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton9:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton10:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton11:GetHighlightTexture()
+texture:SetAlpha(0)
+texture = ActionButton12:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = MainMenuBarBackpackButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = CharacterBag0Slot:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = CharacterBag1Slot:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = CharacterBag2Slot:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = CharacterBag3Slot:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = CharacterMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = SpellbookMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = TalentMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = QuestLogMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = SocialsMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = WorldMapMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = MainMenuMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+texture = HelpMicroButton:GetHighlightTexture()
+texture:SetAlpha(0)
+
+
+
+-- Remove Fizzle sounds (this was previously done by replacing the actual sound in Data/Sounds)
+
+local sounds = {
+	569772, -- sound/spells/fizzle/fizzleholya.ogg
+	569773, -- sound/spells/fizzle/fizzlefirea.ogg
+	569774, -- sound/spells/fizzle/fizzlenaturea.ogg
+	569775, -- sound/spells/fizzle/fizzlefrosta.ogg
+	569776, -- sound/spells/fizzle/fizzleshadowa.ogg
+}
+
+for _, fdid in pairs(sounds) do
+	MuteSoundFile(fdid)
+end
+
+
+-- highlight dispelable shit from enemies target/focus
+
+local function Update(frame)
+    local buffFrame, frameStealable, icon, debuffType, isStealable, _
+    local selfName = frame:GetName()
+    local isEnemy = UnitIsEnemy(PlayerFrame.unit, frame.unit)
+    for i = 1, MAX_TARGET_BUFFS do
+        _, icon, _, debuffType, _, _, _, isStealable = UnitBuff(frame.unit, i)
+        if (icon and (not frame.maxBuffs or i <= frame.maxBuffs)) then
+            local frameName = selfName .. 'Buff' .. i
+            buffFrame = _G[frameName]
+            frameStealable = _G[frameName .. 'Stealable']
+            if (isEnemy and debuffType == 'Magic') then
+                frameStealable:Show()
+            end
+        end
+    end
+end
+TargetFrame:HookScript("OnEvent", function(self) Update(self) end)
+FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
+
+
+
+
+
+-- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
 
 
 
@@ -739,3 +1009,29 @@ end)
 ChatFrame1:AddMessage("EvolvePWPUI 2.2 Loaded successfully!",255,255,0)
 ChatFrame1:AddMessage("Check for updates at:",255,255,0)
 ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,255,0)
+
+
+-- TODO increase debuffs/buffs on target size
+
+
+-- TODO: Add CC instead of levels into nameplates
+
+-- TODO: tremor-only nameplate shown
+
+
+-- TODO: dogshit macro highlight stuck
+
+-- TODO: Re-focus frame on stealthed units when they appear automatically
+
+
+-- TODO RemoveRedPortrait(texture)
+
+
+-- TODO: prevent sArena/Gladdy clicking chat interaction (frame overlay)
+
+-- TODO prevent disabling floating combat text for no reason
+
+-- TODO: add CC on nameplate
+
+-- TODO: auto-sell gray shits and try to repair(from guildbank if possible)
+

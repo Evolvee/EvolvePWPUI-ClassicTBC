@@ -1,0 +1,6 @@
+## Interface: 25100
+## Author: Evolve, Benny D
+## Title: EvolveSpit
+## Notes: Spitting on Deluxe Edition buyers has never been so easy!
+
+EvolveSpit.lua

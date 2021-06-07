@@ -1,0 +1,63 @@
+
+OmniCCDB = {
+	["profileKeys"] = {
+		["Evolve - Launch Test"] = "Default",
+		["Evolve - Badge of Justice"] = "Default",
+		["Qwdqwdw - Badge of Justice"] = "Default",
+		["Evolvelulw - Earthshaker"] = "Default",
+		["Evolvepwp - Earthshaker"] = "Default",
+	},
+	["global"] = {
+		["dbVersion"] = 6,
+		["addonVersion"] = "9.0.8",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["rules"] = {
+				{
+					["enabled"] = false,
+					["patterns"] = {
+						"Aura", -- [1]
+						"Buff", -- [2]
+						"Debuff", -- [3]
+					},
+					["name"] = "Auras",
+					["id"] = "auras",
+				}, -- [1]
+				{
+					["enabled"] = false,
+					["patterns"] = {
+						"Plate", -- [1]
+					},
+					["name"] = "Unit Nameplates",
+					["id"] = "plates",
+				}, -- [2]
+			},
+			["themes"] = {
+				["Default"] = {
+					["textStyles"] = {
+						["soon"] = {
+							["b"] = 0,
+							["scale"] = 1,
+							["g"] = 0.8784313725490196,
+						},
+						["seconds"] = {
+							["b"] = 1,
+							["g"] = 0.984313725490196,
+							["r"] = 0.9803921568627451,
+						},
+						["minutes"] = {
+						},
+					},
+					["timerOffset"] = 1400,
+					["fontOutline"] = "THICKOUTLINE",
+					["minSize"] = 1.1,
+					["effect"] = "none",
+					["fontSize"] = 15,
+					["minDuration"] = 3,
+				},
+			},
+		},
+	},
+}
+OmniCC4Config = nil

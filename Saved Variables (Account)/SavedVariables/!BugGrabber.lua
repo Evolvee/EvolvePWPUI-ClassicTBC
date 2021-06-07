@@ -1,0 +1,308 @@
+
+BugGrabberDB = {
+	["session"] = 432,
+	["lastSanitation"] = 3,
+	["errors"] = {
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:585: attempt to index global 'self' (a nil value)",
+			["time"] = "2021/05/31 23:20:19",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'self' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:585: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:585>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 351,
+			["counter"] = 10,
+		}, -- [1]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:374: attempt to call global 'RemoveRedPortrait' (a nil value)",
+			["time"] = "2021/05/31 23:26:52",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to call global 'RemoveRedPortrait' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:374: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:374>\n[string \"=[C]\"]: in function `TargetHealthCheck'\n[string \"*:OnValueChanged\"]:2: in function <[string \"*:OnValueChanged\"]:1>\n[string \"=[C]\"]: in function `SetValue_'\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:533: in function `SetValue'\n[string \"@Interface\\FrameXML\\UnitFrame.lua\"]:588: in function <Interface\\FrameXML\\UnitFrame.lua:550>\n[string \"=[C]\"]: in function `UnitFrameHealthBar_Update'\n[string \"@Interface\\FrameXML\\UnitFrame.lua\"]:184: in function `UnitFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:117: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `TargetUnit'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:480: in function `handler'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:616: in function `SecureActionButton_OnClick'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:656: in function <Interface\\FrameXML\\SecureTemplates.lua:648>",
+			["session"] = 352,
+			["counter"] = 32,
+		}, -- [2]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:579: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:26:52",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:579: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:579>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 352,
+			["counter"] = 8,
+		}, -- [3]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:576: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:27:37",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:576: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:576>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 353,
+			["counter"] = 14,
+		}, -- [4]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:374: attempt to index local 'texture' (a nil value)",
+			["time"] = "2021/05/31 23:13:25",
+			["locals"] = "texture = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index local 'texture' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:374: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:373>\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:380: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:380>\n[string \"=[C]\"]: in function `TargetHealthCheck'\n[string \"*:OnValueChanged\"]:2: in function <[string \"*:OnValueChanged\"]:1>\n[string \"=[C]\"]: in function `SetValue_'\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:539: in function `SetValue'\n[string \"@Interface\\FrameXML\\UnitFrame.lua\"]:588: in function <Interface\\FrameXML\\UnitFrame.lua:550>\n[string \"=[C]\"]: in function `UnitFrameHealthBar_Update'\n[string \"@Interface\\FrameXML\\UnitFrame.lua\"]:184: in function `UnitFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:117: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `TargetUnit'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:480: in function `handler'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:616: in function `SecureActionButton_OnClick'\n[string \"@Interface\\FrameXML\\SecureTemplates.lua\"]:656: in function <Interface\\FrameXML\\SecureTemplates.lua:648>",
+			["session"] = 354,
+			["counter"] = 865,
+		}, -- [5]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:585: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:13:25",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:585: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:585>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 354,
+			["counter"] = 42,
+		}, -- [6]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:578: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:43:36",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:578: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:578>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\PartyMemberFrame.lua\"]:143: in function `PartyMemberFrame_UpdateMember'\n[string \"@Interface\\FrameXML\\PartyMemberFrame.lua\"]:337: in function `PartyMemberFrame_OnEvent'\n[string \"*:OnEvent\"]:1: in function <[string \"*:OnEvent\"]:1>",
+			["session"] = 357,
+			["counter"] = 24,
+		}, -- [7]
+		{
+			["message"] = "[string \"TargetFrameFlash:Hide()\"]:1: attempt to index global 'TargetFrameFlash' (a nil value)",
+			["time"] = "2021/06/01 00:15:51",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'TargetFrameFlash' (a nil value)\"\n",
+			["stack"] = "[string \"TargetFrameFlash:Hide()\"]:1: in main chunk\n[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 364,
+			["counter"] = 1,
+		}, -- [8]
+		{
+			["message"] = "Interface\\AddOns\\Gladdy\\Options-Options.lua:676: attempt to call upvalue 'InterfaceOptionsFrame_OpenToFrame' (a nil value)",
+			["time"] = "2021/06/02 19:08:52",
+			["locals"] = "self = <table> {\n defaults = <table> {\n }\n curUnit = 1\n modules = <table> {\n }\n ToggleFrame = <function> defined @Interface\\AddOns\\Gladdy\\Frame.lua:272\n spellTextures = <table> {\n }\n UnregisterComm = <function> defined @Interface\\AddOns\\BugSack\\Libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:153\n RACES = <table> {\n }\n GetClassicProfile = <function> defined @Interface\\AddOns\\Gladdy\\ImportStrings.lua:7\n ScheduleTimer = <function> defined @Interface\\AddOns\\Gladdy\\libs\\AceTimer-3.0\\AceTimer-3.0.lua:94\n version_major_num = 1\n SendCommMessage = <function> defined @Interface\\AddOns\\BugSack\\Libs\\AceComm-3.0\\AceComm-3.0.lua:88\n db = <table> {\n }\n guids = <table> {\n }\n testData = <table> {\n }\n UnregisterAllComm = <function> defined @Interface\\AddOns\\BugSack\\Libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:174\n cooldownSpellIds = <table> {\n }\n RegisterEvent = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:81\n OnEnable = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:240\n events = <unnamed> {\n }\n GetSpecBuffs = <function> defined @Interface\\AddOns\\Gladdy\\Constants.lua:9\n UPDATE_BATTLEFIELD_STATUS = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:327\n frame = GladdyFrame {\n }\n specSpells = <table> {\n }\n LSM = <table> {\n }\n ResetButton = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:374\n UnregisterAllEvents = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:89\n version_minor_num = 0.100000\n options = <table> {\n }\n SpotEnemy = <function> defined @Interface\\AddOns\\Gladdy\\EventListener.lua:51\n GetKnallProfile = <function> defined @Interface\\AddOns\\Gladdy\\ImportStrings.lua:11\n IterModules = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:120\n specBuffs = <table> {\n }\n anchor = GladdyAnchor {\n }\n CreateButton = <function> defined @Interface\\AddOns\\Gladdy\\Frame.lua:296\n TimeLeft = <function> defined @Interface\\AddOns\\Gladdy\\libs\\AceTimer-3.0\\AceTimer-3.0.lua:172\n CLASSES = <table> {\n }\n dbi = <table> {\n }\n lastInstance = \"none\"\n ScheduleRepeatingTimer = <function> defined @Interface\\AddOns\\Gladdy\\libs\\AceTimer-3.0\\AceTimer-3.0.lua:129\n CancelAllTimers = <function> defined @Interface\\AddOns\\Gladdy\\libs\\AceTimer-3.0\\AceTimer-3.0.lua:160\n option = <function> defined @Interface\\AddOns\\Gladdy\\Options.lua:52\n OnProfileChanged = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:232\n HideFrame = <function> defined @Interface\\AddOns\\Gladdy\\Frame.lua:265\n Racials = <function> defined @Interface\\AddOns\\Gladdy\\Constants.lua:847\n BUTTON_DEFAULTS = <table> {\n }\n CreateFrame = <function> defined @Interface\\AddOns\\Gladdy\\Frame.lua:31\n version = \"TBC-Classic_v1.1-Beta\"\n GetTotemColors = <function> defined @Interface\\AddOns\\Gladdy\\Modules\\TotemPlates.lua:188\n VERSION_REGEX = \"TBC-Classic_v(%d+%.%d+)%-(%a)\"\n GetBlizzardProfile = <function> defined @Interface\\AddOns\\Gladdy\\ImportStrings.lua:15\n colorOption = <function> defined @Interface\\AddOns\\Gladdy\\Options.lua:72\n GetAnchor = <function> defined @Interface\\AddOns\\Gladdy\\Frame.lua:332\n SetupModule = <function> defined @Interface\\AddOns\\Gladdy\\Options.lua:111\n GetAuras = <function> defined @Interface\\AddOns\\Gladdy\\Options.lua:679\n curBracket = 3\n ResetUnit = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:360\n PLAYER_ENTERING_WORLD = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:314\n OnInitialize = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:188\n Print = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:43\n NewModule = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:139\n Call = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:124\n JoinedArena = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:398\n GetIconStyles = <function> defined @Interface\\AddOns\\Gladdy\\Gladdy.lua:272\n GetKlimpProfile = <function> defined @Interface\\AddOns\\Gladdy\\ImportStrings.lua:3\n CancelTimer = <function> defined @Interface\\AddOns\\Gladdy\\libs\\AceTimer-3.0\\AceTimer-3.0.lua:147\n L = <table> {\n }\n DetectSpec = <function> defined @Interface\\AddOns\\Gladdy\\EventListener.lua:45\n UpdateTestCooldowns = <function> defined @Interface\\AddOns\\Gladdy",
+			["stack"] = "[string \"@Interface\\AddOns\\Gladdy\\Options-Options.lua\"]:676: in function `ShowOptions'\n[string \"@Interface\\AddOns\\Gladdy\\Frame.lua\"]:82: in function <Interface\\AddOns\\Gladdy\\Frame.lua:80>",
+			["session"] = 365,
+			["counter"] = 3,
+		}, -- [9]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:569: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:51:43",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:569: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:569>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 366,
+			["counter"] = 75,
+		}, -- [10]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:577: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/05/31 23:32:43",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:577: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:577>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\PartyMemberFrame.lua\"]:143: in function `PartyMemberFrame_UpdateMember'\n[string \"@Interface\\FrameXML\\PartyMemberFrame.lua\"]:337: in function `PartyMemberFrame_OnEvent'\n[string \"*:OnEvent\"]:1: in function <[string \"*:OnEvent\"]:1>",
+			["session"] = 369,
+			["counter"] = 142,
+		}, -- [11]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:296: ')' expected (to close '(' at line 293) near 'end'",
+			["time"] = "2021/06/02 19:23:15",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 371,
+			["counter"] = 8,
+		}, -- [12]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:294: attempt to index local 'self' (a number value)",
+			["time"] = "2021/06/02 19:20:33",
+			["locals"] = "self = 70\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index local 'self' (a number value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:294: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:293>\n[string \"=[C]\"]: in function `PlayerFrame_UpdateLevelTextAnchor'\n[string \"@Interface\\FrameXML\\PlayerFrame.lua\"]:67: in function `PlayerFrame_Update'\n[string \"@Interface\\FrameXML\\PlayerFrame.lua\"]:324: in function `PlayerFrame_ToPlayerArt'\n[string \"@Interface\\FrameXML\\PlayerFrame.lua\"]:152: in function <Interface\\FrameXML\\PlayerFrame.lua:134>",
+			["session"] = 372,
+			["counter"] = 6,
+		}, -- [13]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:573: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/02 19:26:46",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:573: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:573>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>",
+			["session"] = 372,
+			["counter"] = 2,
+		}, -- [14]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:292: hooksecurefunc(): PlayerFrame_PlayerFrame_ToPlayerArt is not a function",
+			["time"] = "2021/06/02 21:12:16",
+			["locals"] = "",
+			["stack"] = "[string \"=[C]\"]: in function `hooksecurefunc'\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:292: in main chunk",
+			["session"] = 375,
+			["counter"] = 1,
+		}, -- [15]
+		{
+			["message"] = "[ADDON_ACTION_BLOCKED] AddOn 'EvolveSpit' tried to call the protected function 'UNKNOWN()'.",
+			["time"] = "2021/06/02 21:43:27",
+			["stack"] = "[string \"@Interface\\AddOns\\!BugGrabber\\BugGrabber.lua\"]:519: in function <Interface\\AddOns\\!BugGrabber\\BugGrabber.lua:519>\n[string \"=[C]\"]: ?\n[string \"=[C]\"]: in function `SendChatMessage'\n[string \"@Interface\\AddOns\\EvolveSpit\\EvolveSpit.lua\"]:6: in function <Interface\\AddOns\\EvolveSpit\\EvolveSpit.lua:6>",
+			["session"] = 379,
+			["counter"] = 1,
+		}, -- [16]
+		{
+			["message"] = "[string \"DoEmote(\"SPIT\" [,\"target\"]);\"]:1: ')' expected near '['",
+			["time"] = "2021/06/02 21:50:00",
+			["locals"] = "(*temporary) = \"DoEmote(\"SPIT\" [,\"target\"]);\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 380,
+			["counter"] = 1,
+		}, -- [17]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:535: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/02 23:15:22",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:535: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:535>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 386,
+			["counter"] = 6,
+		}, -- [18]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:534: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/02 23:16:47",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:534: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:534>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 389,
+			["counter"] = 12,
+		}, -- [19]
+		{
+			["message"] = "[string \"SetCVar(“nameplateSelectedScale”, 1)\"]:1: unexpected symbol near '�'",
+			["time"] = "2021/06/02 23:21:37",
+			["locals"] = "(*temporary) = \"SetCVar(“nameplateSelectedScale”, 1)\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 390,
+			["counter"] = 1,
+		}, -- [20]
+		{
+			["message"] = "[string \"SetCVar(“nameplateSelectedScale”, 2)\"]:1: unexpected symbol near '�'",
+			["time"] = "2021/06/02 23:21:40",
+			["locals"] = "(*temporary) = \"SetCVar(“nameplateSelectedScale”, 2)\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 390,
+			["counter"] = 1,
+		}, -- [21]
+		{
+			["message"] = "[string \"SetCVar(\"nameplateHorizontalScale\", 1\"]:1: ')' expected near '<eof>'",
+			["time"] = "2021/06/02 23:23:05",
+			["locals"] = "(*temporary) = \"SetCVar(\"nameplateHorizontalScale\", 1\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 391,
+			["counter"] = 2,
+		}, -- [22]
+		{
+			["message"] = "[string \"SetCVar(\"nameplateGlobalScale\", 1\"]:1: ')' expected near '<eof>'",
+			["time"] = "2021/06/03 00:02:53",
+			["locals"] = "(*temporary) = \"SetCVar(\"nameplateGlobalScale\", 1\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 394,
+			["counter"] = 2,
+		}, -- [23]
+		{
+			["message"] = "[string \"SetCVar(\"nameplateGlobalScale\", \"3\"\"]:1: ')' expected near '<eof>'",
+			["time"] = "2021/06/03 00:08:10",
+			["locals"] = "(*temporary) = \"SetCVar(\"nameplateGlobalScale\", \"3\"\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RunScript'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:2160: in function `?'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4825: in function `ChatEdit_ParseText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4488: in function `ChatEdit_SendText'\n[string \"@Interface\\FrameXML\\ChatFrame.lua\"]:4524: in function `ChatEdit_OnEnterPressed'\n[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>",
+			["session"] = 394,
+			["counter"] = 1,
+		}, -- [24]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:565: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/02 21:14:10",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:565: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:565>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:151: in function <Interface\\FrameXML\\TargetFrame.lua:146>",
+			["session"] = 400,
+			["counter"] = 138,
+		}, -- [25]
+		{
+			["message"] = "[ADDON_ACTION_BLOCKED] AddOn 'LoseControl' tried to call the protected function 'SecureStateDriverManager:SetAttribute()'.",
+			["time"] = "2021/06/03 13:44:37",
+			["locals"] = "InCombatSkipped",
+			["stack"] = "[string \"@Interface\\AddOns\\!BugGrabber\\BugGrabber.lua\"]:519: in function <Interface\\AddOns\\!BugGrabber\\BugGrabber.lua:519>\n[string \"=[C]\"]: in function `SetAttribute'\n[string \"@Interface\\FrameXML\\SecureStateDriver.lua\"]:48: in function `UnregisterUnitWatch'\n[string \"@Interface\\AddOns\\LoseControl\\LoseControl-7.02.lua\"]:2403: in function `RegisterUnitEvents'\n[string \"@Interface\\AddOns\\LoseControl\\LoseControl-7.02.lua\"]:2942: in function `PLAYER_ENTERING_WORLD'\n[string \"@Interface\\AddOns\\LoseControl\\LoseControl-7.02.lua\"]:3777: in function `OnClick'\n[string \"@Interface\\AddOns\\LoseControl\\LoseControl-7.02.lua\"]:3685: in function <Interface\\AddOns\\LoseControl\\LoseControl.lua:3679>",
+			["session"] = 408,
+			["counter"] = 2,
+		}, -- [26]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:832: attempt to index local 'frameStealable' (a nil value)",
+			["time"] = "2021/06/03 15:25:10",
+			["locals"] = "InCombatSkipped",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:832: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:821>\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:837: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:837>\n[string \"=[C]\"]: ?",
+			["session"] = 417,
+			["counter"] = 6,
+		}, -- [27]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:563: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/03 12:39:12",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:563: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:563>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:204: in function `TextStatusBar_UpdateTextString'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:350: in function <Interface\\FrameXML\\TargetFrame.lua:345>\n[string \"=[C]\"]: in function `TargetFrame_CheckClassification'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:123: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 417,
+			["counter"] = 185,
+		}, -- [28]
+		{
+			["message"] = "[ADDON_ACTION_BLOCKED] AddOn 'TextureScript' tried to call the protected function 'TargetFrameToT:ClearAllPoints()'.",
+			["time"] = "2021/05/31 23:36:29",
+			["locals"] = "InCombatSkipped",
+			["stack"] = "[string \"@Interface\\AddOns\\!BugGrabber\\BugGrabber.lua\"]:519: in function <Interface\\AddOns\\!BugGrabber\\BugGrabber.lua:519>\n[string \"=[C]\"]: in function `ClearAllPoints'\n[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:772: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:771>",
+			["session"] = 420,
+			["counter"] = 15,
+		}, -- [29]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:546: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/05 17:15:01",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:546: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:546>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: ?\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 420,
+			["counter"] = 17,
+		}, -- [30]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:1062: 'end' expected (to close 'if' at line 1021) near '<eof>'",
+			["time"] = "2021/06/05 17:37:17",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 424,
+			["counter"] = 4,
+		}, -- [31]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:1026: unexpected symbol near ')'",
+			["time"] = "2021/06/05 17:37:29",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 425,
+			["counter"] = 4,
+		}, -- [32]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:1027: unexpected symbol near ')'",
+			["time"] = "2021/06/05 17:37:41",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 426,
+			["counter"] = 4,
+		}, -- [33]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:1061: 'end' expected (to close 'if' at line 1019) near '<eof>'",
+			["time"] = "2021/06/05 17:37:52",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 427,
+			["counter"] = 4,
+		}, -- [34]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:952: attempt to index global 'LFGMicroButton' (a nil value)",
+			["time"] = "2021/06/05 17:25:28",
+			["locals"] = "frame2 = <unnamed> {\n 0 = <userdata>\n}\nframe = PartyFrame {\n 0 = <userdata>\n}\neventHandler = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:64\nfloor = <function> defined =[C]:-1\nbarstosmooth = <table> {\n TargetFrameManaBar = \"target\"\n PartyMemberFrame1ManaBar = \"party1\"\n PartyMemberFrame3HealthBar = \"party3\"\n PartyMemberFrame2HealthBar = \"party2\"\n TargetFrameHealthBar = \"target\"\n PartyMemberFrame3ManaBar = \"party3\"\n PlayerFrameManaBar = \"player\"\n PartyMemberFrame4HealthBar = \"party4\"\n PlayerFrameHealthBar = \"player\"\n FocusFrameManaBar = \"focus\"\n PetFrameHealthBar = \"pet\"\n PartyMemberFrame2ManaBar = \"party2\"\n PetFrameManaBar = \"pet\"\n PartyMemberFrame4ManaBar = \"party4\"\n ReputationWatchStatusBar = \"\"\n FocusFrameHealthBar = \"focus\"\n PartyMemberFrame1HealthBar = \"party1\"\n}\nsmoothframe = <unnamed> {\n 0 = <userdata>\n}\nisPlate = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:480\nmin = <function> defined =[C]:-1\nmax = <function> defined =[C]:-1\nAnimationTick = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:490\nSmoothSetValue = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:505\nSmoothBar = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:531\nResetBar = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:537\ncolour = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:598\ntooltipOwnerBlacklist = <table> {\n 1 = \"ActionButton%d+$\"\n 2 = \"MultiBarBottomLeftButton\"\n 3 = \"MultiBarBottomRightButton\"\n 4 = \"MultiBarLeftButton\"\n 5 = \"MultiBarRightButton\"\n 6 = \"MinimapZoneTextButton\"\n 7 = \"MicroButton$\"\n 8 = \"^KeyRingButton$\"\n 9 = \"^CharacterBag%dSlot$\"\n 10 = \"^MainMenuBarBackpackButton$\"\n}\nGameTooltip_OnShow = nil\nFRAMEZ = <unnamed> {\n 0 = <userdata>\n}\nOnEvent = <function> defined @Interface\\AddOns\\TextureScript\\TextureScript.lua:776\nf = <unnamed> {\n 0 = <userdata>\n}\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"GetHighlightTexture\"\n(*temporary) = <userdata>\n(*temporary) = <userdata>\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'LFGMicroButton' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:952: in main chunk",
+			["session"] = 430,
+			["counter"] = 5,
+		}, -- [35]
+		{
+			["message"] = "(null)",
+			["session"] = 430,
+			["time"] = "2021/06/02 21:12:19",
+			["counter"] = 18,
+		}, -- [36]
+		{
+			["message"] = "[string \"MAOptions:OnLoad\"]:24: Attempt to register unknown event \"ACTIVE_TALENT_GROUP_CHANGED\"",
+			["time"] = "2021/05/31 23:13:05",
+			["locals"] = "(*temporary) = MAOptions {\n 0 = <userdata>\n background = <unnamed> {\n }\n}\n(*temporary) = \"ACTIVE_TALENT_GROUP_CHANGED\"\n",
+			["stack"] = "[string \"=[C]\"]: in function `RegisterEvent'\n[string \"*:OnLoad\"]:24: in function <[string \"*:OnLoad\"]:1>",
+			["session"] = 432,
+			["counter"] = 83,
+		}, -- [37]
+		{
+			["message"] = "Interface\\AddOns\\TextureScript\\TextureScript.lua:557: attempt to index global 'this' (a nil value)",
+			["time"] = "2021/06/04 15:14:46",
+			["locals"] = "(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to index global 'this' (a nil value)\"\n",
+			["stack"] = "[string \"@Interface\\AddOns\\TextureScript\\TextureScript.lua\"]:557: in function <Interface\\AddOns\\TextureScript\\TextureScript.lua:557>\n[string \"=[C]\"]: in function `Hide'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:108: in function `TargetFrame_Update'\n[string \"@Interface\\FrameXML\\TargetFrame.lua\"]:154: in function <Interface\\FrameXML\\TargetFrame.lua:146>\n[string \"=[C]\"]: ?\n[string \"=[C]\"]: in function `CameraOrSelectOrMoveStop'\n[string \"CAMERAORSELECTORMOVE\"]:4: in function <[string \"CAMERAORSELECTORMOVE\"]:1>",
+			["session"] = 432,
+			["counter"] = 110,
+		}, -- [38]
+	},
+}

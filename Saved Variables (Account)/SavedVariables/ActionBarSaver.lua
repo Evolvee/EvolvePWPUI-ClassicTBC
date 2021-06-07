@@ -1,0 +1,81 @@
+
+ActionBarSaverDB = {
+	["restoreRank"] = false,
+	["macro"] = false,
+	["sets"] = {
+		["HUNTER"] = {
+		},
+		["WARRIOR"] = {
+		},
+		["SHAMAN"] = {
+		},
+		["MAGE"] = {
+		},
+		["PRIEST"] = {
+			["evolve5"] = {
+				"macro|1||Party1|135894|#showtooltip Dispel Magic/n/cast [target=party1] Dispel Magic(Rank 2)/n/TargetLastTarget();", -- [1]
+				"macro|2||Blastík|136224|/cast Mind Blast", -- [2]
+				"macro|3||Mindfly|136208|#showtooltip Mind Flay/n/click BindPadMacro29/n/cast [nochanneling] Mind Flay", -- [3]
+				"macro|4||Vampýr|135978|/cast Vampiric Touch", -- [4]
+				"macro|5||Embrejs|136230|/cast Vampiric Embrace", -- [5]
+				"macro|6||Pejn|136207|/cast Shadow Word: Pain", -- [6]
+				"macro|7||Devouring|136123|#showtooltip Devouring Plague/n/cast Inner Focus/n/cast Devouring Plague", -- [7]
+				[27] = "macro|27||IB|134400|/script CombatLogClearEntries()",
+				[75] = "macro|75||Mindfly|136208|#showtooltip Mind Flay/n/click BindPadMacro29/n/cast [nochanneling] Mind Flay",
+				[54] = "macro|54||Mendingí|135944|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Prayer of Mending; Prayer of Mending",
+				[62] = "item|30346||Medallion of the Horde",
+				[76] = "macro|76||Vampýr|135978|/cast Vampiric Touch",
+				[77] = "macro|77||Embrejs|136230|/cast Vampiric Embrace",
+				[12] = "macro|12||Bublí|135940|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Power Word: Shield; Power Word: Shield",
+				[55] = "macro|55||Formí|136130|/cast Shadowform",
+				[63] = "macro|63||Renewí|135953|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Renew; Renew",
+				[78] = "macro|78||Pejn|136207|/cast Shadow Word: Pain",
+				[79] = "macro|79||Devouring|136123|#showtooltip Devouring Plague/n/cast Inner Focus/n/cast Devouring Plague",
+				[48] = "macro|48||wardíQ|135902|/cast [target=Player] Fear Ward",
+				[56] = "macro|56||p2 FW|135902|#showtooltip Fear Ward/n/cast [target=party2, exists] Fear Ward/n/TargetLastTarget();",
+				[64] = "macro|64||Flashí|135907|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Flash Heal; Flash Heal",
+				[65] = "macro|65||Greaterí|135913|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Greater Heal; Greater Heal",
+				[81] = "macro|81||SILENCE|136164|/cast [mod:shift,target=focus] Silence; Silence",
+				[49] = "macro|49||SWD|136149|/cast [mod:shift,target=focus] Shadow Word: Death; Shadow Word: Death",
+				[66] = "macro|66||FOCUS|136160|/focus",
+				[67] = "item|24126||Figurine - Living Ruby Serpent",
+				[50] = "macro|50||Shadowfiend|136199|#showtooltip Shadowfiend/n/cast [nopet] Shadowfiend/n/petattack/n/cast [mod:shift,target=pet] Dispel Magic(Rank 2)",
+				[68] = "macro|68||disease|136066|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Abolish Disease; Abolish Disease",
+				[84] = "macro|84||Bublí|135940|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Power Word: Shield; Power Word: Shield",
+				[9] = "macro|9||SILENCE|136164|/cast [mod:shift,target=focus] Silence; Silence",
+				[51] = "item|29470||Red Skeletal Warhorse",
+				[59] = "macro|59||shbuff|136121|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Shadow Protection; Shadow Protection",
+				[70] = "macro|70||Focus|135894|#show Dispel Magic(Rank 2)/n/cast [target=focus] Dispel Magic(Rank 2)/n/TargetLastTarget();",
+				[36] = "macro|36||Ward|135902|#showtooltip Fear Ward/n/cast [target=party1, exists] Fear Ward/n/TargetLastTarget();",
+				[52] = "item|21991||Heavy Netherweave Bandage",
+				[60] = "macro|60||bugi|135987|/cast [mod:shift,target=party1],[mod:ctrl,target=party2],[mod:alt,target=Player] Power Word: Fortitude; Power Word: Fortitude",
+				[72] = "macro|72||Mass dispel|135739|#showtooltip Mass Dispel/n/cast !Mass Dispel",
+				[41] = "macro|41||open|132241|/console targetNearestDistance 36.000000/n/targetenemy [noharm][dead]/n/console targetNearestDistance 41.000000/n/cast [harm,nodead] Shadow Word: Death",
+				[73] = "macro|73||Party1|135894|#showtooltip Dispel Magic/n/cast [target=party1] Dispel Magic(Rank 2)/n/TargetLastTarget();",
+				[40] = "macro|40||focusus|136164|/use [target=focus] Silence",
+				[53] = "item|32453||Star's Tears",
+				[38] = "macro|38||party2|135894|/cast [target=party2] Dispel Magic(Rank 2)/n/TargetLastTarget();",
+				[74] = "macro|74||Blastík|136224|/cast Mind Blast",
+				[35] = "macro|35||tremor|132317|/target Tremor Totem/n/cast Shoot",
+				[47] = "macro|47||s focus|132317|/cast [mod:shift,target=focus] Shoot; Shoot",
+			},
+		},
+		["PALADIN"] = {
+		},
+		["WARLOCK"] = {
+		},
+		["DEMONHUNTER"] = {
+		},
+		["DEATHKNIGHT"] = {
+		},
+		["DRUID"] = {
+		},
+		["MONK"] = {
+		},
+		["ROGUE"] = {
+		},
+	},
+	["spellSubs"] = {
+	},
+	["checkCount"] = false,
+}

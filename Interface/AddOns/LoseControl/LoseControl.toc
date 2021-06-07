@@ -1,7 +1,7 @@
-## Interface: 90005
-## Title: LoseControl
+## Interface: 20501
+## Title: LoseControl TBC
 ## Author: millanzarreta, Kouri
-## Version: 7.02
+## Version: 2.00
 ## Notes: Displays the duration of CC effects on your character
 ## Notes-deDE: Zeigt die Dauer von CC-Effekten auf Ihrem Charakter an
 ## Notes-esES: Exhibe la duración de los efectos del CC sobre su carácter

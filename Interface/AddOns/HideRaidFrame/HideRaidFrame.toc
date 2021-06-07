@@ -1,0 +1,11 @@
+## Interface: 90002
+## Version: v2.0.1
+## Title: HideRaidFrame
+## Notes: Hides the Blizzard Raid Frame
+## Author: Ketho @ EU-Boulderfist
+## SavedVariables: HideRaidFrameDB4
+## X-Curse-Project-ID: 30389
+## X-WoWI-ID: 20052
+
+Locales.lua
+HideRaidFrame.lua

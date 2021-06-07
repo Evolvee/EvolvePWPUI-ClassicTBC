@@ -1,6 +1,6 @@
 local addonName, addon = ...
 
-if WOW_PROJECT_ID ~= WOW_PROJECT_BURNING_CRUSADE_CLASSIC then return end
+if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC then return end
 
 addon.Resets = {
     --[[ Cold Snap
@@ -8,9 +8,8 @@ addon.Resets = {
         - Frost Ward
         - Frost Nova
         - Ice Block
-        - Water Elemental
       ]]
-    [12472] = { 11426, 6143, 122, 11958, 31687 },
+    [12472] = { 11426, 6143, 122, 11958 },
 
     --[[ Preparation
         - Blade Flurry
@@ -22,7 +21,7 @@ addon.Resets = {
         - Ghostly Strike
         - Premeditation
       ]]
-    [14185] = { 13877, 408, 2094, 2983, 5277, 1776, 14278, 14183, 36563 },
+    [14185] = { 13877, 408, 2094, 2983, 5277, 1776, 14278, 14183 },
 }
 
 addon.Cooldowns = {
@@ -30,7 +29,7 @@ addon.Cooldowns = {
     -- Interrupts
 
     [16979] = { default = true, duration = 15, class = "DRUID" }, -- Feral Charge (Druid)
-    [2139] = { default = true, duration = 24, class = "MAGE" }, -- Counterspell (Mage)
+    [2139] = { default = true, duration = 30, class = "MAGE" }, -- Counterspell (Mage)
     [1766] = { default = true, duration = 10, class = "ROGUE" }, -- Kick (Rogue)
         [1767] = { parent = 1766 },
         [1768] = { parent = 1766 },
@@ -68,15 +67,14 @@ addon.Cooldowns = {
         [10888] = { parent = 8122 },
         [10890] = { parent = 8122 },
     [10060] = { class = "PRIEST", duration = 180 }, -- Power Infusion
-    [33206] = { class = "PRIEST", duration =  120 }, -- Pain Sup
 
     -- Warlock
 
-    [19244] = { class = "WARLOCK", duration = 24 }, -- Spell Lock
+    [19244] = { class = "WARLOCK", duration = 30 }, -- Spell Lock
         [19647] = { parent = 19244 },
     [5484] = { class = "WARLOCK", duration = 40 }, -- Howl of Terror
         [17928] = { parent = 5484 },
-    [6789] = { class = "WARLOCK", duration = 120 }, -- Death Coil
+    [6789] = { class = "WARLOCK", duration = 102 }, -- Death Coil
         [17925] = { parent = 6789 },
         [17926] = { parent = 6789 },
     [6229] = { class = "WARLOCK", duration = 30 }, -- Shadow Ward
@@ -84,7 +82,6 @@ addon.Cooldowns = {
         [11740] = { parent = 6229 },
         [28610] = { parent = 6229 },
     [18288] = { class ="WARLOCK", duration = 180 },  -- Amplify Curse
-    [18708] = { class ="WARLOCK", duration = 900 }, -- Fel Dom
 
     -- Shaman
 
@@ -112,7 +109,7 @@ addon.Cooldowns = {
     [3045] = { class = "HUNTER", duration = 180 }, -- Rapid Fire
     [19263] = { class = "HUNTER", duration = 300 }, -- Deterrence
     [19574] = { class = "HUNTER", duration = 120 }, -- Bestial Wrath
-    [1499] = { class = "HUNTER", duration = 30 }, -- Freezing Trap
+    [1499] = { class = "HUNTER", duration = 15 }, -- Freezing Trap
         [14310] = { parent = 1499 },
         [14311] = { parent = 1499 },
     [19386] = { class = "HUNTER", duration = 120 }, -- Wyvern Sting
@@ -124,7 +121,6 @@ addon.Cooldowns = {
     -- Druid
 
     [22812] = { class = "DRUID", duration = 60 }, -- Barkskin
-    [17116] = { class = "DRUID", duration = 180 }, -- Nature's Swiftness
     [16689] = { class = "DRUID", duration = 60 }, -- Nature's Grasp
         [16810] = { parent = 16689 },
         [16811] = { parent = 16689 },
@@ -136,7 +132,6 @@ addon.Cooldowns = {
     [5211] = { class = "DRUID", duration = 60 }, -- Bash
         [6798] = { parent = 5211 },
         [8983] = { parent = 5211 },
-    [16979] = { class = "DRUID", duration = 15 }, -- Feral Charge
     [1850] = { class = "DRUID", duration = 300 }, -- Dash
         [9821] = { parent = 1850 },
 
@@ -164,7 +159,6 @@ addon.Cooldowns = {
     [11958] = { class = "MAGE", duration = 300 }, -- Ice Block
     [12051] = { class = "MAGE", duration = 420 }, -- Evocation
     [12472] = { class = "MAGE", duration = 600 }, -- Cold Snap
-    [31687] = { class = "MAGE", duration = 180}, -- Elemental Water
 
     -- Rogue
 
@@ -172,7 +166,7 @@ addon.Cooldowns = {
     [13877] = { class = "ROGUE", duration = 120 }, -- Blade Flurry
     [408] = { class = "ROGUE", duration = 20 }, -- Kidney Shot
         [8643] = { parent = 408 },
-    [2094] = { class = "ROGUE", duration = 90 }, -- Blind
+    [2094] = { class = "ROGUE", duration = 180 }, -- Blind
     [2983] = { class = "ROGUE", duration = 180 }, -- Sprint
         [8696] = { parent = 2983 },
         [11305] = { parent = 2983 },
@@ -180,29 +174,25 @@ addon.Cooldowns = {
     [1776] = { class = "ROGUE", duration = 9 }, -- Gouge
         [1777] = { parent = 1776 },
         [8629] = { parent = 1776 },
-        [8629] = { parent = 1776 },
         [11285] = { parent = 1776 },
         [11286] = { parent = 1776 },
     [14278] = { class = "ROGUE", duration = 20 }, -- Ghostly Strike
     [14183] = { class = "ROGUE", duration = 120 }, -- Premeditation
     [14185] = { class = "ROGUE", duration = 600 }, -- Preparation
-    [36554] = { class = "ROGUE", duration = 30 }, -- SHS
 
     -- Warrior
 
     [20230] = { class = "WARRIOR", duration = 1800 }, -- Retaliation
     [1719] = { class = "WARRIOR", duration = 1800 }, -- Recklessness
     [871] = { class = "WARRIOR", duration = 1800 }, -- Shield Wall
-    [12292] = { class = "WARRIOR", duration = 180 }, -- Death Wish
-    [12328] = { class = "WARRIOR", duration = 30 }, -- Sweep
+    [12328] = { class = "WARRIOR", duration = 180 }, -- Death Wish
     [18499] = { class = "WARRIOR", duration = 30 }, -- Berserker Rage
     [12809] = { class = "WARRIOR", duration = 45 }, -- Concussion Blow
     [100] = { class = "WARRIOR", duration = 15 }, -- Charge
         [6178] = { parent = 100 },
         [11578] = { parent = 100 },
-    [25275] = { class = "WARRIOR", duration = 15 }, -- Intercept
-        [20616] = { parent = 25275 },
-        [20617] = { parent = 25275 },
-        [20252] = { parent = 25275}
+    [20252] = { class = "WARRIOR", duration = 25 }, -- Intercept
+        [20616] = { parent = 20252 },
+        [20617] = { parent = 20252 },
 
 }

@@ -1,0 +1,11 @@
+## Interface: 20501
+## Title: Action Bar Saver
+## Notes: Saves and restores your action bars
+## Author: Mayen
+## SavedVariables: ActionBarSaverDB
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /actionbarsaver, /abs
+
+localization.enUS.lua
+
+ActionBarSaver.lua
