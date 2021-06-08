@@ -635,6 +635,30 @@ local function colour(statusbar, unit)
         statusbar.lockColor = false
     end
 end
+hooksecurefunc("UnitFrameHealthBar_Update", colour)
+hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
+    colour(self, self.unit)
+end)
+
+
+-- trying to remove the red flashing of target/focus portrait when on low HP %
+
+local function RemoveRedFromPortrait(bar)
+    local parent = bar:GetParent()
+    local r, g, b = parent.portrait:GetVertexColor()
+    if g == 0 and r > .99 and b == 0 then -- using > .99 because the real value will be something like .999999824878495 instead of 1
+        parent.portrait:SetVertexColor(1.0, 1.0, 1.0, 1.0)
+    end
+end
+hooksecurefunc("TargetHealthCheck", RemoveRedFromPortrait)
+hooksecurefunc("TargetofTargetHealthCheck", RemoveRedFromPortrait)
+
+hooksecurefunc("TargetFrame_HealthUpdate", function(self, elapsed, unit)
+    if self.portrait:GetAlpha() < 1 then
+        self.portrait:SetAlpha(1)
+    end
+end)
+
 
 
 --Blacklist of frames where tooltips mouseovering is hidden(editable)
@@ -1039,9 +1063,6 @@ ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,25
 -- TODO: dogshit macro highlight stuck
 
 -- TODO: Re-focus frame on stealthed units when they appear automatically
-
-
--- TODO RemoveRedPortrait(texture)
 
 
 -- TODO: prevent sArena/Gladdy clicking chat interaction (frame overlay)
