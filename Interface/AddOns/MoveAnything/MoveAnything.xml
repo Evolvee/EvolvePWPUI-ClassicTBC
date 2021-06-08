@@ -898,7 +898,7 @@
 				self:RegisterEvent("PLAYER_REGEN_DISABLED")
 				self:RegisterEvent("PLAYER_REGEN_ENABLED")
 				self:RegisterEvent("GROUP_ROSTER_UPDATE")
-				if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC then
+				if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC and WOW_PROJECT_ID ~= WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
 					self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 					self:RegisterEvent("PLAYER_FOCUS_CHANGED")
 				end

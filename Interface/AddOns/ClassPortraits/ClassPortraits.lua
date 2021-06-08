@@ -29,12 +29,12 @@ ClassPortraits:SetScript("OnUpdate",  function() -- not returning any UnitID, ha
 			TargetFrame.portrait:SetTexCoord(0,1,0,1);
 		end
 		
-		if(UnitGUID("targettarget")~=nil and UnitIsPlayer("targettarget") ~= nil and TargetofTargetFrame.portrait~=nil) then
-		TargetofTargetFrame.portrait:SetTexture(iconPath, true);
+		if(UnitGUID("targettarget")~=nil and UnitIsPlayer("targettarget") ~= nil and TargetFrameToT.portrait~=nil) then
+		TargetFrameToT.portrait:SetTexture(iconPath, true);
 		local tt=classIcons[select(2, UnitClass("targettarget"))];
-		TargetofTargetFrame.portrait:SetTexCoord(unpack(tt));
+		TargetFrameToT.portrait:SetTexCoord(unpack(tt));
 		elseif(UnitGUID("targettarget")~=nil) then
-			TargetofTargetFrame.portrait:SetTexCoord(0,1,0,1);
+			TargetFrameToT.portrait:SetTexCoord(0,1,0,1);
 		end
 		
 		if(UnitGUID("focus") ~= nil and UnitIsPlayer("focus") ~= nil and FocusFrame.portrait~=nil) then
@@ -45,12 +45,12 @@ ClassPortraits:SetScript("OnUpdate",  function() -- not returning any UnitID, ha
 			FocusFrame.portrait:SetTexCoord(0,1,0,1);
 		end
 		
-		if(UnitGUID("focustarget")~=nil and UnitIsPlayer("focustarget") ~= nil and TargetofFocusFrame.portrait~=nil) then
-		TargetofFocusFrame.portrait:SetTexture(iconPath, true);
+		if(UnitGUID("focustarget")~=nil and UnitIsPlayer("focustarget") ~= nil and FocusFrameToT.portrait~=nil) then
+		FocusFrameToT.portrait:SetTexture(iconPath, true);
 		local ft=classIcons[select(2, UnitClass("focustarget"))];
-		TargetofFocusFrame.portrait:SetTexCoord(unpack(ft));
+		FocusFrameToT.portrait:SetTexCoord(unpack(ft));
 		elseif(UnitGUID("focustarget")~=nil) then
-			TargetofFocusFrame.portrait:SetTexCoord(0,1,0,1);
+			FocusFrameToT.portrait:SetTexCoord(0,1,0,1);
 		end
 		
 		if (UnitGUID("party1")~=nil and PartyMemberFrame1~=nil and PartyMemberFrame1.portrait~=nil) then
@@ -147,7 +147,8 @@ addonLoadEvent:SetScript("OnEvent", function(self, e, addon)
 end)
 
 -- LFG, quest log, spellbook, and social window icons
-LFGParentFrame:HookScript("OnShow", function() UpdatePortrait(LFGParentFrameIcon, "player") end)
+-- (LFG not introduced on Classic YET) LFGParentFrame:HookScript("OnShow", function() UpdatePortrait(LFGParentFrameIcon, "player") end)
+
 UpdatePortrait((select(2, QuestLogFrame:GetRegions())), "player")
 UpdatePortrait((SpellBookFrame:GetRegions()), "player")
 UpdatePortrait((FriendsFrame:GetRegions()), "player")

@@ -308,23 +308,36 @@ FocusFrameHealthBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
 
 -- aparently "FocusFrame_CheckClassification" doesnt exist anymore in this modern abomination of a client so docking it inside Target...
 
-hooksecurefunc("TargetFrame_CheckClassification", function()
-local classification = UnitClassification("target")
-if classification == "elite" or classification == "worldboss" then
-TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
-FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
-elseif classification == "rareelite" then
-TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
-FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
-elseif classification == "rare" then
-TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
-FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
-else
-TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame")
-FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\FocusFrame")
-end
-end)
+hooksecurefunc("TargetFrame_CheckClassification", function(self, forceNormalTexture)
+    local classification = UnitClassification("target")
+    if classification == "elite" or classification == "worldboss" then
+        TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
+        FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Elite")
+    elseif classification == "rareelite" then
+        TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
+        FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare-Elite")
+    elseif classification == "rare" then
+        TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
+        FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame-Rare")
+    else
+        TargetFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\UI-TargetingFrame")
+        FocusFrameTextureFrameTexture:SetTexture("Interface\\AddOns\\TextureScript\\FocusFrame")
+    end
 
+    -- fix Blizzard's overlapping backgrounds causing a darker line
+    if forceNormalTexture then
+        if classification ~= "minus" then
+            self.Background:SetHeight(24)
+        else
+            -- not sure if "minus" mobs exist in TBC - wowpedia says:
+            -- Patch 5.0.4: used for minion mobs that typically have less health than normal mobs of their level, but engage the player in larger numbers
+            -- if they do exist, have to check if the default 12 is an OK size for it not to overlap
+            -- self.Background:SetHeight(12)
+        end
+    else
+        self.Background:SetHeight(24)
+    end
+end)
 
 
 
@@ -554,7 +567,7 @@ end
      for k,v in pairs (barstosmooth) do
       if _G[k] then
          SmoothBar(_G[k])
-_G[k]:SetScript("OnHide", function() this.lastGuid = nil; this.max_ = nil end)
+_G[k]:SetScript("OnHide", function(self) self.lastGuid = nil; self.max_ = nil end)
          if v ~= "" then
             _G[k].unitType = v
          end
@@ -611,14 +624,18 @@ local function colour(statusbar, unit)
             local c = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class] or RAID_CLASS_COLORS[class]
             if c then
                 statusbar:SetStatusBarColor(c.r, c.g, c.b)
+                statusbar.lockColor = true
+            else
+                statusbar:SetStatusBarColor(0, 1, 0)
+                statusbar.lockColor = false
             end
         end
+    else
+        statusbar:SetStatusBarColor(0, 1, 0)
+        statusbar.lockColor = false
     end
 end
-hooksecurefunc("UnitFrameHealthBar_Update", colour)
-hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
-    colour(self, self.unit)
-end)
+
 
 --Blacklist of frames where tooltips mouseovering is hidden(editable)
 
@@ -1032,6 +1049,4 @@ ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,25
 -- TODO prevent disabling floating combat text for no reason
 
 -- TODO: add CC on nameplate
-
--- TODO: auto-sell gray shits and try to repair(from guildbank if possible)
 
