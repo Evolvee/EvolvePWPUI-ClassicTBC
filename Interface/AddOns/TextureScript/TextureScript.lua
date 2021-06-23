@@ -69,12 +69,14 @@ local partyMemberFrameTextures = {
     PartyMemberFrame1Texture, PartyMemberFrame2Texture, PartyMemberFrame3Texture, PartyMemberFrame4Texture
 }
 
-    local members = GetNumGroupMembers()
-    if members > 1 then
-        ShowPartyFrame();
-        for i=1,#partyMemberFrames do
-            partyMemberFrames[i]:SetScale(1)
-        end
+local members = GetNumGroupMembers()
+if members > 1 then
+	if not InCombatLockdown() then
+        	ShowPartyFrame();
+        	for i=1,#partyMemberFrames do
+			partyMemberFrames[i]:SetScale(1)
+        	end
+	end
         for i=1,#partyMemberFrameTextures do
             partyMemberFrameTextures[i]:SetVertexColor(0,0,0)
         end        
@@ -641,25 +643,63 @@ hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
 end)
 
 
--- trying to remove the red flashing of target/focus portrait when on low HP %
-
+-- remove red tint when low on health
 local function RemoveRedFromPortrait(bar)
-    local parent = bar:GetParent()
-    local r, g, b = parent.portrait:GetVertexColor()
-    if g == 0 and r > .99 and b == 0 then -- using > .99 because the real value will be something like .999999824878495 instead of 1
-        parent.portrait:SetVertexColor(1.0, 1.0, 1.0, 1.0)
-    end
+	local parent = bar:GetParent()
+   local r, g, b = parent.portrait:GetVertexColor()
+   if g == 0 and r > .99 and b == 0 then
+      parent.portrait:SetVertexColor(1.0, 1.0, 1.0, 1.0)
+   end
 end
 hooksecurefunc("TargetHealthCheck", RemoveRedFromPortrait)
-hooksecurefunc("TargetofTargetHealthCheck", RemoveRedFromPortrait)
+hooksecurefunc("PartyMemberHealthCheck", RemoveRedFromPortrait)
 
-hooksecurefunc("TargetFrame_HealthUpdate", function(self, elapsed, unit)
-    if self.portrait:GetAlpha() < 1 then
-        self.portrait:SetAlpha(1)
-    end
+hooksecurefunc("TargetofTargetHealthCheck", function(self)
+   local r, g, b = self.portrait:GetVertexColor()
+   if g == 0 and r > .99 and b == 0 then
+      self.portrait:SetVertexColor(1.0, 1.0, 1.0, 1.0)
+   end
 end)
 
+-- remove low health flashing from portraits
+local function RemoveFlashFromPortrait(self)
+	if self.portrait:GetAlpha() < 1 then
+		self.portrait:SetAlpha(1)
+	end
+end
+hooksecurefunc("TargetFrame_HealthUpdate", RemoveFlashFromPortrait)
+hooksecurefunc("PartyMemberFrame_UpdateMemberHealth", RemoveFlashFromPortrait)
 
+-- add health and mana text to party frames
+for i=1,4 do
+	local pFrame = _G["PartyMemberFrame"..i]
+
+	local healthText = pFrame.healthbar:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+	healthText:SetFont("Fonts/FRIZQT__.TTF", 15, "OUTLINE")
+	healthText:SetPoint("CENTER")
+
+	local manaText = pFrame.manabar:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+	manaText:SetFont("Fonts/FRIZQT__.TTF", 9, "OUTLINE")
+	manaText:SetPoint("CENTER")
+
+	pFrame.healthbar.fontString = healthText
+	pFrame.manabar.fontString = manaText
+end
+
+hooksecurefunc("PartyMemberFrame_UpdateMemberHealth", function(self)
+	local healthbar = self.healthbar
+	local manabar = self.manabar
+
+	if healthbar.finalValue ~= healthbar.lastTextValue then
+		healthbar.lastTextValue = healthbar.finalValue
+		healthbar.fontString:SetText(healthbar.finalValue)
+	end
+
+	if manabar.finalValue ~= manabar.lastTextValue then
+		manabar.lastTextValue = manabar.finalValue
+		manabar.fontString:SetText(manabar.finalValue)
+	end
+end)
 
 --Blacklist of frames where tooltips mouseovering is hidden(editable)
 
@@ -790,10 +830,12 @@ FRAMEZ:RegisterEvent("ADDON_LOADED")
 FRAMEZ:SetScript("OnUpdate", 
 
 	function()
-		TargetFrameToT:ClearAllPoints();
-		TargetFrameToT:SetPoint("RIGHT", "TargetFrame", "BOTTOMRIGHT", -20, 5);
-		FocusFrameToT:ClearAllPoints();
-		FocusFrameToT:SetPoint("RIGHT", "FocusFrame", "BOTTOMRIGHT", -20, 5);
+		if not InCombatLockdown() then
+			TargetFrameToT:ClearAllPoints();
+			TargetFrameToT:SetPoint("RIGHT", "TargetFrame", "BOTTOMRIGHT", -20, 5);
+			FocusFrameToT:ClearAllPoints();
+			FocusFrameToT:SetPoint("RIGHT", "FocusFrame", "BOTTOMRIGHT", -20, 5);
+		end
 
 	end 
 	
