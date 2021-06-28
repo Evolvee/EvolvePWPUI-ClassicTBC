@@ -756,7 +756,7 @@ LoseControlDB = {
 			["size"] = 20,
 		},
 		["player"] = {
-			["enabled"] = false,
+			["enabled"] = true,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,

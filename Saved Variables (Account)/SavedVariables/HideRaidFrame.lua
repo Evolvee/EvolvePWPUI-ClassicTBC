@@ -1,5 +1,5 @@
 
 HideRaidFrameDB4 = {
-	["msg"] = false,
 	["RaidFrames"] = false,
+	["msg"] = false,
 }

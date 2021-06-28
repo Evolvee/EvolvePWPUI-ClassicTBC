@@ -1,11 +1,12 @@
 
 GladdyXZ = {
 	["profileKeys"] = {
-		["Evolvepwp - Earthshaker"] = "Evolvepwp - Earthshaker",
 		["Evolve - Badge of Justice"] = "Evolve - Badge of Justice",
+		["Evolvelulw - Earthshaker"] = "Evolvelulw - Earthshaker",
+		["Evolvepwp - Earthshaker"] = "Evolvepwp - Earthshaker",
 	},
 	["profiles"] = {
-		["Evolvepwp - Earthshaker"] = {
+		["Evolve - Badge of Justice"] = {
 			["ciEnabled"] = false,
 			["castBarXOffset"] = -263,
 			["buffsEnabled"] = false,
@@ -22,8 +23,54 @@ GladdyXZ = {
 				["drinks"] = false,
 			},
 			["powerMax"] = false,
-			["powerShowRace"] = false,
-			["healthBarTexture"] = "Blizzard",
+			["frameScale"] = 0.7000000000000001,
+			["drCategories"] = {
+				["ctrlstun"] = {
+					["enabled"] = false,
+				},
+				["rndstun"] = {
+					["enabled"] = false,
+				},
+				["charm"] = {
+					["enabled"] = false,
+				},
+				["root"] = {
+					["enabled"] = false,
+				},
+				["repentance"] = {
+					["enabled"] = false,
+				},
+				["ks"] = {
+					["enabled"] = false,
+				},
+				["rndroot"] = {
+					["enabled"] = false,
+				},
+				["freezetrap"] = {
+					["enabled"] = false,
+				},
+				["disorient"] = {
+					["enabled"] = false,
+				},
+				["scatters"] = {
+					["enabled"] = false,
+				},
+				["dragonsbreath"] = {
+					["enabled"] = false,
+				},
+				["cyclone"] = {
+					["enabled"] = false,
+				},
+				["dc"] = {
+					["enabled"] = false,
+				},
+				["impconc"] = {
+					["enabled"] = false,
+				},
+				["fear"] = {
+					["icon"] = 136184,
+				},
+			},
 			["trinketFont"] = "Friz Quadrata TT",
 			["drBorderStyle"] = "Interface\\AddOns\\Gladdy\\Images\\Border_rounded_blp",
 			["powerBarTexture"] = "Blizzard",
@@ -36,31 +83,39 @@ GladdyXZ = {
 			},
 			["drFont"] = "Friz Quadrata TT",
 			["castBarYOffset"] = -288.9,
-			["y"] = 383.1889400075343,
+			["healthBarTexture"] = "Blizzard",
 			["powerShowSpec"] = false,
-			["padding"] = 0,
+			["highlightInset"] = true,
 			["targetBorder"] = false,
 			["castBarTexture"] = "Blizzard",
-			["npTotemsShowFriendly"] = false,
 			["bottomMargin"] = -2,
-			["petHealthBarTexture"] = "Blizzard",
+			["npTotemsShowFriendly"] = false,
 			["petEnabled"] = false,
+			["y"] = 383.1889400075343,
+			["petHealthBarTexture"] = "Blizzard",
 			["ciSize"] = 5,
 			["npTotems"] = false,
-			["frameScale"] = 0.7000000000000001,
-			["highlightInset"] = true,
+			["powerShowRace"] = false,
+			["padding"] = 0,
 			["cooldown"] = false,
 			["barWidth"] = 325,
 		},
-		["Evolve - Badge of Justice"] = {
+		["Evolvelulw - Earthshaker"] = {
+		},
+		["Evolvepwp - Earthshaker"] = {
+			["shadowsightTimerRelPoint1"] = "BOTTOMLEFT",
 			["castBarXOffset"] = -263,
+			["shadowsightTimerX"] = 25.16666793823242,
+			["shadowsightTimerRelPoint2"] = "BOTTOMLEFT",
 			["classIconPos"] = "RIGHT",
+			["ciEnabled"] = false,
 			["racialEnabled"] = false,
-			["healthBarTexture"] = "Blizzard",
-			["drBorderStyle"] = "Interface\\AddOns\\Gladdy\\Images\\Border_rounded_blp",
-			["highlight"] = false,
-			["npTotems"] = false,
+			["buffsShowAuraDebuffs"] = true,
+			["powerShowRace"] = false,
 			["drCategories"] = {
+				["sleep"] = {
+					["enabled"] = false,
+				},
 				["ctrlstun"] = {
 					["enabled"] = false,
 				},
@@ -91,10 +146,13 @@ GladdyXZ = {
 				["rndroot"] = {
 					["enabled"] = false,
 				},
+				["repentance"] = {
+					["enabled"] = false,
+				},
 				["dragonsbreath"] = {
 					["enabled"] = false,
 				},
-				["repentance"] = {
+				["ua"] = {
 					["enabled"] = false,
 				},
 				["freezetrap"] = {
@@ -107,6 +165,19 @@ GladdyXZ = {
 					["enabled"] = false,
 				},
 			},
+			["highlight"] = false,
+			["powerBarEnabled"] = false,
+			["ciBorderColor"] = {
+				["a"] = 0,
+			},
+			["castBarYOffset"] = -288.9,
+			["petHealthBarTexture"] = "Blizzard",
+			["npTotems"] = false,
+			["trinketPos"] = "LEFT",
+			["drBorderStyle"] = "Interface\\AddOns\\Gladdy\\Images\\Border_rounded_blp",
+			["healthBarTexture"] = "Blizzard",
+			["healthBarNameFontSize"] = 20,
+			["powerActual"] = false,
 			["buffsBorderStyle"] = "Interface\\AddOns\\Gladdy\\Images\\Border_rounded_blp",
 			["npTotemsShowEnemy"] = false,
 			["announcements"] = {
@@ -115,36 +186,33 @@ GladdyXZ = {
 				["drinks"] = false,
 			},
 			["powerMax"] = false,
+			["ciSize"] = 5,
 			["frameScale"] = 0.7000000000000001,
 			["focusBorder"] = false,
-			["ciBorderColor"] = {
-				["a"] = 0,
-			},
-			["powerShowRace"] = false,
 			["npTotemsShowFriendly"] = false,
-			["targetBorder"] = false,
+			["castBarEnabled"] = false,
 			["cooldown"] = false,
 			["barWidth"] = 325,
 			["buffsEnabled"] = false,
 			["locked"] = true,
-			["auraFont"] = "Friz Quadrata TT",
+			["targetBorder"] = false,
 			["y"] = 383.1889400075343,
-			["bottomMargin"] = -2,
+			["bottomMargin"] = 0,
 			["trinketFont"] = "Friz Quadrata TT",
 			["cooldownBorderStyle"] = "Interface\\AddOns\\Gladdy\\Images\\Border_rounded_blp",
 			["castBarTexture"] = "Blizzard",
 			["drFont"] = "Friz Quadrata TT",
 			["petEnabled"] = false,
 			["padding"] = 0,
-			["ciSize"] = 5,
-			["powerActual"] = false,
+			["shadowsightTimerY"] = 9.988764762878418,
+			["healthBarHeight"] = 81,
 			["powerBarTexture"] = "Blizzard",
 			["powerShowSpec"] = false,
-			["trinketPos"] = "LEFT",
-			["castBarYOffset"] = -288.9,
-			["petHealthBarTexture"] = "Blizzard",
-			["ciEnabled"] = false,
+			["auraFont"] = "Friz Quadrata TT",
+			["healthMax"] = false,
+			["rangeCheckEnabled"] = false,
 			["highlightInset"] = true,
+			["healthPercentage"] = false,
 		},
 	},
 }

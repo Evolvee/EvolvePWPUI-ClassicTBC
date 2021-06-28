@@ -53,37 +53,6 @@ MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
 
 
 
--- get the old style party frames back when in raid .oO(like srsly Lizzard, u arent even going to fucking give us an option to disable this modern abomination retail uglyass shait?)
-
-
-local frame = CreateFrame("FRAME", "PartyFrame")
-frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-
-
-local function eventHandler(self,event,...)
-local partyMemberFrames = {
-    PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4
-}
-local partyMemberFrameTextures = {
-    PartyMemberFrame1Texture, PartyMemberFrame2Texture, PartyMemberFrame3Texture, PartyMemberFrame4Texture
-}
-
-local members = GetNumGroupMembers()
-if members > 1 then
-	if not InCombatLockdown() then
-        	ShowPartyFrame();
-        	for i=1,#partyMemberFrames do
-			partyMemberFrames[i]:SetScale(1)
-        	end
-	end
-        for i=1,#partyMemberFrameTextures do
-            partyMemberFrameTextures[i]:SetVertexColor(0,0,0)
-        end        
-    end
-end
-frame:SetScript("OnUpdate", eventHandler)
-
 
 
 
@@ -1082,8 +1051,9 @@ FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
 
 
-
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
+
+-- Ingame commmand for classcoloured names in chat: /console SET chatClassColorOverride "0"
 
 
 

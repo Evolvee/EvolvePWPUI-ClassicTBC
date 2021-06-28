@@ -1,4 +1,0 @@
-
-AddonUsageSettings = {
-	["sortOrder"] = 3,
-}
