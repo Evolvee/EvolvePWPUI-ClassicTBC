@@ -1055,31 +1055,12 @@ FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
 -- Ingame commmand for classcoloured names in chat: /console SET chatClassColorOverride "0"
 
+-- ^^ current value for testing:100, 400 was too cancerous - sometimes prevented the cast with /cqs+cast macro altogether
+
 
 
 --Login message informing all scripts of this file were properly executed
 
-ChatFrame1:AddMessage("EvolvePWPUI 2.2 Loaded successfully!",255,255,0)
+ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.1 BETA Loaded successfully!",255,255,0)
 ChatFrame1:AddMessage("Check for updates at:",255,255,0)
 ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,255,0)
-
-
--- TODO increase debuffs/buffs on target size
-
-
--- TODO: Add CC instead of levels into nameplates
-
--- TODO: tremor-only nameplate shown
-
-
--- TODO: dogshit macro highlight stuck
-
--- TODO: Re-focus frame on stealthed units when they appear automatically
-
-
--- TODO: prevent sArena/Gladdy clicking chat interaction (frame overlay)
-
--- TODO prevent disabling floating combat text for no reason
-
--- TODO: add CC on nameplate
-
