@@ -46,18 +46,7 @@ TargetFrameToTTextureFrameTexture:SetVertexColor(0,0,0)
 
 
 
---position of minimap(remove to reset minimap position)
-MinimapCluster:ClearAllPoints();
-MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
-
-
-
-
-
-
-
-
---minimap buttons, horder/alliance icons on target/focus/player,minimap city location, minimap sun/clock, minimap text frame,minimap zoomable with mousewheel etc
+--minimap buttons, horde/alliance icons on target/focus/player,minimap city location, minimap sun/clock, minimap text frame,minimap zoomable with mousewheel etc
 
 MinimapZoomIn:Hide()
 MinimapZoomOut:Hide()
@@ -525,12 +514,18 @@ end
     end
  
     smoothframe:SetScript('OnUpdate', function()
+
+-- skip applying the script in PVE instances because NuBlizzard is retarded as usual
+
+        local _, instanceType = IsInInstance()
+if instanceType ~= "party" and instanceType ~= "raid" then
         local frames = {WorldFrame:GetChildren()}
         for _, plate in ipairs(frames) do
-            if isPlate(plate) and plate:IsVisible() then
+            if plate:IsVisible() and isPlate(plate) then
                 local v = plate:GetChildren()
                 SmoothBar(v)
             end
+        end
         end
         AnimationTick()
     end)
@@ -1057,7 +1052,7 @@ FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
 -- ^^ current value for testing:100, 400 was too cancerous - sometimes prevented the cast with /cqs+cast macro altogether
 
-
+-- trying to remove the cancer wheather that is not part of the video settings as it used to be in 2.4.3: /console set weatherdensity 0 // /console WeatherDensity 0
 
 --Login message informing all scripts of this file were properly executed
 
