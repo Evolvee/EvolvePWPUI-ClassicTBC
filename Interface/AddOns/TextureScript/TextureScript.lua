@@ -521,7 +521,7 @@ end
 if instanceType ~= "party" and instanceType ~= "raid" then
         local frames = {WorldFrame:GetChildren()}
         for _, plate in ipairs(frames) do
-            if plate:IsVisible() and isPlate(plate) then
+            if not plate:IsForbidden() and plate:IsVisible() and isPlate(plate) then
                 local v = plate:GetChildren()
                 SmoothBar(v)
             end
@@ -1034,7 +1034,7 @@ local function Update(frame)
             local frameName = selfName .. 'Buff' .. i
             buffFrame = _G[frameName]
             frameStealable = _G[frameName .. 'Stealable']
-            if (isEnemy and debuffType == 'Magic') then
+            if (isEnemy and frameStealable and debuffType == 'Magic') then
                 frameStealable:Show()
             end
         end
