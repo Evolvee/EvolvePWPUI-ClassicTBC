@@ -1048,10 +1048,10 @@ FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
 
--- Ingame commmand for classcoloured names in chat: /console SET chatClassColorOverride "0"
 
 -- ^^ current value for testing:100, 400 was too cancerous - sometimes prevented the cast with /cqs+cast macro altogether
 
+-- Ingame commmand for classcoloured names in chat: /console SET chatClassColorOverride "0"
 -- trying to remove the cancer wheather that is not part of the video settings as it used to be in 2.4.3: /console set weatherdensity 0 // /console WeatherDensity 0
 
 --Login message informing all scripts of this file were properly executed

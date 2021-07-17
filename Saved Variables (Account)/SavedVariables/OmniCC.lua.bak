@@ -3,6 +3,8 @@ OmniCCDB = {
 	["profileKeys"] = {
 		["Evolve - Launch Test"] = "Default",
 		["Evolve - Badge of Justice"] = "Default",
+		["Evolve - Classic Arena - EU"] = "Default",
+		["Evolvepwe - Classic Arena - EU"] = "Default",
 		["Qwdqwdw - Badge of Justice"] = "Default",
 		["Evolvelulw - Earthshaker"] = "Default",
 		["Evolvepwp - Earthshaker"] = "Default",
@@ -32,6 +34,16 @@ OmniCCDB = {
 					["name"] = "Unit Nameplates",
 					["id"] = "plates",
 				}, -- [2]
+				{
+					["patterns"] = {
+						"PlaterMainAuraIcon", -- [1]
+						"PlaterSecondaryAuraIcon", -- [2]
+						"ExtraIconRowIcon", -- [3]
+					},
+					["id"] = "Plater Nameplates Rule",
+					["priority"] = 3,
+					["theme"] = "Plater Nameplates Theme",
+				}, -- [3]
 			},
 			["themes"] = {
 				["Default"] = {
@@ -55,6 +67,16 @@ OmniCCDB = {
 					["effect"] = "none",
 					["fontSize"] = 15,
 					["minDuration"] = 3,
+				},
+				["Plater Nameplates Theme"] = {
+					["textStyles"] = {
+						["soon"] = {
+						},
+						["seconds"] = {
+						},
+						["minutes"] = {
+						},
+					},
 				},
 			},
 		},

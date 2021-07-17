@@ -188,9 +188,18 @@ function QuestieTBCNpcFixes:Load()
         [17612] = {
             [npcKeys.spawns] = {[zoneIDs.AZUREMYST_ISLE] = {{31.8,25.4},{34.0,25.4},{34.4,22.8},{34.0,20.8},{34.6,17.6},{34.2,14.6},{35.2,12.6},{35.6,11.6},},},
         },
+        [17831] = {
+            [npcKeys.waypoints] = {[zoneIDs.ZANGARMARSH] = {{{23.32,66.21},{23.28,66.08},{23.39,65.98},{23.51,66.01},{23.67,66.09},{24.52,66.48},{24.69,66.5},{24.52,66.48},{23.7,66.18},{23.48,66.01},{23.39,66.01},{23.34,66.1},{23.32,66.21},},},},
+        },
         [17839] = {
             [npcKeys.spawns] = {[zoneIDs.THE_BLACK_MORASS] = {{-1,-1},},},
             [npcKeys.zoneID] = zoneIDs.THE_BLACK_MORASS,
+        },
+        [17923] = {
+            [npcKeys.waypoints] = {[zoneIDs.ZANGARMARSH] = {{{19,62.4},{19,63.5},{19.2,64.6},},},},
+        },
+        [18099] = {
+            [npcKeys.waypoints] = {[zoneIDs.NAGRAND] = {{{60.68,25.15},{60.07,24.67},{59.31,24.05},{60.03,24.71},{61.12,24.83},},},},
         },
         [18120] = {
             [npcKeys.waypoints] = {},
@@ -345,6 +354,9 @@ function QuestieTBCNpcFixes:Load()
         },
         [22059] = {
             [npcKeys.spawns] = {[zoneIDs.SHADOWMOON_VALLEY] = {{51.23,62.75},{52.45,59.19},},},
+        },
+        [22370] = {
+            [npcKeys.waypoints] = {[zoneIDs.TEROKKAR_FOREST] = {{{38.17,51.74},{38.22,50.7},{37.89,49.88},{37.16,50.22},{37.33,51.01},},},},
         },
         [22374] = {
             [npcKeys.spawns] = {[zoneIDs.HELLFIRE_PENINSULA] = {{47.31,49.66},},},

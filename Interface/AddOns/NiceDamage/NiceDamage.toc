@@ -1,7 +1,7 @@
-## Interface: 20400
+## Interface: 20501
 ## Title: NiceDamage
 ## DefaultState: Enabled
 ## Author: Montyburns
-## Version: 20400
-## Notes: Changes your damage font.
+## Version: 11306
+## Notes: Changes your damage font to something more festive :D
 NiceDamage.lua 

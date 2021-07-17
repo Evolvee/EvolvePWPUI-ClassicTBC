@@ -5,6 +5,12 @@ local QuestieTBCQuestFixes = QuestieLoader:CreateModule("QuestieTBCQuestFixes")
 local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 ---@type ZoneDB
 local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
+---@type QuestieCorrections
+local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
+
+QuestieCorrections.reversedKillCreditQuestIDs = {
+    [10503] = true, -- The Bladespire Threat
+}
 
 function QuestieTBCQuestFixes:Load()
     QuestieDB.questData[63866] = {}; -- Claiming the Light
@@ -148,6 +154,9 @@ function QuestieTBCQuestFixes:Load()
         },
         [6421] = {
             [questKeys.triggerEnd] = {"Investigate Cave in Boulderslide Ravine", {[zoneIDs.STONETALON_MOUNTAINS]={{58.96,90.16},},}},
+        },
+        [6681] = {
+            [questKeys.startedBy] = {{332,918,3327,3328,3401,4214,4215,4163,4582,4583,4584,5165,5166,5167,6467,13283,16684,16685,16686,},nil,{17126}}
         },
         [6761] = {
             [questKeys.preQuestSingle] = {1015,1019,1047,},
@@ -1833,8 +1842,17 @@ function QuestieTBCQuestFixes:Load()
                 [zoneIDs.UNDERCITY]={{64.58,8.08},},
             }},
         },
+        [11666] = {
+            [questKeys.extraObjectives] = {{{[zoneIDs.TEROKKAR_FOREST]={{51.9,34.7},{55.3,44.1},{60.2,53.9}}}, ICON_TYPE_EVENT, "Fish here for Blackfin Darter"}},
+        },
         [11667] = {
-            [questKeys.extraObjectives] = {{{[3518]={{62,35}}}, ICON_TYPE_EVENT, "Fish Here for World's Largest Mudfish"}},
+            [questKeys.extraObjectives] = {{{[zoneIDs.NAGRAND]={{62,35}}}, ICON_TYPE_EVENT, "Fish here for World's Largest Mudfish"}},
+        },
+        [11668] = {
+            [questKeys.extraObjectives] = {{{[zoneIDs.ZANGARMARSH]={{75.6,82.9}}}, ICON_TYPE_EVENT, "Fish here for Bloated Barbed Gill Trout"}},
+        },
+        [11669] = {
+            [questKeys.extraObjectives] = {{{[zoneIDs.HELLFIRE_PENINSULA]={{39.4,43}},[zoneIDs.SHADOWMOON_VALLEY]={{24,32.5},{31.9,29.9},{40.1,60.1}}}, ICON_TYPE_EVENT, "Fish here for Monstrous Felblood Snapper"}},
         },
         [11731] = {
             [questKeys.triggerEnd] = {"Hit 8 braziers.", {
@@ -1905,6 +1923,12 @@ function QuestieTBCQuestFixes:Load()
                 [zoneIDs.IRONFORGE]={{65,23.68},},
                 [zoneIDs.UNDERCITY]={{68.62,8.01},},
             }},
+        },
+        [11933] = {
+            [questKeys.startedBy] = {nil,{188128},{35569,},},
+        },
+        [11935] = {
+            [questKeys.startedBy] = {nil,{188129},{35568,},},
         },
         [12513] = {
             [questKeys.exclusiveTo] = {12515},

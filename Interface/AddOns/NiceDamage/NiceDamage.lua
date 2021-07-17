@@ -1,7 +1,7 @@
 
 NiceDamage = CreateFrame("Frame", "NiceDamage");
 
-local damagefont_FONT_NUMBER = "Interface\\AddOns\\NiceDamage\\font.ttf";
+local damagefont_FONT_NUMBER = "Interface\\AddOns\\NiceDamage\\pepsi.ttf";
 
 function NiceDamage:ApplySystemFonts()
 
@@ -17,4 +17,6 @@ NiceDamage:SetScript("OnEvent",
 		    end);
 NiceDamage:RegisterEvent("ADDON_LOADED");
 
-NiceDamage:ApplySystemFonts()
+NiceDamage:ApplySystemFonts();
+
+

@@ -1,6 +1,6 @@
 ## Interface: 20501
 ## Author: Evolve, Pyralis
-## Title: TextureScript
+## Title: TextureScript |cff69ccf0(Evolve PWP UI - ClassicTBC version)|r
 ## Notes: Evolve PWP UI for Classic TBC
 
 TextureScript.lua

@@ -10,7 +10,7 @@ ButtonForgeGlobalSettings = {
 ButtonForgeGlobalProfiles = {
 }
 ButtonForgeGlobalBackup = {
-	["Evolvepwp-Earthshaker"] = {
+	["Evolve-Classic Arena - EU"] = {
 		["AdvancedMode"] = true,
 		["AddonName"] = "Button Forge",
 		["ConfigureMode"] = false,
@@ -20,9 +20,9 @@ ButtonForgeGlobalBackup = {
 				["ButtonsLocked"] = true,
 				["VDriver"] = "",
 				["Label"] = "",
-				["Scale"] = 1,
+				["Scale"] = 0.8082588391426282,
 				["Rows"] = 1,
-				["Left"] = 1266.333374023438,
+				["Left"] = 1281.2890625,
 				["Cols"] = 2,
 				["HVehicle"] = true,
 				["HSpec1"] = false,
@@ -39,8 +39,101 @@ ButtonForgeGlobalBackup = {
 				["Enabled"] = true,
 				["MacroText"] = true,
 				["Order"] = 0,
-				["Top"] = 105.9999847412109,
+				["Top"] = 84.37236022949219,
 				["ButtonGap"] = 6,
+				["Buttons"] = {
+					{
+						["MacroName"] = "DMG",
+						["MacroBody"] = "/equip Gladiator's Gavel\n/equip Gladiator's Endgame\n/equip Gladiator's Touch of Defeat",
+						["Mode"] = "macro",
+						["KeyBinding"] = "MOUSEWHEELDOWN",
+						["MacroIndex"] = 128,
+					}, -- [1]
+					{
+						["MacroName"] = "HEAL",
+						["MacroBody"] = "/equip Light's Justice\n/equip Tears of Heaven\n/equip Blue Diamond Witchwand",
+						["Mode"] = "macro",
+						["KeyBinding"] = "MOUSEWHEELUP",
+						["MacroIndex"] = 138,
+					}, -- [2]
+				},
+			}, -- [1]
+			{
+				["ButtonsLocked"] = true,
+				["VDriver"] = "",
+				["Label"] = "",
+				["Scale"] = 0.817374987479968,
+				["Rows"] = 1,
+				["Left"] = 1280.578125,
+				["Cols"] = 2,
+				["HVehicle"] = true,
+				["HSpec1"] = false,
+				["HBonusBar"] = true,
+				["KeyBindText"] = true,
+				["HSpec3"] = false,
+				["GridAlwaysOn"] = true,
+				["Buttons"] = {
+					{
+						["MacroName"] = "r1",
+						["MacroBody"] = "#showtooltip Mind Flay(Rank 1)\n/cqs\n/cast [nochanneling] Mind Flay(Rank 1)",
+						["Mode"] = "macro",
+						["KeyBinding"] = "SHIFT-3",
+						["MacroIndex"] = 11,
+					}, -- [1]
+					{
+						["MacroName"] = "party2",
+						["MacroBody"] = "/cqs\n/cast [target=party2] Dispel Magic(Rank 2)\n/TargetLastTarget();",
+						["Mode"] = "macro",
+						["KeyBinding"] = "CTRL-C",
+						["MacroIndex"] = 8,
+					}, -- [2]
+				},
+				["BonusBar"] = false,
+				["Alpha"] = 1,
+				["HSpec4"] = false,
+				["HSpec2"] = false,
+				["GUI"] = true,
+				["Enabled"] = true,
+				["MacroText"] = true,
+				["Top"] = 50.42549896240234,
+				["Order"] = 1,
+				["ButtonGap"] = 6,
+				["TooltipsOn"] = false,
+			}, -- [2]
+		},
+		["Version"] = 1,
+		["VersionMinor"] = 0.5,
+	},
+	["Evolvepwe-Classic Arena - EU"] = {
+		["AdvancedMode"] = false,
+		["AddonName"] = "Button Forge",
+		["ConfigureMode"] = false,
+		["RightClickSelfCast"] = false,
+		["Bars"] = {
+		},
+		["Version"] = 1,
+		["VersionMinor"] = 0.5,
+	},
+	["Evolvepwp-Earthshaker"] = {
+		["AdvancedMode"] = true,
+		["AddonName"] = "Button Forge",
+		["ConfigureMode"] = false,
+		["RightClickSelfCast"] = false,
+		["Bars"] = {
+			{
+				["ButtonsLocked"] = true,
+				["VDriver"] = "",
+				["Label"] = "",
+				["Scale"] = 0.8082588391426282,
+				["Rows"] = 1,
+				["Left"] = 1281.2890625,
+				["Cols"] = 2,
+				["HVehicle"] = true,
+				["HSpec1"] = false,
+				["HBonusBar"] = true,
+				["KeyBindText"] = true,
+				["HSpec3"] = false,
+				["GridAlwaysOn"] = true,
 				["Buttons"] = {
 					{
 						["MacroName"] = "DMG",
@@ -51,13 +144,66 @@ ButtonForgeGlobalBackup = {
 					}, -- [1]
 					{
 						["MacroName"] = "Heal",
-						["MacroBody"] = "/equip Lightsworn Hammer\n",
+						["MacroBody"] = "",
 						["Mode"] = "macro",
 						["KeyBinding"] = "MOUSEWHEELUP",
-						["MacroIndex"] = 17,
+						["MacroIndex"] = 18,
 					}, -- [2]
 				},
+				["BonusBar"] = false,
+				["Alpha"] = 1,
+				["HSpec4"] = false,
+				["HSpec2"] = false,
+				["GUI"] = true,
+				["Enabled"] = true,
+				["MacroText"] = true,
+				["Top"] = 84.37236022949219,
+				["Order"] = 0,
+				["ButtonGap"] = 6,
+				["TooltipsOn"] = false,
 			}, -- [1]
+			{
+				["ButtonsLocked"] = true,
+				["VDriver"] = "",
+				["Label"] = "",
+				["Scale"] = 0.817374987479968,
+				["Rows"] = 1,
+				["Left"] = 1280.578125,
+				["Cols"] = 2,
+				["HVehicle"] = true,
+				["HSpec1"] = false,
+				["HBonusBar"] = true,
+				["KeyBindText"] = true,
+				["HSpec3"] = false,
+				["GridAlwaysOn"] = true,
+				["HSpec2"] = false,
+				["BonusBar"] = false,
+				["Alpha"] = 1,
+				["HSpec4"] = false,
+				["TooltipsOn"] = false,
+				["GUI"] = true,
+				["Enabled"] = true,
+				["MacroText"] = true,
+				["Order"] = 1,
+				["Top"] = 50.42549896240234,
+				["ButtonGap"] = 6,
+				["Buttons"] = {
+					{
+						["MacroName"] = "r1",
+						["MacroBody"] = "#showtooltip Mind Flay(Rank 1)\n/cqs\n/cast [nochanneling] Mind Flay(Rank 1)\n",
+						["Mode"] = "macro",
+						["KeyBinding"] = "SHIFT-3",
+						["MacroIndex"] = 29,
+					}, -- [1]
+					{
+						["MacroName"] = "party2",
+						["MacroBody"] = "/cqs\n/cast [target=party2] Dispel Magic(Rank 2)\n/TargetLastTarget();\n",
+						["Mode"] = "macro",
+						["KeyBinding"] = "CTRL-C",
+						["MacroIndex"] = 26,
+					}, -- [2]
+				},
+			}, -- [2]
 		},
 		["Version"] = 1,
 		["VersionMinor"] = 0.5,
