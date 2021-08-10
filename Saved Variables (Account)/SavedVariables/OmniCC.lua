@@ -5,13 +5,15 @@ OmniCCDB = {
 		["addonVersion"] = "9.0.8",
 	},
 	["profileKeys"] = {
-		["Evolve - Launch Test"] = "Default",
+		["Evolvexd - Classic Arena - EU"] = "Default",
 		["Evolve - Badge of Justice"] = "Default",
 		["Evolve - Classic Arena - EU"] = "Default",
-		["Evolvepwe - Classic Arena - EU"] = "Default",
-		["Evolvelulw - Earthshaker"] = "Default",
+		["Magetest - Classic Arena - EU"] = "Default",
 		["Qwdqwdw - Badge of Justice"] = "Default",
 		["Evolvepwp - Earthshaker"] = "Default",
+		["Evolvepwe - Classic Arena - EU"] = "Default",
+		["Evolvelulw - Earthshaker"] = "Default",
+		["Evolve - Launch Test"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {

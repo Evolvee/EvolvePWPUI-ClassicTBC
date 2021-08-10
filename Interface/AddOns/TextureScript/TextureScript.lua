@@ -556,8 +556,12 @@ _G[k]:SetScript("OnHide", function(self) self.lastGuid = nil; self.max_ = nil en
 
 --removing character "C" button image
 
-CharacterMicroButton:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
-MicroButtonPortrait:SetTexture(nil)
+MicroButtonPortrait:Hide()
+local originalPaperDollFrameOnShow = PaperDollFrame:GetScript("OnShow")
+PaperDollFrame:SetScript("OnShow", function(...) MicroButtonPortrait:Show() if originalPaperDollFrameOnShow then originalPaperDollFrameOnShow(...) end end)
+local originalPaperDollFrameOnHide = PaperDollFrame:GetScript("OnHide")
+PaperDollFrame:SetScript("OnHide", function(...) MicroButtonPortrait:Hide() if originalPaperDollFrameOnHide then originalPaperDollFrameOnHide(...) end end)
+
 CharacterMicroButton:SetNormalTexture("Interface/BUTTONS/Custom Evo C panel");
 CharacterMicroButton:SetPushedTexture("Interface/BUTTONS/Custom Evo C panel");
 
@@ -1015,6 +1019,7 @@ local sounds = {
 	569774, -- sound/spells/fizzle/fizzlenaturea.ogg
 	569775, -- sound/spells/fizzle/fizzlefrosta.ogg
 	569776, -- sound/spells/fizzle/fizzleshadowa.ogg
+	567407, -- sound/interface/uchatscrollbutton.ogg annoying clicking sound when you press a spell on action bar
 }
 
 for _, fdid in pairs(sounds) do
@@ -1043,6 +1048,15 @@ end
 TargetFrame:HookScript("OnEvent", function(self) Update(self) end)
 FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
+-- remove the shitty new client "raid frame manager" left gray bar next to the party frames
+
+CompactRaidFrameManager:UnregisterAllEvents()
+CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
+CompactRaidFrameManager:Hide()
+
+CompactRaidFrameContainer:UnregisterAllEvents()
+CompactRaidFrameContainer:HookScript("OnShow", function(s) s:Hide() end)
+CompactRaidFrameContainer:Hide()
 
 
 

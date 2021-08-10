@@ -116,11 +116,18 @@ ClassPortraits:SetScript("OnUpdate",  function() -- not returning any UnitID, ha
 		local p4=classIcons[select(2, UnitClass("party4"))]
 		if p4 then PartyMemberFrame4.portrait:SetTexCoord(unpack(p4)) end
 	end
-
-	--REMOVE THE SHIT BELLOW TO REMOVE CUSTOM PlayerFrame PORTRAIT
-	PlayerPortrait:SetTexture("Interface\\Addons\\ClassPortraits\\MYSKIN")
-	-- REMOVE THIS SHIT ABOVE TO REMOVE CUSTOM PlayerFrame PORTRAIT
 end)
+
+--REMOVE THE SHIT BELLOW TO REMOVE CUSTOM PlayerFrame PORTRAIT
+local eventFrame = CreateFrame("frame")
+eventFrame:SetScript("OnEvent", function(self, event, arg1)
+	if not arg1 or arg1 == "player" then
+		PlayerPortrait:SetTexture("Interface\\Addons\\ClassPortraits\\MYSKIN")
+	end
+end)
+eventFrame:RegisterEvent("UNIT_PORTRAIT_UPDATE")
+eventFrame:RegisterEvent("PORTRAITS_UPDATED")
+-- REMOVE THIS SHIT ABOVE TO REMOVE CUSTOM PlayerFrame PORTRAIT
 
 -- character sheet frame
 hooksecurefunc("CharacterFrame_OnShow", function()

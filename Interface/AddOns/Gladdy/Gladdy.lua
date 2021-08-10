@@ -25,7 +25,7 @@ local MAJOR, MINOR = "Gladdy", 4
 local Gladdy = LibStub:NewLibrary(MAJOR, MINOR)
 local L
 Gladdy.version_major_num = 1
-Gladdy.version_minor_num = 0.16
+Gladdy.version_minor_num = 0.19
 Gladdy.version_num = Gladdy.version_major_num + Gladdy.version_minor_num
 Gladdy.version_releaseType = RELEASE_TYPES.beta
 Gladdy.version = PREFIX .. Gladdy.version_num .. "-" .. Gladdy.version_releaseType
@@ -205,7 +205,7 @@ function Gladdy:OnInitialize()
     L = self.L
 
     self.testData = {
-        ["arena1"] = { name = "Swift", raceLoc = L["Tauren"], classLoc = L["Warrior"], class = "WARRIOR", health = 9635, healthMax = 14207, power = 76, powerMax = 100, powerType = 1, testSpec = L["Arms"], race = "Tauren" },
+        ["arena1"] = { name = "Swift", raceLoc = L["NightElf"], classLoc = L["Warrior"], class = "WARRIOR", health = 9635, healthMax = 14207, power = 76, powerMax = 100, powerType = 1, testSpec = L["Arms"], race = "NightElf" },
         ["arena2"] = { name = "Vilden", raceLoc = L["Undead"], classLoc = L["Mage"], class = "MAGE", health = 10969, healthMax = 11023, power = 7833, powerMax = 10460, powerType = 0, testSpec = L["Frost"], race = "Scourge" },
         ["arena3"] = { name = "Krymu", raceLoc = L["Human"], classLoc = L["Rogue"], class = "ROGUE", health = 1592, healthMax = 11740, power = 45, powerMax = 110, powerType = 3, testSpec = L["Subtlety"], race = "Human" },
         ["arena4"] = { name = "Talmon", raceLoc = L["Human"], classLoc = L["Warlock"], class = "WARLOCK", health = 10221, healthMax = 14960, power = 9855, powerMax = 9855, powerType = 0, testSpec = L["Demonology"], race = "Human" },
@@ -229,7 +229,13 @@ function Gladdy:OnInitialize()
     end
     self:DeleteUnknownOptions(self.db, self.defaults.profile)
     if Gladdy.db.hideBlizzard == "always" then
-        SetCVar("showArenaEnemyFrames", 0)
+        if IsAddOnLoaded("Blizzard_ArenaUI") then
+            ArenaEnemyFrame1:SetAlpha(0)
+            ArenaEnemyFrame2:SetAlpha(0)
+            ArenaEnemyFrame3:SetAlpha(0)
+            ArenaEnemyFrame4:SetAlpha(0)
+            ArenaEnemyFrame5:SetAlpha(0)
+        end
     end
 end
 
@@ -244,6 +250,7 @@ end
 function Gladdy:OnEnable()
     self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self:RegisterEvent("PLAYER_REGEN_ENABLED")
 
     if (IsAddOnLoaded("Clique")) then
         for i = 1, 5 do
@@ -291,22 +298,24 @@ end
 
 function Gladdy:Test()
     self.frame.testing = true
-    for i = 1, self.curBracket do
-        local unit = "arena" .. i
-        if (not self.buttons[unit]) then
-            self:CreateButton(i)
-        end
-        local button = self.buttons[unit]
+    if self.curBracket then
+        for i = 1, self.curBracket do
+            local unit = "arena" .. i
+            if (not self.buttons[unit]) then
+                self:CreateButton(i)
+            end
+            local button = self.buttons[unit]
 
-        for k, v in pairs(self.testData[unit]) do
-            button[k] = v
-        end
+            for k, v in pairs(self.testData[unit]) do
+                button[k] = v
+            end
 
-        for k, v in self:IterModules() do
-            self:Call(v, "Test", unit)
-        end
+            for k, v in self:IterModules() do
+                self:Call(v, "Test", unit)
+            end
 
-        button:SetAlpha(1)
+            button:SetAlpha(1)
+        end
     end
 end
 
@@ -341,6 +350,23 @@ function Gladdy:UPDATE_BATTLEFIELD_STATUS(_, index)
     end
 end
 
+function Gladdy:PLAYER_REGEN_ENABLED()
+    if self.showFrame then
+        self:UpdateFrame()
+        if self.startTest then
+            self:Test()
+            self.startTest = nil
+        end
+        self.frame:Show()
+        self.showFrame = nil
+    end
+    if self.hideFrame then
+        self:Reset()
+        self.frame:Hide()
+        self.hideFrame = nil
+    end
+end
+
 ---------------------------
 
 -- RESET FUNCTIONS (ARENA LEAVE)
@@ -365,7 +391,13 @@ function Gladdy:Reset()
         self:ResetUnit(unit)
     end
     if Gladdy.db.hideBlizzard == "never" or Gladdy.db.hideBlizzard == "arena" then
-        SetCVar("showArenaEnemyFrames", 1)
+        if IsAddOnLoaded("Blizzard_ArenaUI") then
+            ArenaEnemyFrame1:SetAlpha(1)
+            ArenaEnemyFrame2:SetAlpha(1)
+            ArenaEnemyFrame3:SetAlpha(1)
+            ArenaEnemyFrame4:SetAlpha(1)
+            ArenaEnemyFrame5:SetAlpha(1)
+        end
     end
 end
 
@@ -419,12 +451,23 @@ function Gladdy:JoinedArena()
     end
 
     self:SendMessage("JOINED_ARENA")
-    self:UpdateFrame()
-    self.frame:Show()
+    if InCombatLockdown() then
+        Gladdy:Print("Gladdy frames show as soon as you leave combat")
+        self.showFrame = true
+    else
+        self:UpdateFrame()
+        self.frame:Show()
+    end
     for i=1, self.curBracket do
         self.buttons["arena" .. i]:SetAlpha(1)
     end
     if Gladdy.db.hideBlizzard == "arena" or Gladdy.db.hideBlizzard == "always" then
-        SetCVar("showArenaEnemyFrames", 0)
+        if IsAddOnLoaded("Blizzard_ArenaUI") then
+            ArenaEnemyFrame1:SetAlpha(0)
+            ArenaEnemyFrame2:SetAlpha(0)
+            ArenaEnemyFrame3:SetAlpha(0)
+            ArenaEnemyFrame4:SetAlpha(0)
+            ArenaEnemyFrame5:SetAlpha(0)
+        end
     end
 end

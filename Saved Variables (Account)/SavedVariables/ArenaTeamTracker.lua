@@ -174,12 +174,14 @@ ATTDB = {
 		}, -- [41]
 	},
 	["showTrinket"] = true,
-	["classSelected"] = "WARRIOR",
+	["showTooltip"] = false,
 	["iconOffsetY"] = "2",
 	["attach"] = false,
 	["outside"] = false,
 	["hidden"] = true,
 	["dungeons"] = true,
+	["showIconBorders"] = true,
+	["arena"] = true,
 	["abilities"] = {
 		["GENERAL"] = {
 			["ALL"] = {
@@ -240,60 +242,6 @@ ATTDB = {
 				}, -- [1]
 			},
 		},
-		["PALADIN"] = {
-			["ALL"] = {
-				{
-					["ability"] = "Hammer of Justice",
-					["cooldown"] = 50,
-					["id"] = 10308,
-				}, -- [1]
-				{
-					["ability"] = "Blessing of Protection",
-					["cooldown"] = 180,
-					["id"] = 10278,
-				}, -- [2]
-				{
-					["ability"] = "Divine Shield",
-					["cooldown"] = 300,
-					["id"] = 1020,
-				}, -- [3]
-			},
-		},
-		["DRUID"] = {
-			["ALL"] = {
-				{
-					["ability"] = "Innervate",
-					["cooldown"] = 360,
-					["id"] = 29166,
-				}, -- [1]
-			},
-		},
-		["ROGUE"] = {
-			["ALL"] = {
-				{
-					["spellStatus"] = "ENABLED",
-					["ability"] = "Kidney Shot",
-					["order"] = 1,
-					["cooldown"] = 20,
-					["id"] = 408,
-				}, -- [1]
-				{
-					["ability"] = "Kick",
-					["cooldown"] = 10,
-					["id"] = 1766,
-				}, -- [2]
-				{
-					["ability"] = "Blind",
-					["cooldown"] = 90,
-					["id"] = 2094,
-				}, -- [3]
-				{
-					["ability"] = "Cloak of Shadows",
-					["cooldown"] = 60,
-					["id"] = 31224,
-				}, -- [4]
-			},
-		},
 		["HUNTER"] = {
 			["ALL"] = {
 				{
@@ -313,12 +261,64 @@ ATTDB = {
 				}, -- [3]
 			},
 		},
+		["DRUID"] = {
+			["ALL"] = {
+				{
+					["ability"] = "Innervate",
+					["cooldown"] = 360,
+					["id"] = 29166,
+				}, -- [1]
+			},
+		},
+		["ROGUE"] = {
+			["ALL"] = {
+				{
+					["spellStatus"] = "ENABLED",
+					["ability"] = "Kidney Shot",
+					["id"] = 408,
+					["cooldown"] = 20,
+					["order"] = 1,
+				}, -- [1]
+				{
+					["ability"] = "Kick",
+					["cooldown"] = 10,
+					["id"] = 1766,
+				}, -- [2]
+				{
+					["ability"] = "Blind",
+					["cooldown"] = 90,
+					["id"] = 2094,
+				}, -- [3]
+				{
+					["ability"] = "Cloak of Shadows",
+					["cooldown"] = 60,
+					["id"] = 31224,
+				}, -- [4]
+			},
+		},
+		["PALADIN"] = {
+			["ALL"] = {
+				{
+					["ability"] = "Hammer of Justice",
+					["cooldown"] = 50,
+					["id"] = 10308,
+				}, -- [1]
+				{
+					["ability"] = "Blessing of Protection",
+					["cooldown"] = 180,
+					["id"] = 10278,
+				}, -- [2]
+				{
+					["ability"] = "Divine Shield",
+					["cooldown"] = 300,
+					["id"] = 1020,
+				}, -- [3]
+			},
+		},
 	},
-	["horizontal"] = false,
-	["scenarios"] = false,
 	["inraid"] = false,
 	["iconOffsetX"] = "1",
-	["arena"] = true,
-	["showIconBorders"] = true,
-	["showTooltip"] = false,
+	["horizontal"] = false,
+	["scenarios"] = false,
+	["classSelected"] = "WARRIOR",
 }

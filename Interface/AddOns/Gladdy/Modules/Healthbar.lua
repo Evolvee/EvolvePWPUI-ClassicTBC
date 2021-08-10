@@ -132,7 +132,7 @@ function Healthbar:SetHealthText(healthBar, health, healthMax)
     local healthText
     local healthPercentage = floor(health * 100 / healthMax)
 
-    if health == 0 then
+    if health == 0 and UnitExists(healthBar.unit) and UnitIsDeadOrGhost(healthBar.unit) then
         self:UNIT_DEATH(healthBar.unit)
         return
     end
@@ -234,7 +234,7 @@ function Healthbar:JOINED_ARENA()
     if Gladdy.db.healthNameToArenaId and Gladdy.db.healthName then
         for i=1,Gladdy.curBracket do
             local healthBar = self.frames["arena" .. i]
-            healthBar.nameText:SetText("Arena" .. i)
+            healthBar.nameText:SetText(i)
         end
     end
 end
@@ -257,7 +257,9 @@ function Healthbar:ENEMY_SPOTTED(unit)
         healthBar.nameText:SetText(button.name)
     end
 
-    healthBar.hp:SetStatusBarColor(RAID_CLASS_COLORS[button.class].r, RAID_CLASS_COLORS[button.class].g, RAID_CLASS_COLORS[button.class].b, 1)
+    if button.class then
+        healthBar.hp:SetStatusBarColor(RAID_CLASS_COLORS[button.class].r, RAID_CLASS_COLORS[button.class].g, RAID_CLASS_COLORS[button.class].b, 1)
+    end
 end
 
 function Healthbar:UNIT_HEALTH(unit, health, healthMax)
@@ -499,7 +501,7 @@ function Healthbar:GetOptions()
                         healthNameToArenaId = option({
                             type = "toggle",
                             name = L["Show ArenaX"],
-                            desc = L["Show Arena1-5 as name instead"],
+                            desc = L["Show 1-5 as name instead"],
                             order = 3,
                             width = "full",
                             disabled = function() return not Gladdy.db.healthName end
