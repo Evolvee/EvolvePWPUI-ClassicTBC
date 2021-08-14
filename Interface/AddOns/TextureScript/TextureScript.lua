@@ -1048,15 +1048,39 @@ end
 TargetFrame:HookScript("OnEvent", function(self) Update(self) end)
 FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
--- remove the shitty new client "raid frame manager" left gray bar next to the party frames
+-- remove the shitty new client "raid frame manager" left gray bar next to the party frames (currently shows on/off on mouseover)
 
-CompactRaidFrameManager:UnregisterAllEvents()
-CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
-CompactRaidFrameManager:Hide()
 
-CompactRaidFrameContainer:UnregisterAllEvents()
-CompactRaidFrameContainer:HookScript("OnShow", function(s) s:Hide() end)
-CompactRaidFrameContainer:Hide()
+
+local manager = CompactRaidFrameManager
+manager:SetAlpha(0)
+-- look through a frame's parents
+local function FindParent(frame, target)
+	if frame == target then
+		return true
+	elseif frame then
+		return FindParent(frame:GetParent(), target)
+	end
+end
+
+manager:HookScript("OnEnter", function(self)
+	self:SetAlpha(1)
+end)
+
+manager:HookScript("OnLeave", function(self)
+	if manager.collapsed and not FindParent(GetMouseFocus(), self) then
+		self:SetAlpha(0)
+	end
+end)
+
+manager.toggleButton:HookScript("OnClick", function()
+	if manager.collapsed then
+		manager:SetAlpha(0)
+	end
+end)
+-- keep the container frame visible
+manager.container:SetIgnoreParentAlpha(true)
+manager.containerResizeFrame:SetIgnoreParentAlpha(true)
 
 
 
@@ -1070,6 +1094,6 @@ CompactRaidFrameContainer:Hide()
 
 --Login message informing all scripts of this file were properly executed
 
-ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.1 BETA Loaded successfully!",255,255,0)
+ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.4 Loaded successfully!",255,255,0)
 ChatFrame1:AddMessage("Check for updates at:",255,255,0)
 ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,255,0)
