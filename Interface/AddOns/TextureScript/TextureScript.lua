@@ -567,11 +567,17 @@ CharacterMicroButton:SetPushedTexture("Interface/BUTTONS/Custom Evo C panel");
 
 
 -- removing WorldMapMicroButton (shait classic addition to the game)
+-- E: as of Patch 2.5.2 Lizzard removed it and replaced it with LFG button instead
 
-WorldMapMicroButton:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
-MicroButtonPortrait:SetTexture(nil)
-WorldMapMicroButton:SetNormalTexture("Interface/BUTTONS/WorldMapMicroButton");
-WorldMapMicroButton:SetPushedTexture("Interface/BUTTONS/WorldMapMicroButton");
+--WorldMapMicroButton:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
+--MicroButtonPortrait:SetTexture(nil)
+
+-- ^^ commented out no longer usable (maybe usable later when Lizzard introduced some similar shit again)
+
+
+
+LFGMicroButton:SetNormalTexture("Interface/BUTTONS/WorldMapMicroButton");
+LFGMicroButton:SetPushedTexture("Interface/BUTTONS/WorldMapMicroButton");
 
 
 
@@ -1000,7 +1006,10 @@ texture:SetAlpha(0)
 texture = SocialsMicroButton:GetHighlightTexture()
 texture:SetAlpha(0)
 
-texture = WorldMapMicroButton:GetHighlightTexture()
+-- |Patch 2.5.2 no longer valid| texture = WorldMapMicroButton:GetHighlightTexture()
+-- |Patch 2.5.2 no longer vlaid| texture:SetAlpha(0)
+
+texture = LFGMicroButton:GetHighlightTexture()
 texture:SetAlpha(0)
 
 texture = MainMenuMicroButton:GetHighlightTexture()
