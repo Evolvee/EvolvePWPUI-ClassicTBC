@@ -180,6 +180,8 @@ ATTDB = {
 	["outside"] = false,
 	["hidden"] = true,
 	["dungeons"] = true,
+	["scenarios"] = false,
+	["horizontal"] = false,
 	["abilities"] = {
 		["GENERAL"] = {
 			["ALL"] = {
@@ -314,8 +316,6 @@ ATTDB = {
 			},
 		},
 	},
-	["horizontal"] = false,
-	["scenarios"] = false,
 	["inraid"] = false,
 	["iconOffsetX"] = "1",
 	["arena"] = true,

@@ -182,6 +182,10 @@ ATTDB = {
 	["dungeons"] = true,
 	["showIconBorders"] = true,
 	["arena"] = true,
+	["scenarios"] = false,
+	["inraid"] = false,
+	["iconOffsetX"] = "1",
+	["horizontal"] = false,
 	["abilities"] = {
 		["GENERAL"] = {
 			["ALL"] = {
@@ -316,9 +320,5 @@ ATTDB = {
 			},
 		},
 	},
-	["inraid"] = false,
-	["iconOffsetX"] = "1",
-	["horizontal"] = false,
-	["scenarios"] = false,
 	["classSelected"] = "WARRIOR",
 }
