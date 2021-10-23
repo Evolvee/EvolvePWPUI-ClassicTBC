@@ -1,9 +1,7 @@
-local ceil, floor, string_format, tonumber = ceil, floor, string.format, tonumber
+local ceil = ceil
 
 local CreateFrame = CreateFrame
 local GetTime = GetTime
-
-
 
 local Gladdy = LibStub("Gladdy")
 local L = Gladdy.L
@@ -21,6 +19,7 @@ local Racial = Gladdy:NewModule("Racial", nil, {
     racialBorderColor = { r = 0, g = 0, b = 0, a = 1 },
     racialDisableCircle = false,
     racialCooldownAlpha = 1,
+    racialCooldownNumberAlpha = 1,
 })
 
 local ANCHORS = { ["LEFT"] = "RIGHT", ["RIGHT"] = "LEFT", ["BOTTOM"] = "TOP", ["TOP"] = "BOTTOM"}
@@ -45,20 +44,20 @@ local function iconTimer(self,elapsed)
         local timeLeft = ceil(self.timeLeft)
 
         if timeLeft >= 60 then
-            self.cooldownFont:SetTextColor(1, 1, 0)
-            self.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), (self:GetWidth()/2 - 0.15* self:GetWidth()) * Gladdy.db.racialFontScale, "OUTLINE")
+            self.cooldownFont:SetTextColor(1, 1, 0, Gladdy.db.racialCooldownNumberAlpha)
+            self.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), (self:GetWidth()/2 - 0.15* self:GetWidth()) * Gladdy.db.racialFontScale, "OUTLINE")
         elseif timeLeft < 60 and timeLeft >= 30 then
-            self.cooldownFont:SetTextColor(1, 1, 0)
-            self.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
+            self.cooldownFont:SetTextColor(1, 1, 0, Gladdy.db.racialCooldownNumberAlpha)
+            self.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
         elseif timeLeft < 30 and timeLeft >= 11 then
-            self.cooldownFont:SetTextColor(1, 0.7, 0)
-            self.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
+            self.cooldownFont:SetTextColor(1, 0.7, 0, Gladdy.db.racialCooldownNumberAlpha)
+            self.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
         elseif timeLeft < 10 and timeLeft >= 5 then
-            self.cooldownFont:SetTextColor(1, 0.7, 0)
-            self.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
+            self.cooldownFont:SetTextColor(1, 0.7, 0, Gladdy.db.racialCooldownNumberAlpha)
+            self.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
         elseif timeLeft < 5 and timeLeft > 0 then
-            self.cooldownFont:SetTextColor(1, 0, 0)
-            self.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
+            self.cooldownFont:SetTextColor(1, 0, 0, Gladdy.db.racialCooldownNumberAlpha)
+            self.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), (self:GetWidth()/2 - 1) * Gladdy.db.racialFontScale, "OUTLINE")
         end
         Gladdy:FormatTimer(self.cooldownFont, self.timeLeft, self.timeLeft < 10, true)
     end
@@ -82,7 +81,7 @@ function Racial:CreateFrame(unit)
     racial.cooldownFrame:SetPoint("BOTTOMRIGHT", racial, "BOTTOMRIGHT")
 
     racial.cooldownFont = racial.cooldownFrame:CreateFontString(nil, "OVERLAY")
-    racial.cooldownFont:SetFont(Gladdy.LSM:Fetch("font", Gladdy.db.racialFont), 20, "OUTLINE")
+    racial.cooldownFont:SetFont(Gladdy:SMFetch("font", "racialFont"), 20, "OUTLINE")
     --trinket.cooldownFont:SetAllPoints(trinket.cooldown)
     racial.cooldownFont:SetJustifyH("CENTER")
     racial.cooldownFont:SetPoint("CENTER")
@@ -123,7 +122,6 @@ function Racial:UpdateFrame(unit)
     racial.texture.overlay:SetVertexColor(Gladdy.db.racialBorderColor.r, Gladdy.db.racialBorderColor.g, Gladdy.db.racialBorderColor.b, Gladdy.db.racialBorderColor.a)
 
     racial:ClearAllPoints()
-    local margin = (Gladdy.db.highlightInset and 0 or Gladdy.db.highlightBorderSize) + Gladdy.db.padding
     local parent = Gladdy.buttons[unit][Gladdy.db.racialAnchor]
     if (Gladdy.db.racialPos == "RIGHT") then
         racial:SetPoint(ANCHORS[Gladdy.db.racialPos], parent, Gladdy.db.racialPos, Gladdy.db.padding + Gladdy.db.racialXOffset, Gladdy.db.racialYOffset)
@@ -174,7 +172,7 @@ end
 
 function Racial:ENEMY_SPOTTED(unit)
     local racial = self.frames[unit]
-    if (not racial) then
+    if (not racial or not Gladdy.buttons[unit].race) then
         return
     end
     racial.texture:SetTexture(Gladdy:Racials()[Gladdy.buttons[unit].race].texture)
@@ -271,6 +269,15 @@ function Racial:GetOptions()
                             max = 1,
                             step = 0.1,
                             order = 8,
+                            width = "full",
+                        }),
+                        racialCooldownNumberAlpha = Gladdy:option({
+                            type = "range",
+                            name = L["Cooldown number alpha"],
+                            min = 0,
+                            max = 1,
+                            step = 0.1,
+                            order = 9,
                             width = "full",
                         }),
                     },

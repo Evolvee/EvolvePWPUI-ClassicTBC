@@ -2,8 +2,10 @@
 BigDebuffsDB = {
 	["profileKeys"] = {
 		["Evolvexd - Classic Arena - EU"] = "Default",
+		["Evolvebanned - Gehennas"] = "Default",
 		["Evolve - Classic Arena - EU"] = "Default",
 		["Magetest - Classic Arena - EU"] = "Default",
+		["Evolvebank - Gehennas"] = "Default",
 		["Evolvepwe - Classic Arena - EU"] = "Default",
 		["Evolvepwp - Earthshaker"] = "Default",
 	},
@@ -154,7 +156,7 @@ BigDebuffsDB = {
 					["nameplates"] = 0,
 					["unitFrames"] = 0,
 				},
-				[871] = {
+				[33961] = {
 					["nameplates"] = 0,
 					["unitFrames"] = 0,
 				},
@@ -170,11 +172,11 @@ BigDebuffsDB = {
 					["nameplates"] = 0,
 					["unitFrames"] = 0,
 				},
-				[33961] = {
+				[22812] = {
 					["nameplates"] = 0,
 					["unitFrames"] = 0,
 				},
-				[22812] = {
+				[871] = {
 					["nameplates"] = 0,
 					["unitFrames"] = 0,
 				},

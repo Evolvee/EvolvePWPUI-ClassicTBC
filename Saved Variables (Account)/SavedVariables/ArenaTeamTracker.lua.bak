@@ -180,8 +180,6 @@ ATTDB = {
 	["outside"] = false,
 	["hidden"] = true,
 	["dungeons"] = true,
-	["scenarios"] = false,
-	["horizontal"] = false,
 	["abilities"] = {
 		["GENERAL"] = {
 			["ALL"] = {
@@ -264,10 +262,17 @@ ATTDB = {
 		["DRUID"] = {
 			["ALL"] = {
 				{
+					["spellStatus"] = "ENABLED",
+					["ability"] = "Nature's Swiftness",
+					["order"] = 1,
+					["cooldown"] = 180,
+					["id"] = 17116,
+				}, -- [1]
+				{
 					["ability"] = "Innervate",
 					["cooldown"] = 360,
 					["id"] = 29166,
-				}, -- [1]
+				}, -- [2]
 			},
 		},
 		["ROGUE"] = {
@@ -316,6 +321,8 @@ ATTDB = {
 			},
 		},
 	},
+	["horizontal"] = false,
+	["scenarios"] = false,
 	["inraid"] = false,
 	["iconOffsetX"] = "1",
 	["arena"] = true,

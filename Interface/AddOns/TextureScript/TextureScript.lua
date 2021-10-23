@@ -379,6 +379,10 @@ PartyMemberFrame4Name:SetAlpha(0)
 ChatFrameMenuButton:Hide()
 ChatFrameChannelButton:Hide()
 
+function PlayerFrameMultiGroupFrame_OnLoad(self)
+    self:Hide()
+end
+
 
 --POSITION OF DEBUFFS ON PARTY MEMBER FRAMES 1-4
 
@@ -1057,6 +1061,140 @@ end
 TargetFrame:HookScript("OnEvent", function(self) Update(self) end)
 FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
+
+-- Highlight Tremor Totem (disable nameplates of everything else) + disable Snake Trap Cancer
+
+local HideNameplateNames = {
+	["Disease Cleansing Totem"] = true,
+	["Earth Elemental Totem"] = true,
+	["Earthbind Totem"] = true,
+	["Fire Elemental Totem"] = true,
+	["Fire Nova Totem"] = true,
+	["Fire Nova Totem II"] = true,
+	["Fire Nova Totem III"] = true,
+	["Fire Nova Totem IV"] = true,
+	["Fire Nova Totem V"] = true,
+	["Fire Nova Totem VI"] = true,
+	["Fire Nova Totem VII"] = true,
+	["Fire Resistance Totem"] = true,
+	["Fire Resistance Totem II"] = true,
+	["Fire Resistance Totem III"] = true,
+	["Fire Resistance Totem IV"] = true,
+	["Flametongue Totem"] = true,
+	["Flametongue Totem II"] = true,
+	["Flametongue Totem III"] = true,
+	["Flametongue Totem IV"] = true,
+	["Flametongue Totem V"] = true,
+	["Frost Resistance Totem"] = true,
+	["Frost Resistance Totem II"] = true,
+	["Frost Resistance Totem III"] = true,
+	["Frost Resistance Totem IV"] = true,
+	["Grace of Air Totem"] = true,
+	["Grace of Air Totem II"] = true,
+	["Grace of Air Totem III"] = true,
+	["Grounding Totem"] = true,
+	["Healing Stream Totem"] = true,
+	["Healing Stream Totem II"] = true,
+	["Healing Stream Totem III"] = true,
+	["Healing Stream Totem IV"] = true,
+	["Healing Stream Totem V"] = true,
+	["Healing Stream Totem VI"] = true,
+	["Magma Totem"] = true,
+	["Magma Totem II"] = true,
+	["Magma Totem III"] = true,
+	["Magma Totem IV"] = true,
+	["Magma Totem V"] = true,
+	["Mana Spring Totem"] = true,
+	["Mana Spring Totem II"] = true,
+	["Mana Spring Totem III"] = true,
+	["Mana Spring Totem IV"] = true,
+	["Mana Spring Totem V"] = true,
+	["Mana Tide Totem"] = true,
+	["Mana Tide Totem II"] = true,
+	["Mana Tide Totem III"] = true,
+	["Mana Tide Totem IV"] = true,
+	["Nature Resistance Totem"] = true,
+	["Nature Resistance Totem II"] = true,
+	["Nature Resistance Totem III"] = true,
+	["Nature Resistance Totem IV"] = true,
+	["Poison Cleansing Totem"] = true,
+	["Searing Totem"] = true,
+	["Searing Totem II"] = true,
+	["Searing Totem III"] = true,
+	["Searing Totem IV"] = true,
+	["Searing Totem V"] = true,
+	["Searing Totem VI"] = true,
+	["Searing Totem VII"] = true,
+	["Sentry Totem"] = true,
+	["Stoneclaw Totem"] = true,
+	["Stoneclaw Totem II"] = true,
+	["Stoneclaw Totem III"] = true,
+	["Stoneclaw Totem IV"] = true,
+	["Stoneclaw Totem V"] = true,
+	["Stoneclaw Totem VI"] = true,
+	["Stoneclaw Totem VII"] = true,
+	["Stoneskin Totem"] = true,
+	["Strength of Earth Totem"] = true,
+	["Strength of Earth Totem II"] = true,
+	["Strength of Earth Totem III"] = true,
+	["Strength of Earth Totem IV"] = true,
+	["Strength of Earth Totem V"] = true,
+	["Strength of Earth Totem VI"] = true,
+	["Totem of Wrath"] = true,
+	["Totem of Wrath II"] = true,
+	["Totem of Wrath III"] = true,
+	["Tranquil Air Totem"] = true,
+	["Windfury Totem"] = true,
+	["Windfury Totem II"] = true,
+	["Windfury Totem III"] = true,
+	["Windfury Totem IV"] = true,
+	["Windfury Totem V"] = true,
+	["Windwall Totem"] = true,
+	["Windwall Totem II"] = true,
+	["Windwall Totem III"] = true,
+	["Windwall Totem IV"] = true,
+	["Wrath of Air Totem"] = true,
+	["Stoneskin Totem II"] = true,
+	["Stoneskin Totem III"] = true,
+	["Stoneskin Totem IV"] = true,
+	["Stoneskin Totem V"] = true,
+	["Stoneskin Totem VI"] = true,
+	["Stoneskin Totem VII"] = true,
+	["Stoneskin Totem VIII"] = true,
+
+	["Viper"] = true,
+	["Venomous Snake"] = true,
+}
+
+local plateEventFrame = CreateFrame("frame")
+plateEventFrame:SetScript("OnEvent", function(self, event, unit)
+	local nameplate = C_NamePlate.GetNamePlateForUnit(unit)
+	if not nameplate then
+		return
+	end
+
+	if event == "NAME_PLATE_UNIT_ADDED" then
+		local name = UnitName(unit)
+		if name and HideNameplateNames[name] and nameplate.UnitFrame then
+			nameplate.wasHidden = true
+			nameplate.UnitFrame:Hide()
+		end
+		return
+	end
+
+	if event == "NAME_PLATE_UNIT_REMOVED" then
+		if nameplate.wasHidden and nameplate.UnitFrame then
+			nameplate.wasHidden = nil
+			nameplate.UnitFrame:Show()
+		end
+		return
+	end
+end)
+plateEventFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED")
+plateEventFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED")
+
+
+
 -- remove the shitty new client "raid frame manager" left gray bar next to the party frames (currently shows on/off on mouseover)
 
 
@@ -1103,6 +1241,16 @@ manager.containerResizeFrame:SetIgnoreParentAlpha(true)
 
 --Login message informing all scripts of this file were properly executed
 
-ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.4 Loaded successfully!",255,255,0)
+ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.5 Loaded successfully!",255,255,0)
 ChatFrame1:AddMessage("Check for updates at:",255,255,0)
 ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,255,0)
+
+
+
+
+
+-- FUCK BLIZZARD, garbage company:
+--https://eu.forums.blizzard.com/en/wow/t/lf-a-blizzard-response-all-talents-that-reduce-spell-resists-in-pvp-no-longer-works-since-phase-2/320188
+-- https://us.forums.blizzard.com/en/wow/t/all-talents-that-reduce-spell-resists-in-pvp-no-longer-works-since-phase-2/1114096/5
+
+COMBAT_TEXT_RESIST = "FUCK BLIZZARD"
