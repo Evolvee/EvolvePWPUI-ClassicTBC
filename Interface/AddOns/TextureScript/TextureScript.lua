@@ -145,7 +145,7 @@ function TextStatusBar_UpdateTextString(textStatusBar)
                textString:SetText(value.." / "..valueMax);
             end
          end
-         
+
          if ( (textStatusBar.cvar and GetCVar(textStatusBar.cvar) == "1" and textStatusBar.textLockable) or textStatusBar.forceShow ) then
             textString:Show();
          elseif ( textStatusBar.lockShow > 0 ) then
@@ -448,12 +448,12 @@ local barstosmooth = {
    PartyMemberFrame3ManaBar = "party3",
    PartyMemberFrame4HealthBar = "party4",
    PartyMemberFrame4ManaBar = "party4",
-    } 
+    }
     MODUI_RAIDBARS_TO_SMOOTH = {}
- 
+
     local smoothframe = CreateFrame'Frame'
     smoothing = {}
- 
+
     local isPlate = function(frame)
         local overlayRegion = frame:GetRegions()
         if not overlayRegion or overlayRegion:GetObjectType() ~= 'Texture'
@@ -462,7 +462,7 @@ local barstosmooth = {
         end
         return true
     end
- 
+
     local min, max = math.min, math.max
     local function AnimationTick()
         local limit = 30/GetFramerate()
@@ -478,7 +478,7 @@ local barstosmooth = {
             end
         end
     end
- 
+
 local function SmoothSetValue(self, value)
    self.finalValue = value
    if self.unitType then
@@ -500,23 +500,23 @@ local function SmoothSetValue(self, value)
      end
      self._max = max
    end
-end 
+end
     for bar, value in pairs(smoothing) do
         if bar.SetValue_ then bar.SetValue = SmoothSetValue end
     end
- 
+
     local function SmoothBar(bar)
         if not bar.SetValue_ then
             bar.SetValue_ = bar.SetValue bar.SetValue = SmoothSetValue
         end
     end
- 
+
     local function ResetBar(bar)
         if bar.SetValue_ then
             bar.SetValue = bar.SetValue_ bar.SetValue_ = nil
         end
     end
- 
+
     smoothframe:SetScript('OnUpdate', function()
 
 -- skip applying the script in PVE instances because NuBlizzard is retarded as usual
@@ -533,7 +533,7 @@ if instanceType ~= "party" and instanceType ~= "raid" then
         end
         AnimationTick()
     end)
- 
+
      for k,v in pairs (barstosmooth) do
       if _G[k] then
          SmoothBar(_G[k])
@@ -664,20 +664,27 @@ for i=1,4 do
 	pFrame.manabar.fontString = manaText
 end
 
+-- Do not show party1-5 rage/energy values in their PartyMemberFrames in order to provide more simplicity and cleaner UI
+
 hooksecurefunc("PartyMemberFrame_UpdateMemberHealth", function(self)
-	local healthbar = self.healthbar
-	local manabar = self.manabar
+    local healthbar = self.healthbar
+    local manabar = self.manabar
 
-	if healthbar.finalValue ~= healthbar.lastTextValue then
-		healthbar.lastTextValue = healthbar.finalValue
-		healthbar.fontString:SetText(healthbar.finalValue)
-	end
+    if healthbar.finalValue ~= healthbar.lastTextValue then
+        healthbar.lastTextValue = healthbar.finalValue
+        healthbar.fontString:SetText(healthbar.finalValue)
+    end
 
-	if manabar.finalValue ~= manabar.lastTextValue then
-		manabar.lastTextValue = manabar.finalValue
-		manabar.fontString:SetText(manabar.finalValue)
-	end
+    local _, max = manabar:GetMinMaxValues()
+    if max <= 120 and max >= 100 then
+        manabar.fontString:SetText("")
+        manabar.lastTextValue = -1
+    elseif manabar.finalValue ~= manabar.lastTextValue then
+        manabar.lastTextValue = manabar.finalValue
+        manabar.fontString:SetText(manabar.lastTextValue)
+    end
 end)
+
 
 --Blacklist of frames where tooltips mouseovering is hidden(editable)
 
@@ -805,7 +812,7 @@ local FRAMEZ = CreateFrame("FRAME")
 
 FRAMEZ:RegisterEvent("ADDON_LOADED")
 
-FRAMEZ:SetScript("OnUpdate", 
+FRAMEZ:SetScript("OnUpdate",
 
 	function()
 		if not InCombatLockdown() then
@@ -815,9 +822,9 @@ FRAMEZ:SetScript("OnUpdate",
 			FocusFrameToT:SetPoint("RIGHT", "FocusFrame", "BOTTOMRIGHT", -20, 5);
 		end
 
-	end 
-	
-) 
+	end
+
+)
 
 
 
@@ -832,7 +839,7 @@ MinimapCluster:SetPoint("BOTTOMLEFT", 1186.333618164063, 595.0001831054688);
 
 
 
--- Increaseed nameplate DISTANCE and SIZE
+-- Increased nameplate DISTANCE and SIZE
 
 local function OnEvent(self, event)
 	SetCVar("nameplateMaxDistance", "41")
@@ -1062,7 +1069,28 @@ TargetFrame:HookScript("OnEvent", function(self) Update(self) end)
 FocusFrame:HookScript("OnEvent", function(self) Update(self) end)
 
 
--- Highlight Tremor Totem (disable nameplates of everything else) + disable Snake Trap Cancer
+
+
+
+-- stop Gladdy from showing nameplates (necessary for the next script) !! IMPORTANT - You MUST use the "Lock Frame" function in General tab of Gladdy alongside with this!!
+
+-- IT IS ALSO ABSOLUTELY NECESSARY FOR YOU TO DISABLE THE "Totem Plates" PLUGIN IN GLADDY UI
+
+
+local Gladdy = LibStub and LibStub("Gladdy")
+if Gladdy then
+    local TotemPlates = Gladdy.modules["Totem Plates"]
+    if TotemPlates then
+        local TotemPlates_ToggleAddon = TotemPlates.ToggleAddon
+        function TotemPlates:ToggleAddon(nameplate, show)
+            if not show then
+                TotemPlates_ToggleAddon(self, nameplate, show)
+            end
+        end
+    end
+end
+
+-- Highlight Tremor Totem (disable nameplates of everything else) + disable Snake Trap Cancer + prevent displaying already dead Tremor Totem (retarded Classic-like behavior)
 
 local HideNameplateNames = {
 	["Disease Cleansing Totem"] = true,
@@ -1166,33 +1194,155 @@ local HideNameplateNames = {
 	["Venomous Snake"] = true,
 }
 
+local tremorTotems = {} -- {[totem GUID] = {[shaman]=GUID, nameplate=<nameplate frame>}, ...}
+local nameplatesToRecheck = {}
+
 local plateEventFrame = CreateFrame("frame")
+plateEventFrame:Hide()
+
+local function HandleNewNameplate(nameplate, unit)
+    local name = UnitName(unit)
+    if name == "Unknown" then
+        nameplate.recheckGuid = UnitGUID(unit)
+        nameplatesToRecheck[UnitGUID(unit)] = nameplate
+        plateEventFrame:Show()
+        return
+    end
+    if name and HideNameplateNames[name] then
+        if nameplate.UnitFrame then
+            nameplate.wasHidden = true
+            nameplate.UnitFrame:Hide()
+        end
+    else
+        if name == "Tremor Totem" then
+            local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
+            local guid = UnitGUID(unit)
+            if guid then
+                local totem = tremorTotems[guid]
+                if totem then
+                    totem.nameplate = nameplate
+                else
+                    tremorTotems[guid] = {["shaman"] = "Unknown", ["nameplate"] = nameplate}
+                end
+                nameplate.tremorTotemGuid = guid
+                texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-TREMOR.blp")
+            end
+        end
+    end
+end
+
+local plateUpdateElapsed = 0
+plateEventFrame:SetScript("OnUpdate", function(self, elapsed)
+    
+    for guid,nameplate in pairs(nameplatesToRecheck) do
+        nameplatesToRecheck[guid] = nil
+        if nameplate.recheckGuid == guid and nameplate.UnitFrame then
+            HandleNewNameplate(nameplate, nameplate.UnitFrame.displayedUnit)
+        end
+    end
+
+    if next(nameplatesToRecheck) == nil then
+        plateEventFrame:Hide()
+    end
+end)
+
 plateEventFrame:SetScript("OnEvent", function(self, event, unit)
+    ----------------------------------------
+    -- watch for recasts or damage to totems
+    ----------------------------------------
+    if event == "COMBAT_LOG_EVENT_UNFILTERED" then
+	    local _, action, _, sourceGuid, sourceName, sourceFlags, _, destGuid, destName, destFlags, _,
+            ex1, ex2, ex3, ex4, ex5, ex6, ex7, ex8, ex9, ex10, ex11, ex12, ex13, ex14 = CombatLogGetCurrentEventInfo()
+
+        if destName == "Tremor Totem" then
+            if action == "SPELL_SUMMON" then
+                if destName == "Tremor Totem" then
+                    for totem,info in pairs(tremorTotems) do
+                        if info.shaman == sourceGuid then
+                            local nameplate = info.nameplate
+                            if nameplate and nameplate.tremorTotemGuid == totem and nameplate.UnitFrame then
+                                nameplate.wasHidden = true
+                                nameplate.UnitFrame:Hide()
+                            end
+                        end
+                    end
+                    tremorTotems[destGuid] = {["shaman"] = sourceGuid}
+                end
+            else
+                local damage
+                if action == "SWING_DAMAGE" or action == "RANGE_DAMAGE" then damage = ex1
+                elseif action == "SPELL_DAMAGE" then                         damage = ex4
+                else                                                         damage = 0
+                end
+
+                if damage >= 5 then
+                    local totem = tremorTotems[destGuid]
+                    if totem then
+                        local nameplate = totem.nameplate
+                        if nameplate and nameplate.tremorTotemGuid == destGuid and nameplate.UnitFrame then
+                            nameplate.wasHidden = true
+                            nameplate.UnitFrame:Hide()
+                        end
+                    end
+                end
+            end
+        end
+        return
+    end
+
+    ----------------------------------------
+    -- clear the totems on loading screens
+    ----------------------------------------
+    if event == "PLAYER_ENTERING_WORLD" then
+        tremorTotems = {}
+        return
+    end
+
+    ----------------------------------------
+    -- nameplates being added or removed
+    ----------------------------------------
 	local nameplate = C_NamePlate.GetNamePlateForUnit(unit)
 	if not nameplate then
 		return
 	end
 
 	if event == "NAME_PLATE_UNIT_ADDED" then
-		local name = UnitName(unit)
-		if name and HideNameplateNames[name] and nameplate.UnitFrame then
-			nameplate.wasHidden = true
-			nameplate.UnitFrame:Hide()
-		end
+        local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
+        texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border.blp")
+
+        -- hide level and expand healthbar
+        nameplate.UnitFrame.LevelFrame:Hide()
+        local hb = nameplate.UnitFrame.healthBar
+        hb:ClearAllPoints()
+        hb:SetPoint("BOTTOMLEFT", hb:GetParent(), "BOTTOMLEFT", 4, 4)
+        hb:SetPoint("BOTTOMRIGHT", hb:GetParent(), "BOTTOMRIGHT", -4, 4)
+
+        -- make the selection highlight a tiny bit smaller
+        local sh = nameplate.UnitFrame.selectionHighlight
+        sh:ClearAllPoints()
+        sh:SetPoint("TOPLEFT", sh:GetParent(), "TOPLEFT", 1, -1)
+        sh:SetPoint("BOTTOMRIGHT", sh:GetParent(), "BOTTOMRIGHT", -1, 1)
+
+        HandleNewNameplate(nameplate, unit)
 		return
 	end
 
 	if event == "NAME_PLATE_UNIT_REMOVED" then
-		if nameplate.wasHidden and nameplate.UnitFrame then
-			nameplate.wasHidden = nil
-			nameplate.UnitFrame:Show()
+        nameplate.tremorTotemGuid = nil
+        tremorTotems[UnitGUID(unit) or ""] = nil
+        if nameplate.UnitFrame then
+		    if nameplate.wasHidden then
+                nameplate.wasHidden = nil
+                nameplate.UnitFrame:Show()
+            end
 		end
-		return
+        return
 	end
 end)
+plateEventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 plateEventFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED")
 plateEventFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED")
-
+plateEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 
 -- remove the shitty new client "raid frame manager" left gray bar next to the party frames (currently shows on/off on mouseover)
@@ -1241,7 +1391,7 @@ manager.containerResizeFrame:SetIgnoreParentAlpha(true)
 
 --Login message informing all scripts of this file were properly executed
 
-ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.5 Loaded successfully!",255,255,0)
+ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.6 Loaded successfully!",255,255,0)
 ChatFrame1:AddMessage("Check for updates at:",255,255,0)
 ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicTBC",255,255,0)
 
