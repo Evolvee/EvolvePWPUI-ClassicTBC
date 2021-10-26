@@ -1317,6 +1317,11 @@ plateEventFrame:SetScript("OnEvent", function(self, event, unit)
         hb:SetPoint("BOTTOMLEFT", hb:GetParent(), "BOTTOMLEFT", 4, 4)
         hb:SetPoint("BOTTOMRIGHT", hb:GetParent(), "BOTTOMRIGHT", -4, 4)
 
+        -- move the castbar to be directly under the healthbar again
+        local cb = nameplate.UnitFrame.CastBar
+        cb:ClearAllPoints()
+        cb:SetPoint("TOP", hb, "BOTTOM", 9, -4)
+
         -- make the selection highlight a tiny bit smaller
         local sh = nameplate.UnitFrame.selectionHighlight
         sh:ClearAllPoints()
@@ -1324,8 +1329,8 @@ plateEventFrame:SetScript("OnEvent", function(self, event, unit)
         sh:SetPoint("BOTTOMRIGHT", sh:GetParent(), "BOTTOMRIGHT", -1, 1)
 
         HandleNewNameplate(nameplate, unit)
-		return
-	end
+        return
+    end
 
 	if event == "NAME_PLATE_UNIT_REMOVED" then
         nameplate.tremorTotemGuid = nil
@@ -1378,6 +1383,15 @@ end)
 -- keep the container frame visible
 manager.container:SetIgnoreParentAlpha(true)
 manager.containerResizeFrame:SetIgnoreParentAlpha(true)
+
+
+-- Prevent displaying the server name in player´s nameplate
+
+hooksecurefunc("CompactUnitFrame_UpdateName",function(frame)
+    if frame.unit:find("^nameplate") and UnitIsPlayer(frame.unit) then
+        frame.name:SetText((UnitName(frame.unit)):gsub("%-.*", "")) -- not sure if UnitName() adds the realm so :gsub() might not be needed
+    end
+end)
 
 
 
