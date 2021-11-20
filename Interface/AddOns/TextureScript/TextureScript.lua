@@ -39,6 +39,27 @@ SetCVar("ShowClassColorInFriendlyNameplate", 1)
 SetCVar("ShowClassColorInNameplate", 1)
 
 
+-- adding class colours to guild tab
+
+local FauxScrollFrame_GetOffset = FauxScrollFrame_GetOffset
+local GetGuildRosterInfo = GetGuildRosterInfo
+local GuildListScrollFrame = GuildListScrollFrame
+local GUILDMEMBERS_TO_DISPLAY = GUILDMEMBERS_TO_DISPLAY
+local RAID_CLASS_COLORS = RAID_CLASS_COLORS
+
+hooksecurefunc("GuildStatus_Update", function()
+    local _, guildIndex, class, color
+    local guildOffset = FauxScrollFrame_GetOffset(GuildListScrollFrame)
+    for i=1,GUILDMEMBERS_TO_DISPLAY do
+        guildIndex = guildOffset + i
+        _, _, _, _, _, _, _, _, _, _, class = GetGuildRosterInfo(guildIndex)
+        if not class then
+            break
+        end
+        color = RAID_CLASS_COLORS[class]
+        _G["GuildFrameButton"..i.."Class"]:SetTextColor(color.r, color.g, color.b)
+    end
+end)
 
 -- ToT texture closing the alpha gap (previously handled by ClassPortraits itself)
 
@@ -1392,6 +1413,41 @@ hooksecurefunc("CompactUnitFrame_UpdateName",function(frame)
         frame.name:SetText((UnitName(frame.unit)):gsub("%-.*", "")) -- not sure if UnitName() adds the realm so :gsub() might not be needed
     end
 end)
+
+
+-- Skip certain gossip_menu windows for vendors and especially arena/bg NPCs --> can be bypassed by pressing ctrl/alt/shift
+
+local gossipSkipType = {
+    ["banker"]=1,
+    ["taxi"]=1,
+    ["trainer"]=1,
+    ["vendor"]=1,
+    ["battlemaster"]=1,
+}
+
+local skipEventFrame = CreateFrame("frame")
+skipEventFrame:SetScript("OnEvent", function(self)
+    if not IsShiftKeyDown() and GetNumGossipOptions() == 1 and GetNumGossipActiveQuests() == 0 and GetNumGossipAvailableQuests() == 0 then
+        local gossipText, gossipType = GetGossipOptions()
+        if gossipSkipType[gossipType] then
+            SelectGossipOption(1)
+            if gossipType == "taxi" then
+                Dismount()
+            end
+            return
+        end
+    end
+    if GetNumGossipOptions() > 0 and not IsShiftKeyDown() and not IsAltKeyDown() and not IsControlKeyDown() then
+        local options = {GetGossipOptions()}
+        for i=1,GetNumGossipOptions() do
+            if options[(i-1)*2+2] == "vendor" then
+                SelectGossipOption(i)
+                return
+            end
+        end
+    end
+end)
+skipEventFrame:RegisterEvent("GOSSIP_SHOW")
 
 
 
