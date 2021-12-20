@@ -39,6 +39,27 @@ SetCVar("ShowClassColorInFriendlyNameplate", 1)
 SetCVar("ShowClassColorInNameplate", 1)
 
 
+-- adding class colours to guild tab
+
+local FauxScrollFrame_GetOffset = FauxScrollFrame_GetOffset
+local GetGuildRosterInfo = GetGuildRosterInfo
+local GuildListScrollFrame = GuildListScrollFrame
+local GUILDMEMBERS_TO_DISPLAY = GUILDMEMBERS_TO_DISPLAY
+local RAID_CLASS_COLORS = RAID_CLASS_COLORS
+
+hooksecurefunc("GuildStatus_Update", function()
+    local _, guildIndex, class, color
+    local guildOffset = FauxScrollFrame_GetOffset(GuildListScrollFrame)
+    for i=1,GUILDMEMBERS_TO_DISPLAY do
+        guildIndex = guildOffset + i
+        _, _, _, _, _, _, _, _, _, _, class = GetGuildRosterInfo(guildIndex)
+        if not class then
+            break
+        end
+        color = RAID_CLASS_COLORS[class]
+        _G["GuildFrameButton"..i.."Class"]:SetTextColor(color.r, color.g, color.b)
+    end
+end)
 
 -- ToT texture closing the alpha gap (previously handled by ClassPortraits itself)
 
@@ -1318,6 +1339,11 @@ plateEventFrame:SetScript("OnEvent", function(self, event, unit)
         hb:SetPoint("BOTTOMLEFT", hb:GetParent(), "BOTTOMLEFT", 4, 4)
         hb:SetPoint("BOTTOMRIGHT", hb:GetParent(), "BOTTOMRIGHT", -4, 4)
 
+        -- move the castbar to be directly under the healthbar again
+        local cb = nameplate.UnitFrame.CastBar
+        cb:ClearAllPoints()
+        cb:SetPoint("TOP", hb, "BOTTOM", 9, -4)
+
         -- make the selection highlight a tiny bit smaller
         local sh = nameplate.UnitFrame.selectionHighlight
         sh:ClearAllPoints()
@@ -1325,8 +1351,8 @@ plateEventFrame:SetScript("OnEvent", function(self, event, unit)
         sh:SetPoint("BOTTOMRIGHT", sh:GetParent(), "BOTTOMRIGHT", -1, 1)
 
         HandleNewNameplate(nameplate, unit)
-		return
-	end
+        return
+    end
 
 	if event == "NAME_PLATE_UNIT_REMOVED" then
         nameplate.tremorTotemGuid = nil
@@ -1380,6 +1406,94 @@ end)
 manager.container:SetIgnoreParentAlpha(true)
 manager.containerResizeFrame:SetIgnoreParentAlpha(true)
 
+
+-- Prevent displaying the server name in player´s nameplate
+
+hooksecurefunc("CompactUnitFrame_UpdateName",function(frame)
+    if frame.unit:find("^nameplate") and UnitIsPlayer(frame.unit) then
+        frame.name:SetText((UnitName(frame.unit)):gsub("%-.*", "")) -- not sure if UnitName() adds the realm so :gsub() might not be needed
+    end
+end)
+
+
+-- Skip certain gossip_menu windows for vendors and especially arena/bg NPCs --> can be bypassed by pressing ctrl/alt/shift
+
+local gossipSkipType = {
+    ["banker"]=1,
+    ["taxi"]=1,
+    ["trainer"]=1,
+    ["vendor"]=1,
+    ["battlemaster"]=1,
+}
+
+local skipEventFrame = CreateFrame("frame")
+skipEventFrame:SetScript("OnEvent", function(self)
+    if not IsShiftKeyDown() and GetNumGossipOptions() == 1 and GetNumGossipActiveQuests() == 0 and GetNumGossipAvailableQuests() == 0 then
+        local gossipText, gossipType = GetGossipOptions()
+        if gossipSkipType[gossipType] then
+            SelectGossipOption(1)
+            if gossipType == "taxi" then
+                Dismount()
+            end
+            return
+        end
+    end
+    if GetNumGossipOptions() > 0 and not IsShiftKeyDown() and not IsAltKeyDown() and not IsControlKeyDown() then
+        local options = {GetGossipOptions()}
+        for i=1,GetNumGossipOptions() do
+            if options[(i-1)*2+2] == "vendor" then
+                SelectGossipOption(i)
+                return
+            end
+        end
+    end
+end)
+skipEventFrame:RegisterEvent("GOSSIP_SHOW")
+
+
+-- Add MMR at the bottom of Arena Scoreboard
+
+local teamRatingFrame = CreateFrame("frame", "TeamRatingTextFrame", WorldStateScoreFrame)
+teamRatingFrame:SetPoint("BOTTOM", WorldStateScoreFrameLeaveButton, "TOP", 0, 12)
+teamRatingFrame:SetSize(300, 80)
+teamRatingFrame:Hide()
+
+teamRatingFrame.names = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+teamRatingFrame.ratings = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+teamRatingFrame.names:SetFont("Fonts/FRIZQT__.TTF", 24)
+teamRatingFrame.ratings:SetFont("Fonts/FRIZQT__.TTF", 24)
+teamRatingFrame.names:SetJustifyH("LEFT")
+teamRatingFrame.ratings:SetJustifyH("LEFT")
+teamRatingFrame.ratings:SetPoint("TOPLEFT", teamRatingFrame.names, "TOPRIGHT", 0, 0)
+
+teamRatingFrame:SetScript("OnShow", function(self)
+	local nWidth = teamRatingFrame.names:GetWidth()
+	local rWidth = teamRatingFrame.ratings:GetWidth()
+	local x = (nWidth / 2) - ((nWidth + rWidth - 10) / 2) -- no idea why "- 10" helps centering it!
+	teamRatingFrame.names:ClearAllPoints()
+	teamRatingFrame.names:SetPoint("BOTTOM", teamRatingFrame, "BOTTOM", x, 0)
+end)
+
+teamRatingFrame:SetScript("OnEvent", function(self, event)
+	if event == "UPDATE_BATTLEFIELD_SCORE" then
+		local _, isRatedArena = IsActiveBattlefieldArena()
+		if isRatedArena then
+			local name1, oldRating1, newRating1, mmr1 = GetBattlefieldTeamInfo(0)
+			local name2, oldRating2, newRating2, mmr2 = GetBattlefieldTeamInfo(1)
+			if newRating1 and newRating1 > 0 then
+				local nameText = string.format('|cffbd67ff"%s" |r\n|cffffd500"%s" |r', name1, name2)
+				local ratingText = string.format('|cffbd67ffMMR: %d|r\n|cffffd500MMR: %d|r', mmr1, mmr2)
+				teamRatingFrame.names:SetText(nameText)
+				teamRatingFrame.ratings:SetText(ratingText)
+				teamRatingFrame:Show()
+				return
+			end
+		end
+	end
+	teamRatingFrame:Hide()
+end)
+teamRatingFrame:RegisterEvent("UPDATE_BATTLEFIELD_SCORE")
+teamRatingFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
