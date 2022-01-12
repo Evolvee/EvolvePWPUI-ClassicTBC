@@ -94,7 +94,10 @@ MiniMapMailFrame:ClearAllPoints() MiniMapMailFrame:SetPoint('BOTTOMRIGHT', 0, -1
 MinimapZoneTextButton:Hide()
 
 
+-- Attempt to Hide the modern shitclient multigroup icon at PlayerFrame
 
+local mg = PlayerPlayTime:GetParent().MultiGroupFrame
+hooksecurefunc(mg, "Show", mg.Hide)
 
 
 
@@ -1375,7 +1378,6 @@ plateEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 -- remove the shitty new client "raid frame manager" left gray bar next to the party frames (currently shows on/off on mouseover)
 
 
-
 local manager = CompactRaidFrameManager
 manager:SetAlpha(0)
 -- look through a frame's parents
@@ -1405,6 +1407,7 @@ end)
 -- keep the container frame visible
 manager.container:SetIgnoreParentAlpha(true)
 manager.containerResizeFrame:SetIgnoreParentAlpha(true)
+
 
 
 -- Prevent displaying the server name in player´s nameplate
