@@ -88,10 +88,16 @@ for i=1,4 do
    _G["PartyMemberFrame"..i.."PVPIcon"]:SetAlpha(0)
 end
 GameTimeTexture:Hide()
-MiniMapWorldMapButton:Hide()
 MinimapToggleButton:Hide()
 MiniMapMailFrame:ClearAllPoints() MiniMapMailFrame:SetPoint('BOTTOMRIGHT', 0, -10)
 MinimapZoneTextButton:Hide()
+
+-- MiniMapWorldMapButton:Hide() needs to be done like this since patch 2.5.3 for some reason
+
+MiniMapWorldMapButton:Hide()
+MiniMapWorldMapButton.Show = function() return end
+
+
 
 
 -- Attempt to Hide the modern shitclient multigroup icon at PlayerFrame
@@ -252,7 +258,6 @@ PlayerFrameHealthBarText:SetPoint("CENTER", 50, 12)
 PlayerFrameHealthBarText:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
 
 -- retarded classic client forces you to reapply this on every reload (god bless 2.4.3)
-
 
 hooksecurefunc("PlayerFrame_UpdateLevelTextAnchor", function(level)
   if ( level >= 100 ) then
