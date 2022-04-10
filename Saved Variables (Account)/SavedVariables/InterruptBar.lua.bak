@@ -1,7 +1,5 @@
 
 InterruptBarDB = {
-	["columns"] = 7,
-	["hidden"] = true,
 	["abilities"] = {
 		["melee"] = {
 		},
@@ -26,7 +24,7 @@ InterruptBarDB = {
 			}, -- [3]
 			{
 				["name"] = "Psychic Scream",
-				["duration"] = 30,
+				["duration"] = 27,
 				["spellid"] = 10890,
 				["icon"] = 136184,
 			}, -- [4]
@@ -78,16 +76,24 @@ InterruptBarDB = {
 				["spellid"] = 16979,
 				["icon"] = 132183,
 			}, -- [12]
+			{
+				["name"] = "Freezing Trap",
+				["duration"] = 30,
+				["spellid"] = 1499,
+				["icon"] = 135834,
+			}, -- [13]
 		},
 	},
-	["lock"] = true,
-	["scale"] = 1.38,
-	["preset"] = "caster",
-	["alpha"] = 1,
+	["hidden"] = true,
+	["columns"] = 7,
 	["Position"] = {
 		["yOfs"] = -123.0998458862305,
 		["xOfs"] = -89.43658447265625,
 		["point"] = "TOPRIGHT",
 		["relativePoint"] = "TOPRIGHT",
 	},
+	["scale"] = 1.38,
+	["preset"] = "caster",
+	["alpha"] = 1,
+	["lock"] = true,
 }

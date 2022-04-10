@@ -8,7 +8,7 @@ local defaultAbilities = {
    { spellid = 1766, duration = 10},    -- Kick
    { spellid = 6552, duration = 10},    -- Pummel
    { spellid = 2139, duration = 24},    -- Counterspell
-   { spellid = 10890, duration = 30},   -- Psychic Scream
+   { spellid = 10890, duration = 27},   -- Psychic Scream
    { spellid = 408, duration = 20},     -- Kidney Shot   
    { spellid = 31224, duration = 60},   -- Cloak of Shadows
    { spellid = 2094, duration = 90},    -- Blind

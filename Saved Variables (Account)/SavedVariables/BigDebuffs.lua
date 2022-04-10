@@ -23,7 +23,7 @@ BigDebuffsDB = {
 				["interrupts"] = false,
 				["enemyAnchor"] = {
 					["anchor"] = "RIGHT",
-					["x"] = 20,
+					["x"] = 4,
 					["size"] = 35,
 				},
 				["buffs_other"] = false,

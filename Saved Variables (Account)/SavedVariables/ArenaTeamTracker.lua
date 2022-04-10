@@ -182,6 +182,10 @@ ATTDB = {
 	["dungeons"] = true,
 	["showIconBorders"] = true,
 	["arena"] = true,
+	["scenarios"] = false,
+	["inraid"] = false,
+	["iconOffsetX"] = "1",
+	["horizontal"] = false,
 	["abilities"] = {
 		["GENERAL"] = {
 			["ALL"] = {
@@ -190,15 +194,22 @@ ATTDB = {
 		["WARRIOR"] = {
 			["ALL"] = {
 				{
-					["ability"] = "Spell Reflection",
-					["cooldown"] = 10,
-					["id"] = 43443,
-				}, -- [1]
-				{
 					["ability"] = "Intervene",
 					["cooldown"] = 30,
 					["id"] = 3411,
+				}, -- [1]
+				{
+					["spellStatus"] = "ENABLED",
+					["ability"] = "Intercept",
+					["id"] = 25275,
+					["cooldown"] = 15,
+					["order"] = 1,
 				}, -- [2]
+				{
+					["ability"] = "Spell Reflection",
+					["cooldown"] = 10,
+					["id"] = 43443,
+				}, -- [3]
 			},
 		},
 		["SHAMAN"] = {
@@ -323,9 +334,5 @@ ATTDB = {
 			},
 		},
 	},
-	["inraid"] = false,
-	["iconOffsetX"] = "1",
-	["horizontal"] = false,
-	["scenarios"] = false,
 	["classSelected"] = "WARRIOR",
 }

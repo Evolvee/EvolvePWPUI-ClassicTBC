@@ -1,17 +1,7 @@
 
 InterruptBarDB = {
-	["Position"] = {
-		["yOfs"] = -123.0998458862305,
-		["xOfs"] = -89.43658447265625,
-		["point"] = "TOPRIGHT",
-		["relativePoint"] = "TOPRIGHT",
-	},
-	["alpha"] = 1,
-	["columns"] = 7,
 	["lock"] = true,
-	["scale"] = 1.38,
-	["preset"] = "caster",
-	["hidden"] = true,
+	["alpha"] = 1,
 	["abilities"] = {
 		["melee"] = {
 		},
@@ -36,7 +26,7 @@ InterruptBarDB = {
 			}, -- [3]
 			{
 				["icon"] = 136184,
-				["duration"] = 30,
+				["duration"] = 27,
 				["name"] = "Psychic Scream",
 				["spellid"] = 10890,
 			}, -- [4]
@@ -88,6 +78,22 @@ InterruptBarDB = {
 				["name"] = "Feral Charge",
 				["spellid"] = 16979,
 			}, -- [12]
+			{
+				["icon"] = 135834,
+				["duration"] = 30,
+				["name"] = "Freezing Trap",
+				["spellid"] = 1499,
+			}, -- [13]
 		},
 	},
+	["Position"] = {
+		["yOfs"] = -123.0998458862305,
+		["xOfs"] = -89.43658447265625,
+		["point"] = "TOPRIGHT",
+		["relativePoint"] = "TOPRIGHT",
+	},
+	["scale"] = 1.38,
+	["preset"] = "caster",
+	["hidden"] = true,
+	["columns"] = 7,
 }

@@ -18,8 +18,8 @@ AutoShopSave = {
 	["autoBuyList"] = {
 	},
 	["autoSellBlue"] = false,
-	["autoSellWhite"] = false,
-	["showBuyActivity"] = true,
 	["autoSellGreen"] = false,
+	["showBuyActivity"] = true,
+	["autoSellWhite"] = false,
 	["autoSellBlueUnusable"] = false,
 }

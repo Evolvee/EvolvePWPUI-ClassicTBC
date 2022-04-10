@@ -206,15 +206,6 @@ local spellIds = {
 	[16922]  = "CC",				-- Starfire Stun (Improved Starfire talent)
 	[19675]  = "Root",				-- Feral Charge Effect (Feral Charge talent)
 	[45334]  = "Root",				-- Feral Charge Effect (Feral Charge talent)
-	[17116]  = "Other",				-- Nature's Swiftness (talent)
-	[16689]  = "Other",				-- Nature's Grasp (rank 1)
-	[16810]  = "Other",				-- Nature's Grasp (rank 2)
-	[16811]  = "Other",				-- Nature's Grasp (rank 3)
-	[16812]  = "Other",				-- Nature's Grasp (rank 4)
-	[16813]  = "Other",				-- Nature's Grasp (rank 5)
-	[17329]  = "Other",				-- Nature's Grasp (rank 6)
-	[22812]  = "Other",				-- Barkskin
-	[29166]  = "Other",				-- Innervate
 
 	----------------
 	-- Hunter
@@ -247,17 +238,8 @@ local spellIds = {
 	[13809]  = "Snare",				-- Frost Trap
 	[13810]  = "Snare",				-- Frost Trap Aura
 	[35101]  = "Snare",				-- Concussive Barrage (talent)
-	[19263]  = "Other",				-- Deterrence (dodge and Parry chance increased by 25%)
 	[19574]  = "ImmuneSpell",		-- Bestial Wrath (talent) (not immuune to spells, only immune to some CC's)
 	[34471]  = "ImmuneSpell",		-- The Beast Within (talent) (not immuune to spells, only immune to some CC's)
-	[5384]   = "Other",				-- Feign Death
-	--[19434]  = "Other",				--Aimed Shot (rank 1) (healing effects reduced by 50%)
-	--[20900]  = "Other",				--Aimed Shot (rank 2) (healing effects reduced by 50%)
-	--[20901]  = "Other",				--Aimed Shot (rank 3) (healing effects reduced by 50%)
-	--[20902]  = "Other",				--Aimed Shot (rank 4) (healing effects reduced by 50%)
-	--[20903]  = "Other",				--Aimed Shot (rank 5) (healing effects reduced by 50%)
-	--[20904]  = "Other",				--Aimed Shot (rank 6) (healing effects reduced by 50%)
-	--[27065]  = "Other",				--Aimed Shot (rank 7) (healing effects reduced by 50%)
 	
 		----------------
 		-- Hunter Pets
@@ -324,8 +306,6 @@ local spellIds = {
 	[27133]  = "Snare",				-- Blast Wave (talent) (rank 6)
 	[33933]  = "Snare",				-- Blast Wave (talent) (rank 7)
 	[31589]  = "Snare",				-- Slow (talent)
-	[12043]  = "Other",				-- Presence of Mind (talent)
-	[12042]  = "Other",				-- Arcane Power (talent)
 
 		----------------
 		-- Mage Water Elemental
@@ -352,23 +332,15 @@ local spellIds = {
 	[5627]   = "CC",				-- Turn Undead (rank 2)
 	[10326]  = "CC",				-- Turn Evil (rank 1)
 	[20066]  = "CC",				-- Repentance (talent)
-	[1044]   = "Other",				-- Blessing of Freedom
-	[20216]  = "Other",				-- Divine Favor
 	[31935]  = "Snare",				-- Avenger's Shield (rank 1) (talent)
 	[32699]  = "Snare",				-- Avenger's Shield (rank 2) (talent)
 	[32700]  = "Snare",				-- Avenger's Shield (rank 3) (talent)
-	[31884]  = "Other",				-- Avenging Wrath
-	[31842]  = "Other",				-- Divine Illumination
-	--[31854]  = "Other",				-- Ardent Defender (damage taken reduced by 30%)
 
 	----------------
 	-- Priest
 	----------------
 	[15487]  = "Silence",			-- Silence (talent)
-	[10060]  = "Other",				-- Power Infusion (talent)
 	[15269]  = "CC",				-- Blackout (talent)
-	[2651]   = "Other",				-- Elune's Grace (chance to be hit by melee and ranged attacks reduced by 20%)
-	[6346]   = "Other",				-- Fear Ward
 	[605]    = "CC",				-- Mind Control (rank 1)
 	[10911]  = "CC",				-- Mind Control (rank 2)
 	[10912]  = "CC",				-- Mind Control (rank 3)
@@ -387,7 +359,6 @@ local spellIds = {
 	[44047]  = "Root",				-- Chastise (rank 6)
 	[27827]  = "Immune",			-- Spirit of Redemption
 	[33206]  = "Immune",			-- Pain Suppression (not immune, damage taken reduced by 40%)
-	[14751]  = "Other",				-- Inner Focus
 	[15407]  = "Snare",				-- Mind Flay (talent) (rank 1)
 	[17311]  = "Snare",				-- Mind Flay (talent) (rank 2)
 	[17312]  = "Snare",				-- Mind Flay (talent) (rank 3)
@@ -424,9 +395,6 @@ local spellIds = {
 	[26669]  = "ImmunePhysical",	-- Evasion (dodge chance increased 50%)
 	[31224]  = "ImmuneSpell",		-- Cloak of Shadows
 	[45182]  = "Immune",			-- Cheating Death (talent) (damage taken reduced by 90%)
-	[14177]  = "Other",				-- Cold Blood (talent)
-	[13877]  = "Other",				-- Blade Flurry
-	[13750]  = "Other",				-- Adrenaline Rush
 
 	----------------
 	-- Shaman
@@ -439,9 +407,6 @@ local spellIds = {
 	[10473]  = "Snare",				-- Frost Shock (rank 4)
 	[25464]  = "Snare",				-- Frost Shock (rank 5)
 	[3600]   = "Snare",				-- Earthbind (Earthbind Totem)
-	[16166]  = "Other",				-- Elemental Mastery (talent)
-	[16188]  = "Other",				-- Nature's Swiftness (talent)
-	[30823]  = "Other",				-- Shamanistic Rage (talent) (damage taken reduced by 30%)
 
 	----------------
 	-- Warlock
@@ -506,18 +471,6 @@ local spellIds = {
 	[25212]  = "Snare",				-- Hamstring (rank 4)
 	[12705]  = "Snare",				-- Long Daze (Improved Pummel)
 	[12323]  = "Snare",				-- Piercing Howl (talent)
-	[2565]   = "Other",				-- Shield Block
-	[12328]  = "Other",				-- Death Wish (talent)
-	[12976]  = "Other",				-- Last Stand (talent)
-	[20230]  = "Other",				-- Retaliation
-	[18499]  = "Other",				-- Berserker Rage
-	[1719]   = "Other",				-- Recklessness
-	--[12294]  = "Other",				-- Mortal Strike (rank 1) (healing effects reduced by 50%)
-	--[21551]  = "Other",				-- Mortal Strike (rank 2) (healing effects reduced by 50%)
-	--[21552]  = "Other",				-- Mortal Strike (rank 3) (healing effects reduced by 50%)
-	--[21553]  = "Other",				-- Mortal Strike (rank 4) (healing effects reduced by 50%)
-	--[25248]  = "Other",				-- Mortal Strike (rank 5) (healing effects reduced by 50%)
-	--[30330]  = "Other",				-- Mortal Strike (rank 6) (healing effects reduced by 50%)
 
 	----------------
 	-- Other
@@ -529,12 +482,14 @@ local spellIds = {
 	[17308]  = "CC",				-- Stun (Hurd Smasher fist weapon)
 	[23454]  = "CC",				-- Stun (The Unstoppable Force weapon)
 	[9179]   = "CC",				-- Stun (Tigule and Foror's Strawberry Ice Cream item)
-	[7744]   = "Other",				-- Will of the Forsaken	(undead racial)
-	[26635]  = "Other",				-- Berserking (troll racial)
 	[20594]  = "Other",				-- Stoneform (dwarf racial)
+	[770]    = "Other",				-- Fearie Fire r1 (custom party FF indicator)
+	[778]    = "Other",				-- Fearie Fire r2 (custom party FF indicator)
+	[9749]   = "Other",				-- Fearie Fire r3 (custom party FF indicator)
+	[9907]   = "Other",				-- Fearie Fire r4 (custom party FF indicator)
+	[26993]  = "Other",				-- Fearie Fire r5 (custom party FF indicator)
 	[13327]  = "CC",				-- Reckless Charge (Goblin Rocket Helmet)
 	[20549]  = "CC",				-- War Stomp (tauren racial)
-	--[23230]  = "Other",				-- Blood Fury (orc racial)
 	[25046]  = "Silence",			-- Arcane Torrent (blood elf racial)
 	[28730]  = "Silence",			-- Arcane Torrent (blood elf racial)
 	[13181]  = "CC",				-- Gnomish Mind Control Cap (Gnomish Mind Control Cap helmet)
@@ -578,14 +533,12 @@ local spellIds = {
 	[21188]  = "CC",				-- Stun Bomb Attack
 	[9159]   = "CC",				-- Sleep (Green Whelp Armor chest)
 	[19821]  = "Silence",			-- Arcane Bomb
-	--[9774]   = "Other",				-- Immune Root (spider belt)
 	[18278]  = "Silence",			-- Silence (Silent Fang sword)
 	[8346]   = "Root",				-- Mobility Malfunction (trinket)
 	[13099]  = "Root",				-- Net-o-Matic (trinket)
 	[13119]  = "Root",				-- Net-o-Matic (trinket)
 	[13138]  = "Root",				-- Net-o-Matic (trinket)
 	[16566]  = "Root",				-- Net-o-Matic (trinket)
-	[23723]  = "Other",				-- Mind Quickening (Mind Quickening Gem trinket)
 	[15752]  = "Disarm",			-- Linken's Boomerang (trinket)
 	[15753]  = "CC",				-- Linken's Boomerang (trinket)
 	[15535]  = "CC",				-- Enveloping Winds (Six Demon Bag trinket)
@@ -612,7 +565,6 @@ local spellIds = {
 	[18503]  = "CC",				-- Hex
 	[20683]  = "CC",				-- Highlord's Justice
 	[17286]  = "CC",				-- Crusader's Hammer
-	[17820]  = "Other",				-- Veil of Shadow
 	[12096]  = "CC",				-- Fear
 	[27641]  = "CC",				-- Fear
 	[29168]  = "CC",				-- Fear
@@ -817,7 +769,6 @@ local spellIds = {
 	[27868]  = "Root",				-- Freeze (Magister's and Sorcerer's Regalia sets)
 	[17333]  = "Root",				-- Spider's Kiss (Spider's Kiss set)
 	[26108]  = "CC",				-- Glimpse of Madness (Dark Edge of Insanity axe)
-	[18803]  = "Other",				-- Focus (Hand of Edward the Odd mace)
 	[1604]   = "Snare",				-- Dazed
 	[9462]   = "Snare",				-- Mirefin Fungus
 	[19137]  = "Snare",				-- Slow
@@ -836,15 +787,6 @@ local spellIds = {
 	[16600]  = "CC",				-- Might of Shahram (Blackblade of Shahram sword)
 	[16597]  = "Snare",				-- Curse of Shahram (Blackblade of Shahram sword)
 	[13496]  = "Snare",				-- Dazed (Mug O' Hurt mace)
-	[3238]   = "Other",				-- Nimble Reflexes
-	[5990]   = "Other",				-- Nimble Reflexes
-	[6615]   = "Other",				-- Free Action Potion
-	[11359]  = "Other",				-- Restorative Potion
-	[24364]  = "Other",				-- Living Free Action Potion
-	[23505]  = "Other",				-- Berserking
-	[24378]  = "Other",				-- Berserking
-	[19135]  = "Other",				-- Avatar
-	[12738]  = "Other",				-- Amplify Damage
 	[26198]  = "CC",				-- Whisperings of C'Thun
 	[26195]  = "CC",				-- Whisperings of C'Thun
 	[26197]  = "CC",				-- Whisperings of C'Thun
@@ -885,14 +827,6 @@ local spellIds = {
 	[35236]  = "CC",				-- Heat Wave (chance to hit reduced by 35%)
 	[29117]  = "CC",				-- Feather Burst (chance to hit reduced by 50%)
 	[34088]  = "CC",				-- Feeble Weapons (chance to hit reduced by 75%)
-	[45078]  = "Other",				-- Berserk (damage increased by 500%)
-	[32378]  = "Other",				-- Filet (healing effects reduced by 50%)
-	[32736]  = "Other",				-- Mortal Strike (healing effects reduced by 50%)
-	[39595]  = "Other",				-- Mortal Cleave (healing effects reduced by 50%)
-	[40220]  = "Other",				-- Mortal Strike (healing effects reduced by 50%)
-	[43441]  = "Other",				-- Mortal Strike (healing effects reduced by 50%)
-	[44268]  = "Other",				-- Mortal Strike (healing effects reduced by 50%)
-	[34625]  = "Other",				-- Demolish (healing effects reduced by 75%)
 	[36513]  = "ImmunePhysical",	-- Intangible Presence (not immune, physical damage taken reduced by 40%)
 	[31731]  = "Immune",			-- Shield Wall (not immune, damage taken reduced by 60%)
 	[41104]  = "Immune",			-- Shield Wall (not immune, damage taken reduced by 60%)

@@ -1,0 +1,4 @@
+
+AddonUsageSettings = {
+	["sortOrder"] = 3,
+}

@@ -1512,6 +1512,11 @@ teamRatingFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 -- Ingame commmand for classcoloured names in chat: /console SET chatClassColorOverride "0"
 -- trying to remove the cancer wheather that is not part of the video settings as it used to be in 2.4.3: /console set weatherdensity 0 // /console WeatherDensity 0
 
+-- Disable the ability to scroll chat with mouse wheel (fucks binds with the mouse-wheel-up/down): /console chatMouseScroll 0
+
+
+
+
 --Login message informing all scripts of this file were properly executed
 
 ChatFrame1:AddMessage("EvolvePWPUI-ClassicTBC v0.6 Loaded successfully!",255,255,0)
