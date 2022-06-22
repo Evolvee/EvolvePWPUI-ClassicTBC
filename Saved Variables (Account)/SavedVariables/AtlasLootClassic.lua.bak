@@ -1,0 +1,36 @@
+
+AtlasLootClassicDB = {
+	["profileKeys"] = {
+		["Evolvepwp - Firemaw"] = "Evolvepwp - Firemaw",
+		["Evolvebanned - Gehennas"] = "Evolvebanned - Gehennas",
+		["Evolvebank - Gehennas"] = "Evolvebank - Gehennas",
+	},
+	["global"] = {
+		["__addonrevision"] = 2040001,
+	},
+	["profiles"] = {
+		["Evolvepwp - Firemaw"] = {
+		},
+		["Evolvebanned - Gehennas"] = {
+			["GUI"] = {
+				["selectedGameVersion"] = 1,
+				["selected"] = {
+					"AtlasLootClassic_Collections", -- [1]
+					"Mounts", -- [2]
+					7, -- [3]
+					3, -- [4]
+					0, -- [5]
+				},
+				["point"] = {
+					nil, -- [1]
+					nil, -- [2]
+					"CENTER", -- [3]
+					57.5999641418457, -- [4]
+					23.46672439575195, -- [5]
+				},
+			},
+		},
+		["Evolvebank - Gehennas"] = {
+		},
+	},
+}

@@ -140,7 +140,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -154,7 +154,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -431,7 +431,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["raid12"] = {
+		["raid38"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -675,15 +675,14 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 36,
 		},
-		["raid30"] = {
+		["arena3"] = {
 			["enabled"] = false,
-			["x"] = 0,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
-					["friendly"] = true,
+					["enemy"] = true,
 				},
 				["debuff"] = {
-					["friendly"] = {
+					["enemy"] = {
 						["Other"] = true,
 						["CC"] = true,
 						["Snare"] = true,
@@ -697,8 +696,8 @@ LoseControlDB = {
 					},
 				},
 				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
+					["enemy"] = {
+						["Other"] = true,
 						["CC"] = true,
 						["Snare"] = true,
 						["Disarm"] = true,
@@ -711,12 +710,11 @@ LoseControlDB = {
 					},
 				},
 			},
-			["anchor"] = "BlizzardRaidFrames",
-			["y"] = 1,
+			["anchor"] = "Blizzard",
 			["alpha"] = 1,
-			["size"] = 20,
+			["size"] = 28,
 		},
-		["raid38"] = {
+		["raid12"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -878,7 +876,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["party2"] = {
+		["party1"] = {
 			["enabled"] = true,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
@@ -893,7 +891,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -907,7 +905,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -917,7 +915,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 36,
 		},
-		["raid25"] = {
+		["raid11"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -1258,7 +1256,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -1272,7 +1270,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -1282,7 +1280,270 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 36,
 		},
-		["raid17"] = {
+		["raid40"] = {
+			["enabled"] = false,
+			["x"] = 0,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["friendly"] = true,
+				},
+				["debuff"] = {
+					["friendly"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["friendly"] = {
+						["Other"] = false,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "BlizzardRaidFrames",
+			["y"] = 1,
+			["alpha"] = 1,
+			["size"] = 20,
+		},
+		["party4"] = {
+			["enabled"] = true,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["friendly"] = false,
+				},
+				["debuff"] = {
+					["friendly"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = false,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["friendly"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = false,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "Blizzard",
+			["alpha"] = 1,
+			["size"] = 36,
+		},
+		["raid36"] = {
+			["enabled"] = false,
+			["x"] = 0,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["friendly"] = true,
+				},
+				["debuff"] = {
+					["friendly"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["friendly"] = {
+						["Other"] = false,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "BlizzardRaidFrames",
+			["y"] = 1,
+			["alpha"] = 1,
+			["size"] = 20,
+		},
+		["arena5"] = {
+			["enabled"] = false,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["enemy"] = true,
+				},
+				["debuff"] = {
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "Blizzard",
+			["alpha"] = 1,
+			["size"] = 28,
+		},
+		["arena2"] = {
+			["enabled"] = false,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["enemy"] = true,
+				},
+				["debuff"] = {
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "Blizzard",
+			["alpha"] = 1,
+			["size"] = 28,
+		},
+		["focus"] = {
+			["enabled"] = true,
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["friendly"] = false,
+					["enemy"] = false,
+				},
+				["debuff"] = {
+					["friendly"] = {
+						["Other"] = false,
+						["CC"] = true,
+						["Snare"] = false,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = false,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["friendly"] = {
+						["Other"] = false,
+						["CC"] = true,
+						["Snare"] = false,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+					["enemy"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = false,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = false,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["anchor"] = "Blizzard",
+			["alpha"] = 1,
+			["size"] = 64,
+		},
+		["raid31"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -1364,47 +1625,6 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["raid36"] = {
-			["enabled"] = false,
-			["x"] = 0,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = true,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "BlizzardRaidFrames",
-			["y"] = 1,
-			["alpha"] = 1,
-			["size"] = 20,
-		},
 		["raid2"] = {
 			["enabled"] = false,
 			["x"] = 0,
@@ -1445,111 +1665,6 @@ LoseControlDB = {
 			["y"] = 1,
 			["alpha"] = 1,
 			["size"] = 20,
-		},
-		["raid40"] = {
-			["enabled"] = false,
-			["x"] = 0,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = true,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "BlizzardRaidFrames",
-			["y"] = 1,
-			["alpha"] = 1,
-			["size"] = 20,
-		},
-		["focus"] = {
-			["enabled"] = true,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = false,
-					["enemy"] = false,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = false,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-					["enemy"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = false,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = false,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-					["enemy"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = false,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "Blizzard",
-			["alpha"] = 1,
-			["size"] = 64,
 		},
 		["raid33"] = {
 			["enabled"] = false,
@@ -1592,126 +1707,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["party4"] = {
-			["enabled"] = true,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = false,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = false,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "Blizzard",
-			["alpha"] = 1,
-			["size"] = 36,
-		},
-		["arena5"] = {
-			["enabled"] = false,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["enemy"] = true,
-				},
-				["debuff"] = {
-					["enemy"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["enemy"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "Blizzard",
-			["alpha"] = 1,
-			["size"] = 28,
-		},
-		["raid31"] = {
-			["enabled"] = false,
-			["x"] = 0,
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = true,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["anchor"] = "BlizzardRaidFrames",
-			["y"] = 1,
-			["alpha"] = 1,
-			["size"] = 20,
-		},
-		["raid20"] = {
+		["raid16"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -1834,7 +1830,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["raid16"] = {
+		["raid20"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -2044,14 +2040,15 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 36,
 		},
-		["arena2"] = {
+		["raid17"] = {
 			["enabled"] = false,
+			["x"] = 0,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
-					["enemy"] = true,
+					["friendly"] = true,
 				},
 				["debuff"] = {
-					["enemy"] = {
+					["friendly"] = {
 						["Other"] = true,
 						["CC"] = true,
 						["Snare"] = true,
@@ -2065,8 +2062,8 @@ LoseControlDB = {
 					},
 				},
 				["buff"] = {
-					["enemy"] = {
-						["Other"] = true,
+					["friendly"] = {
+						["Other"] = false,
 						["CC"] = true,
 						["Snare"] = true,
 						["Disarm"] = true,
@@ -2079,9 +2076,10 @@ LoseControlDB = {
 					},
 				},
 			},
-			["anchor"] = "Blizzard",
+			["anchor"] = "BlizzardRaidFrames",
+			["y"] = 1,
 			["alpha"] = 1,
-			["size"] = 28,
+			["size"] = 20,
 		},
 		["raid8"] = {
 			["enabled"] = false,
@@ -2247,7 +2245,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["raid11"] = {
+		["raid25"] = {
 			["enabled"] = false,
 			["x"] = 0,
 			["categoriesEnabled"] = {
@@ -2288,7 +2286,7 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 20,
 		},
-		["party1"] = {
+		["party2"] = {
 			["enabled"] = true,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
@@ -2303,7 +2301,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -2317,7 +2315,7 @@ LoseControlDB = {
 						["ImmuneSpell"] = true,
 						["PvE"] = false,
 						["Immune"] = true,
-						["ImmunePhysical"] = true,
+						["ImmunePhysical"] = false,
 						["Silence"] = true,
 						["Root"] = true,
 					},
@@ -2327,14 +2325,15 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 36,
 		},
-		["arena3"] = {
+		["raid30"] = {
 			["enabled"] = false,
+			["x"] = 0,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
-					["enemy"] = true,
+					["friendly"] = true,
 				},
 				["debuff"] = {
-					["enemy"] = {
+					["friendly"] = {
 						["Other"] = true,
 						["CC"] = true,
 						["Snare"] = true,
@@ -2348,8 +2347,8 @@ LoseControlDB = {
 					},
 				},
 				["buff"] = {
-					["enemy"] = {
-						["Other"] = true,
+					["friendly"] = {
+						["Other"] = false,
 						["CC"] = true,
 						["Snare"] = true,
 						["Disarm"] = true,
@@ -2362,9 +2361,10 @@ LoseControlDB = {
 					},
 				},
 			},
-			["anchor"] = "Blizzard",
+			["anchor"] = "BlizzardRaidFrames",
+			["y"] = 1,
 			["alpha"] = 1,
-			["size"] = 28,
+			["size"] = 20,
 		},
 		["raid15"] = {
 			["enabled"] = false,
@@ -2422,26 +2422,26 @@ LoseControlDB = {
 		["Immune"] = 80,
 		["ImmunePhysical"] = 65,
 		["Silence"] = 100,
-		["Root"] = 80,
 		["Disarm"] = 30,
+		["Root"] = 80,
 	},
 	["disablePlayerFocusTarget"] = false,
-	["disablePlayerTargetPlayerTargetTarget"] = true,
+	["noLossOfControlCooldown"] = false,
 	["disablePlayerFocusPlayerFocusTarget"] = true,
-	["showNPCInterruptsFocus"] = true,
-	["duplicatePlayerPortrait"] = false,
-	["showNPCInterruptsTarget"] = true,
-	["customSpellIds"] = {
-	},
+	["noBlizzardCooldownCount"] = true,
+	["disableFocusFocusTarget"] = false,
 	["disablePartyInRaid"] = true,
 	["noCooldownCount"] = false,
-	["showNPCInterruptsFocusTarget"] = true,
-	["showNPCInterruptsTargetTarget"] = true,
-	["disablePartyInBG"] = true,
-	["version"] = 2,
-	["disableArenaInBG"] = true,
 	["disableFocusDeadFocusTarget"] = true,
-	["disableFocusFocusTarget"] = false,
-	["noBlizzardCooldownCount"] = true,
-	["noLossOfControlCooldown"] = false,
+	["disableArenaInBG"] = true,
+	["showNPCInterruptsFocusTarget"] = true,
+	["disablePartyInBG"] = true,
+	["showNPCInterruptsTargetTarget"] = true,
+	["version"] = 2,
+	["customSpellIds"] = {
+	},
+	["showNPCInterruptsTarget"] = true,
+	["duplicatePlayerPortrait"] = false,
+	["showNPCInterruptsFocus"] = true,
+	["disablePlayerTargetPlayerTargetTarget"] = true,
 }

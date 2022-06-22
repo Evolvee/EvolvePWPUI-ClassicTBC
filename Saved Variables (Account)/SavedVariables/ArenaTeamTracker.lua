@@ -215,10 +215,17 @@ ATTDB = {
 		["SHAMAN"] = {
 			["ALL"] = {
 				{
+					["spellStatus"] = "ENABLED",
+					["ability"] = "Nature's Swiftness",
+					["id"] = 16188,
+					["cooldown"] = 180,
+					["order"] = 1,
+				}, -- [1]
+				{
 					["ability"] = "Mana Tide Totem",
 					["cooldown"] = 300,
 					["id"] = 16190,
-				}, -- [1]
+				}, -- [2]
 			},
 		},
 		["MAGE"] = {

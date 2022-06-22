@@ -9,6 +9,7 @@ OmniCCDB = {
 		["Evolvepwp - Earthshaker"] = "Default",
 		["Evolvepwe - Classic Arena - EU"] = "Default",
 		["Evolve - Launch Test"] = "Default",
+		["Evolvepwp - Firemaw"] = "Default",
 		["Evolvebank - Gehennas"] = "Default",
 		["Evolvelulw - Earthshaker"] = "Default",
 		["Evolvebanned - Gehennas"] = "Default",
@@ -52,17 +53,17 @@ OmniCCDB = {
 			["themes"] = {
 				["Default"] = {
 					["textStyles"] = {
+						["seconds"] = {
+							["r"] = 0.9803921568627451,
+							["g"] = 0.984313725490196,
+							["b"] = 1,
+						},
 						["minutes"] = {
 						},
 						["soon"] = {
 							["b"] = 0,
 							["scale"] = 1,
 							["g"] = 0.8784313725490196,
-						},
-						["seconds"] = {
-							["b"] = 1,
-							["g"] = 0.984313725490196,
-							["r"] = 0.9803921568627451,
 						},
 					},
 					["timerOffset"] = 1400,
@@ -74,11 +75,11 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
+						["seconds"] = {
+						},
 						["minutes"] = {
 						},
 						["soon"] = {
-						},
-						["seconds"] = {
 						},
 					},
 				},

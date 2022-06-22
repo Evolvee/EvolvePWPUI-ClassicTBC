@@ -5,6 +5,7 @@ BigDebuffsDB = {
 		["Evolvebanned - Gehennas"] = "Default",
 		["Evolve - Classic Arena - EU"] = "Default",
 		["Magetest - Classic Arena - EU"] = "Default",
+		["Evolvepwp - Firemaw"] = "Default",
 		["Evolvebank - Gehennas"] = "Default",
 		["Evolvepwe - Classic Arena - EU"] = "Default",
 		["Evolvepwp - Earthshaker"] = "Default",

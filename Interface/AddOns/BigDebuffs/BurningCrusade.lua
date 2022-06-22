@@ -63,9 +63,19 @@ addon.Spells = {
     [7744] = { type = BUFF_OFFENSIVE }, -- Will of the Forsaken
     [20549] = { type = CROWD_CONTROL }, -- War Stomp
     [20594] = { type = BUFF_OFFENSIVE }, -- Stoneform
+    [20572] = { type = BUFF_OFFENSIVE }, -- Blood Fury
 
     -- Other
 
+    [13099] = { type = ROOT }, -- Net-o-Matic
+    [13119] = { type = ROOT }, -- Net-o-Matic
+    [13120] = { type = ROOT }, -- Net-o-Matic
+    [13138] = { type = ROOT }, -- Net-o-Matic
+    [13139] = { type = ROOT }, -- Net-o-Matic
+    [16566] = { type = ROOT }, -- Net-o-Matic
+    [23723] = { type = BUFF_OFFENSIVE }, -- Mind Quickening Gem
+    [30456] = { type = BUFF_DEFENSIVE }, -- Nigh-Invulnerability
+    [30457] = { type = CROWD_CONTROL }, -- Complete Vulnerability
     [33961] = { type = IMMUNITY_SPELL }, -- Spell Reflection (Sethekk Initiate)
     [23451] = { type = BUFF_OFFENSIVE }, -- Battleground Speed buff
     [23493] = { type = BUFF_DEFENSIVE }, -- Battleground Heal buff
@@ -292,6 +302,7 @@ addon.Spells = {
     [3034] = { type = ROOT }, -- Viper Sting
         [14279] = { parent = 3034 },
         [14280] = { parent = 3034 },
+        [27018] = { parent = 3034 },
     [34490] = { type = CROWD_CONTROL }, -- Silencing Shot
     [34471] = { type = IMMUNITY_SPELL }, -- The Beast Within
     [5384] = { type = BUFF_DEFENSIVE }, -- Feign Death

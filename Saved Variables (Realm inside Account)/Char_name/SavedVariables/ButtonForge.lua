@@ -22,17 +22,17 @@ ButtonForgeSave = {
 			["Buttons"] = {
 				{
 					["MacroName"] = "DMG",
-					["MacroBody"] = "/equip Vengeful Gladiator's Spellblade\n/equip Vengeful Gladiator's Endgame\n/equip Merciless Gladiator's Touch of Defeat\n",
+					["MacroBody"] = "/equip Vengeful Gladiator's Spellblade\n/equip Vengeful Gladiator's Endgame\n/equip Vengeful Gladiator's Touch of Defeat\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "MOUSEWHEELDOWN",
-					["MacroIndex"] = 10,
+					["MacroIndex"] = 14,
 				}, -- [1]
 				{
 					["MacroName"] = "Heal",
-					["MacroBody"] = "/equip Merciless Gladiator's Salvation\n/equip Merciless Gladiator's Reprieve\n/equip Naaru-Blessed Life Rod\n",
+					["MacroBody"] = "/equip Archon's Gavel\n/equip Merciless Gladiator's Reprieve\n/equip Naaru-Blessed Life Rod\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "MOUSEWHEELUP",
-					["MacroIndex"] = 21,
+					["MacroIndex"] = 25,
 				}, -- [2]
 			},
 			["BonusBar"] = false,
@@ -70,7 +70,7 @@ ButtonForgeSave = {
 			["Enabled"] = true,
 			["MacroText"] = true,
 			["Order"] = 3,
-			["Top"] = 50.42551040649414,
+			["Top"] = 50.42549896240234,
 			["ButtonGap"] = 6,
 			["Buttons"] = {
 				{
@@ -78,14 +78,14 @@ ButtonForgeSave = {
 					["MacroBody"] = "#showtooltip Mind Flay(Rank 1)\n/cqs\n/cast [nochanneling] Mind Flay(Rank 1)\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "SHIFT-3",
-					["MacroIndex"] = 36,
+					["MacroIndex"] = 41,
 				}, -- [1]
 				{
 					["MacroName"] = "party2",
 					["MacroBody"] = "/cqs\n/cast [target=party2] Dispel Magic(Rank 2)\n/TargetLastTarget();\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "CTRL-C",
-					["MacroIndex"] = 33,
+					["MacroIndex"] = 38,
 				}, -- [2]
 			},
 		}, -- [2]
@@ -112,22 +112,22 @@ ButtonForgeSave = {
 			["Enabled"] = true,
 			["MacroText"] = true,
 			["Order"] = 0,
-			["Top"] = 83.95020294189453,
+			["Top"] = 82.80315399169922,
 			["ButtonGap"] = 6,
 			["Buttons"] = {
 				{
-					["MacroName"] = "DP",
-					["MacroBody"] = "",
+					["MacroName"] = "SP",
+					["MacroBody"] = "/equip Vengeful Gladiator's Spellblade\n/equip Vengeful Gladiator's Endgame\n/equip Vengeful Gladiator's Piercing Touch\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "SHIFT-MOUSEWHEELDOWN",
-					["MacroIndex"] = 11,
+					["MacroIndex"] = 47,
 				}, -- [1]
 				{
 					["MacroName"] = "mp5",
 					["MacroBody"] = "/equip Staff of Dark Mending\n/equip Naaru-Blessed Life Rod\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "ALT-MOUSEWHEELUP",
-					["MacroIndex"] = 30,
+					["MacroIndex"] = 35,
 				}, -- [2]
 			},
 		}, -- [3]
@@ -154,18 +154,53 @@ ButtonForgeSave = {
 			["Enabled"] = true,
 			["MacroText"] = true,
 			["Order"] = 1,
-			["Top"] = 50.42551040649414,
+			["Top"] = 49.39985275268555,
 			["ButtonGap"] = 6,
 			["Buttons"] = {
 				{
 					["MacroName"] = "spirit",
-					["MacroBody"] = "/equip Ethereum Life-Staff\n/equip Naaru-Blessed Life Rod\n",
+					["MacroBody"] = "/equip Rod of the Blazing Light\n/equip Naaru-Blessed Life Rod\n",
 					["Mode"] = "macro",
 					["KeyBinding"] = "SHIFT-MOUSEWHEELUP",
-					["MacroIndex"] = 42,
+					["MacroIndex"] = 48,
 				}, -- [1]
 			},
 		}, -- [4]
+		{
+			["ButtonsLocked"] = true,
+			["VDriver"] = "",
+			["Label"] = "",
+			["Scale"] = 0.8283962673611112,
+			["Rows"] = 1,
+			["Left"] = 1247.445190429688,
+			["Cols"] = 1,
+			["HVehicle"] = true,
+			["HSpec1"] = false,
+			["HBonusBar"] = true,
+			["KeyBindText"] = true,
+			["HSpec3"] = false,
+			["GridAlwaysOn"] = true,
+			["TooltipsOn"] = false,
+			["BonusBar"] = false,
+			["Alpha"] = 1,
+			["HSpec4"] = false,
+			["HSpec2"] = false,
+			["GUI"] = true,
+			["Enabled"] = true,
+			["MacroText"] = true,
+			["Order"] = 4,
+			["Top"] = 82.62202453613281,
+			["ButtonGap"] = 6,
+			["Buttons"] = {
+				{
+					["MacroName"] = "DP",
+					["MacroBody"] = "/equip Vengeful Gladiator's Spellblade\n/equip Vengeful Gladiator's Grimoire\n/equip Vengeful Gladiator's Piercing Touch\n",
+					["Mode"] = "macro",
+					["KeyBinding"] = "ALT-MOUSEWHEELDOWN",
+					["MacroIndex"] = 15,
+				}, -- [1]
+			},
+		}, -- [5]
 	},
 	["Version"] = 1,
 	["VersionMinor"] = 0.5,
